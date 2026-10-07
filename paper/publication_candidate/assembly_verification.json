@@ -1,0 +1,157 @@
+{
+  "no_backtests_run": true,
+  "prior_sources_unchanged": true,
+  "no_backtests_or_research_tests_run": true,
+  "stage2_rows": 60,
+  "stage3_rows": 180,
+  "figure_count": 11,
+  "table_count": 21,
+  "chart_checks": [
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\net",
+      "final_equity": 1142603.5823216198,
+      "max_drawdown": -0.18278470785388612,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\buy_hold_net",
+      "final_equity": 1497793.4796156213,
+      "max_drawdown": -0.3881646594282766,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\net",
+      "final_equity": 665819.5679304806,
+      "max_drawdown": -0.12605916768327563,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\buy_hold_net",
+      "final_equity": 692775.434406977,
+      "max_drawdown": -0.17119028444786577,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\net",
+      "final_equity": 1142603.5823216198,
+      "max_drawdown": -0.18278470785388612,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\buy_hold_net",
+      "final_equity": 1497793.4796156213,
+      "max_drawdown": -0.3881646594282766,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\net",
+      "final_equity": 665819.5679304806,
+      "max_drawdown": -0.12605916768327563,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\buy_hold_net",
+      "final_equity": 692775.434406977,
+      "max_drawdown": -0.17119028444786577,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\entry\\FULL",
+      "final_equity": 605305.2930591274,
+      "max_drawdown": -0.02594406842926189,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\daily\\FULL",
+      "final_equity": 605754.6440028988,
+      "max_drawdown": -0.025935476286047643,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\equal_control\\FULL",
+      "final_equity": 512885.9114530565,
+      "max_drawdown": -0.014213786998111821,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\entry\\OOS",
+      "final_equity": 537386.1723703983,
+      "max_drawdown": -0.015370022700463948,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\daily\\OOS",
+      "final_equity": 536568.7950508624,
+      "max_drawdown": -0.015370022700463948,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\equal_control\\OOS",
+      "final_equity": 507002.2513484113,
+      "max_drawdown": -0.005907464535674811,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\entry\\FULL",
+      "final_equity": 605305.2930591274,
+      "max_drawdown": -0.02594406842926189,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\daily\\FULL",
+      "final_equity": 605754.6440028988,
+      "max_drawdown": -0.025935476286047643,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\equal_control\\FULL",
+      "final_equity": 512885.9114530565,
+      "max_drawdown": -0.014213786998111821,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\entry\\OOS",
+      "final_equity": 537386.1723703983,
+      "max_drawdown": -0.015370022700463948,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\daily\\OOS",
+      "final_equity": 536568.7950508624,
+      "max_drawdown": -0.015370022700463948,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\equal_control\\OOS",
+      "final_equity": 507002.2513484113,
+      "max_drawdown": -0.005907464535674811,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\net",
+      "final_equity": 665819.5679304806,
+      "max_drawdown": -0.12605916768327563,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\start\\primary\\entry\\OOS",
+      "final_equity": 537386.1723703983,
+      "max_drawdown": -0.015370022700463948,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\net",
+      "final_equity": 539900.8580005951,
+      "max_drawdown": -0.15760202833089942,
+      "passed": true
+    },
+    {
+      "path": "results\\stage3_SIMULATED_calendars_20261007_completed\\end\\primary\\entry\\OOS",
+      "final_equity": 520245.9395529893,
+      "max_drawdown": -0.021146967764460678,
+      "passed": true
+    }
+  ],
+  "author": "Mohd Bilal",
+  "data_url_missing": true
+}

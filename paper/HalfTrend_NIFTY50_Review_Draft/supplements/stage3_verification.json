@@ -1,0 +1,130 @@
+{
+  "label": "SIMULATED",
+  "causality": {
+    "start": {
+      "cutoff": 32475,
+      "indicator_and_volatility_causal": true,
+      "checks": [
+        {
+          "management": "entry",
+          "matching": "theta",
+          "past_fills": 2358,
+          "passed": true
+        },
+        {
+          "management": "daily",
+          "matching": "theta",
+          "past_fills": 2361,
+          "passed": true
+        },
+        {
+          "management": "entry",
+          "matching": "equal",
+          "past_fills": 2358,
+          "passed": true
+        }
+      ]
+    },
+    "end": {
+      "cutoff": 31174,
+      "indicator_and_volatility_causal": true,
+      "checks": [
+        {
+          "management": "entry",
+          "matching": "theta",
+          "past_fills": 2328,
+          "passed": true
+        },
+        {
+          "management": "daily",
+          "matching": "theta",
+          "past_fills": 2332,
+          "passed": true
+        },
+        {
+          "management": "entry",
+          "matching": "equal",
+          "past_fills": 2328,
+          "passed": true
+        }
+      ]
+    }
+  },
+  "independently_reconciled_runs": 180,
+  "raw_data_preserved": true,
+  "prior_results_preserved": 650,
+  "causality_initial_code": {
+    "start": {
+      "cutoff": 32475,
+      "indicator_and_volatility_causal": true,
+      "checks": [
+        {
+          "management": "entry",
+          "matching": "theta",
+          "past_fills": 2358,
+          "passed": true
+        },
+        {
+          "management": "daily",
+          "matching": "theta",
+          "past_fills": 2361,
+          "passed": true
+        },
+        {
+          "management": "entry",
+          "matching": "equal",
+          "past_fills": 2358,
+          "passed": true
+        }
+      ]
+    },
+    "end": {
+      "cutoff": 31174,
+      "indicator_and_volatility_causal": true,
+      "checks": [
+        {
+          "management": "entry",
+          "matching": "theta",
+          "past_fills": 2328,
+          "passed": true
+        },
+        {
+          "management": "daily",
+          "matching": "theta",
+          "past_fills": 2332,
+          "passed": true
+        },
+        {
+          "management": "entry",
+          "matching": "equal",
+          "past_fills": 2328,
+          "passed": true
+        }
+      ]
+    }
+  },
+  "final_code_causality_verified": true,
+  "independent_saved_artifact_repricing_and_reconciliation": true,
+  "both_entry_fees_in_budget_verified": true,
+  "checks": {
+    "pytest": {
+      "exit_code": 0,
+      "passed": 129
+    },
+    "ruff": {
+      "exit_code": 0
+    },
+    "black": {
+      "exit_code": 0,
+      "files": 36
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    }
+  },
+  "budget_correction": {
+    "affected_paths": 37,
+    "journal": "budget_correction.json",
+    "preliminary_backups": "../../verification/stage3_budget_correction/original"
+  }
+}

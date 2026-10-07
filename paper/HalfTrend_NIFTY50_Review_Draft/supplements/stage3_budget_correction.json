@@ -1,0 +1,974 @@
+{
+  "label": "SIMULATED",
+  "affected_paths": 37,
+  "corrections": [
+    {
+      "path": "end\\combined_flat\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2020-03-19 12:30:00+05:30",
+          "signal": 581,
+          "spread": 566,
+          "excess_currency": 1.1224996844794077
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "66eb19c5a03836537bf638773d5feeee355ff04edd9269a88053739fccf71381",
+        "configuration.json": "86f38515eb9f33cc5fcc0242e14494b573445453fad0897a9112d38016e98bd9",
+        "equity.csv.gz": "00740bdfa6f1ab0558c86baa83b51551e34d1dfac236f80e7aec8994efafc3b5",
+        "events.csv.gz": "0496ed706d2538f8bc83345347a1f88cf2a7d0d2aea020634628ac5ccc918853",
+        "greek_history.csv.gz": "7f8cddfb7f84e230c89d9d15ccb0174f67926495361058214a38dd7dfddd650a",
+        "leg_ledger.csv.gz": "afdbac4ca60082c2636056c1e1416b10f7924070da7f33f9c4f780724b8ec1a8",
+        "metrics.json": "e9e8fd4284c19a533408c61c6634dc92541d597f87a1d74361ff637a8686305b",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "a805bb4c77db9f4c4514c2cb94538667afd2799c3cb5917943b3a8ce71a8e677",
+        "signal_ledger.csv.gz": "f9daeb178e9e4c6223b81e528cfd7dba0a3a4dde541dd0ca77ca678a5049a1ea"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\combined_flat\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\combined_flat\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2020-03-19 12:30:00+05:30",
+          "signal": 581,
+          "spread": 566,
+          "excess_currency": 1.1224996844794077
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "c532282a0e4668a9de4dbccb95ac7f1b25903dfa325f704556f88d4c112a1b9a",
+        "configuration.json": "35d113e66a1b2473e7e454b615db9e5640dd9ed685bd5873b94ce46e96078597",
+        "equity.csv.gz": "767308f3ddb060d2337f6c6d7bf7d6fa80f7856a54fea6be1bed7569fc77dcc8",
+        "events.csv.gz": "91142ada6cf847e2d4d4bd9347082230f0625360afb2950cc7c556f7cef7b0bd",
+        "greek_history.csv.gz": "0cc6a9f633253a32272c4eb65ada29dd4e8ad08d23aa1b2a9e5174c1521e0ae2",
+        "leg_ledger.csv.gz": "45ae3dcafaa8e907c3fb84f5684ab106b3c426bc0a4dcd594a55d5b146314fdc",
+        "metrics.json": "b68f001efc8eb29d1e4cdc75b86bebbff33614ce67b16bfb4e01b8fe2141d2d4",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "575628aca66049bb604a5cd0719ca8c190fe2822b8e5099e8640576729fd4e26",
+        "signal_ledger.csv.gz": "dd39d77f2f8ac42b2eb64cc397787e8a63f8568cb8c7e9e65b62bfa5cee423a1"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\combined_flat\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "end\\combined_steep\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-08 13:00:00+05:30",
+          "signal": 66,
+          "spread": 57,
+          "excess_currency": 1.9683865342958597
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "9bf2ef74386071283a74c65e9b643d9fa5cd95b6aaf2f96459cf8baef546fa9b",
+        "configuration.json": "094f746ee7f7456a52e2000d43f77e0ff0ef22518df5bef94ebbe1aa1528df8e",
+        "equity.csv.gz": "97ed9909a40505c11efe1912040fc121d407dfb2e665cfc0a97d25169eb858ee",
+        "events.csv.gz": "ea639a34d71e9046919da4e147433333446102f47e3ab86108358f3c506600a0",
+        "greek_history.csv.gz": "dba8bd8cffe2306619ec4224343dc78a387ac39219a0e3c3d0f8f28347fd6cf7",
+        "leg_ledger.csv.gz": "398d1b3975692ace8cd18dc4efa3b5288482b54c8efc8e2deb63f725b750e593",
+        "metrics.json": "6b9ae65d458893d721eecd713fc52419c32a72eb3e8556ddbcb17d9f4d6e2727",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "e2946bd3dfbbea7835df1dff524032a8506fe29fb7b3c1275c3aec5af9286fc4",
+        "signal_ledger.csv.gz": "8728ceb21b044f36f962dfa97b235e2a8ca14d2507df792c607c3c7173951a67"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\combined_steep\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\combined_steep\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-08 13:00:00+05:30",
+          "signal": 66,
+          "spread": 57,
+          "excess_currency": 1.9683865342958597
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "657e8b5e8a6578317b43f87880f6ee86a758069ce2f8f3599d5b4fbada7d3d5b",
+        "configuration.json": "0440485b53f481934a4a6a0e63d9c7dea5932cac188cf74ca1ab7c29dc9aa76f",
+        "equity.csv.gz": "61705c93ab7aa423f9420b40275b0976641710fc9424b354a88c758f26006dbd",
+        "events.csv.gz": "243ba20f439ca8301682a3915fa901f675af875e5ac615a8ddf44050189e5f3e",
+        "greek_history.csv.gz": "5b285be54e3a5ec5e80dabf2030a46f6d10a362fd71e8bc8269490c0ddea3165",
+        "leg_ledger.csv.gz": "c7f0a022e6cfb487609a4fd4143680f4ccca1effc5b93ff625d76d958e77dbce",
+        "metrics.json": "80dd37cb14179aa5a11ff422b266e6f44f50d4b09e9676b04c019ba2142fed36",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "47995fd09d105879bda28c31eaf3d9615ef93a4c8764b574f73b340807bd552c",
+        "signal_ledger.csv.gz": "e9723081684e471641ecb0cc410a85ecc22a24e36321232bd4c7e6ca4f1cbcda"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\combined_steep\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "end\\combined_steep\\equal_control\\OOS",
+      "preliminary_excess": [
+        {
+          "time": "2025-04-25 13:00:00+05:30",
+          "signal": 373,
+          "spread": 372,
+          "excess_currency": 0.2828700088248297
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "66f1c0a6029f38ab5cfaef1d395178a998a1de4d9b57c1c1bf9f99ae11773925",
+        "configuration.json": "cdbc7cb6685cead8aa25ec58b89370ff53422caa2e0cea58e111e2f3215244ec",
+        "equity.csv.gz": "ac67b4bbca7c59e4974f6e5de422e7d120503967ec591407bc76a4613cfaada3",
+        "events.csv.gz": "cb8ba0e059c4e7f926ab95ed15749c32c391984929bdd16d31f570b614f8cd48",
+        "greek_history.csv.gz": "5289f85528a94ebb15adceb68c41204912a31ff0b8525852007606dd3603f3ca",
+        "leg_ledger.csv.gz": "8ccc9abed33595c0895cff7b60bd9a17aa6855c4edc5d6b8b53d965d637b14d6",
+        "metrics.json": "b707e4bfa8c9bde84986c6e37f4ff63756758a524973d524e3e5e5e6f4cca737",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "111e147b34a9bd5bcf799e0fa1b98032f576c89f13f620b288277dccada90638",
+        "signal_ledger.csv.gz": "ef8d939011b874eee3d263a1027b0184a70272e8d064d5c38171d5f2fa69a3e2"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\combined_steep\\equal_control\\OOS",
+      "corrected": true
+    },
+    {
+      "path": "end\\near_1_1\\daily\\OOS",
+      "preliminary_excess": [
+        {
+          "time": "2022-04-11 13:30:00+05:30",
+          "signal": 30,
+          "spread": 30,
+          "excess_currency": 3.3351799030424445
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "2d4e87869511b38b83d2a7baa8e54ba07c95e23da60525081ff45d5b2036e8ea",
+        "configuration.json": "b5afa280faa6f3f8c41e5c95301879eee1226bfcdf26826738fbc2bd0ed16969",
+        "equity.csv.gz": "036a64b123fc27eca3a197b76a8ccd1f2bb2e71390cd67f89d09be843067647d",
+        "events.csv.gz": "3eacc3bdffe82fc5558346675ae840fc8487db9fb2b29ed7c8fdf3458b93afa7",
+        "greek_history.csv.gz": "244ea89d3802a208bb8a45fe9b92638c596d4feaf55cec2642d9852f6d404162",
+        "leg_ledger.csv.gz": "02f0a5868d245df3b876eb518347b73a529b143dd9651fa912510653a244f98f",
+        "metrics.json": "05cf76505b1e6d5113c11fe8f36d2bfebeb4f760658d7c947fd3ddd98c9ad0cc",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "a493fc0e1c3a4c6fd72f3bae50dc9d366429aca737d1755e9155e43168edecb3",
+        "signal_ledger.csv.gz": "7a12b8be68d0a5c1697a9d92943ce5b69943455378eb252a5bf03e609baecd9c"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\near_1_1\\daily\\OOS",
+      "corrected": true
+    },
+    {
+      "path": "end\\near_1_1\\entry\\OOS",
+      "preliminary_excess": [
+        {
+          "time": "2022-04-11 13:30:00+05:30",
+          "signal": 30,
+          "spread": 30,
+          "excess_currency": 3.3351799030424445
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "de3fc9dd76be916dec4f3c484cc68dbb897855df0fb01f3deb6f46e49d9286be",
+        "configuration.json": "30e4a44ccccc6a2bfb3dbfcaa256d652b0638801f2f2b74aa1a5e0d92dca0320",
+        "equity.csv.gz": "89df371333187a837d70145e1cfa6dd934d4f47169b728e477d15a77e04e4b87",
+        "events.csv.gz": "d4fea4b1b58a2042e417cfdd0783dd96b9be9d39697f6889ef460c604ae95f63",
+        "greek_history.csv.gz": "0896784349ff2aa1085aa44a1115cfb1ad8b38f674b1a987f42274499097d2cb",
+        "leg_ledger.csv.gz": "1cf45d86ac25610eb80848c45ecab609a7aeddb7bad1ef70e4003697daae03b6",
+        "metrics.json": "1ea0354db335da7727a989524cbd0d8886b368b19e8d768cf26e852c2e7f340e",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "ace84b8bc8f21ad143054f0726ed4ab28cd0791af012f1b745a0d026a4d8b324",
+        "signal_ledger.csv.gz": "16c352512431d598d8f9f20433467128c23c1369e909cfbaa55e2ead6e9030d6"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\near_1_1\\entry\\OOS",
+      "corrected": true
+    },
+    {
+      "path": "end\\near_1_1\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2015-08-27 10:15:00+05:30",
+          "signal": 62,
+          "spread": 53,
+          "excess_currency": 3.996271376279765
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "428e9a0220538d123e8669d4664d29ac9339d0f3be7bb1e927ec6b92a39e1f01",
+        "configuration.json": "4751141e788fa666b1ae4adcdd53bf19ecd4a0662a0ba240dcdf4d4a05e7fa69",
+        "equity.csv.gz": "d9b771574f660e9ce409d9ad24d6d3af557b927903fe39bf74ecbe6fda5f2229",
+        "events.csv.gz": "6cf7ed52850d951d97e33a6a8b1f0a2d2ae58efdcfd1093826f4cf8b0ae1b59c",
+        "greek_history.csv.gz": "5c7db998a340984a5dc598f303c8a1279d428dcf04b91d4954970fc3560358f4",
+        "leg_ledger.csv.gz": "5aa0b351202f51424eb5eaf1eb5cdf6a7993f1a26abaec17d026d1c26d976bb8",
+        "metrics.json": "888a8ab35ba82e67469daa3b9d36ec32c7efe8df9c70981eb1fdb5f0e1511d9b",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "9832831293297f51affc725decce4769d91521b38a302729212f2caec4d55a96",
+        "signal_ledger.csv.gz": "448c38ea7104d10298f32e0573f87f1cb5fb032b86664db413c881bb8393a261"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\near_1_1\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\near_1_1\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2015-08-27 10:15:00+05:30",
+          "signal": 62,
+          "spread": 53,
+          "excess_currency": 3.996271376279765
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "c6354944786755b5be70d99c146172ec802fb8eca383352dd1e746581d0b942e",
+        "configuration.json": "d689131ba220a9cf707e6b161d347fb888cf364c8b7a21b116c69db1c173f2cf",
+        "equity.csv.gz": "1acb76215a53d7df5f74067560756d59db03e8efb6deb7ba7872d26915e68b22",
+        "events.csv.gz": "b69504593144a110737ed51da5ee9ec4c93a5331049e4d819e2a4514db4cba12",
+        "greek_history.csv.gz": "66eca7e56631a17d7bd2c9a3ac86adf8e21df8eef9b72746cdd6338cfe8c2338",
+        "leg_ledger.csv.gz": "a88d9b1e5068320f498ab64040ddfd178bbc3c74d6a82f7fba2f357ccabf3601",
+        "metrics.json": "dd80a00e9ed82b74a0c4a51bedb147c2b7a6ae0a52dbe8be7b6faa260ab90e83",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "0421231a9c45d818a472be5245afce25cc5a850c397929b9a38cc2ff6371adf1",
+        "signal_ledger.csv.gz": "d7ebae94d7a6fcf6dcbc5f61cd351a21a0515c1cbbc3b88f2acd97ba9e7311a9"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\near_1_1\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "end\\primary\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2019-10-01 09:30:00+05:30",
+          "signal": 529,
+          "spread": 520,
+          "excess_currency": 2.486429445725662
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "1829dffc59932a31ebd75f2df257f058e23630faa0cdb72add581a670ea45acd",
+        "configuration.json": "301d6213cd3ae45de24adacf19933325eb347cd444fbf05d9bdd25d969ca416e",
+        "equity.csv.gz": "16526016cfb70ef573a8f9b9949ec68c45a05aa034638a883baf5d48b66e002d",
+        "events.csv.gz": "8b9396aa1b30fcaea96cc919e3cf4d48852a313d849e372a86fa8c4a5796fb9a",
+        "greek_history.csv.gz": "a1180bfaa49e9c104f67a38d5a8a05119c08af32a410b1acf2c64ce7504352b5",
+        "leg_ledger.csv.gz": "cc831281662ed145e98479f03f7764b5beaac55e2df96c2aac61803ced2e49dc",
+        "metrics.json": "0eb2fb8ebc4dc7c3e13d7a28ea0566f1c49edde5d3777fc49e4328fe080cd6f0",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "6f248c4b8c137d124c311009093aa54ba1931fa083845c487cbcfa5af069f22f",
+        "signal_ledger.csv.gz": "e27a7acff3b87e199c110317a5b8ce2632586e33097c61cfd6f3079b07b1f0fe"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\primary\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\primary\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2019-10-01 09:30:00+05:30",
+          "signal": 529,
+          "spread": 520,
+          "excess_currency": 2.486429445725662
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "f77b711fcdbc1061fec827daa4c7ba2f254100d6e7e682ee9cc15f6a45388368",
+        "configuration.json": "047603df83cc859c40ab6967cdad7b43e165ec021b5099f67b33592f6bf305d9",
+        "equity.csv.gz": "57926a1f895521d60bf461de24e2a36674ae9a97ecdb05bafa8ba4caa7d6f6ae",
+        "events.csv.gz": "f9a15386b7d2c2f24402396e31e84632e797bc6831c5a68344193ffcd0b64f84",
+        "greek_history.csv.gz": "8619ad0c8b09c6b3433f048526e6e3ce21c9eafe0782156e657670332ca8f1bb",
+        "leg_ledger.csv.gz": "f1d52341fefb94f0cfda4a8b2c23ff32b04e497b39562bdf4d79349cd8cb1869",
+        "metrics.json": "70b8c5a7e40a740ab3cfcf9602c98e3e752b74153551b852ef208c1b58349c0b",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "443535eec3bdf30325e01b29d5f75cc993fdee7c7f17f29f13dc8e12fee5551b",
+        "signal_ledger.csv.gz": "6e1506e83683afd49fdbfe81b78f1a48d2b0765c2bee48ac01e8c61a42d5f932"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\primary\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "end\\slip_25\\daily\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2021-05-07 14:45:00+05:30",
+          "signal": 709,
+          "spread": 700,
+          "excess_currency": 3.005406226748164
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "248823c0a9cb11f598b8d2811b03a636362a81d46150a65ed2692021b4755fd1",
+        "configuration.json": "a4b3d5402836ba9a519cda285106b7beeefa942bedf5ff09bbc7ffc5541409bc",
+        "equity.csv.gz": "9917a40ec0cc5db626084c839db6f1108cac97b142606e446c58e80d0e80c428",
+        "events.csv.gz": "0b6cd870b060c2b05d6e7d74a35a35da1a3765dad765b0c058ef2483b21c4088",
+        "greek_history.csv.gz": "b05a882f68d9e9c837aa4acbd269246427eec907bc87279766cfb6d1ad15aba2",
+        "leg_ledger.csv.gz": "6ae7a02c9ecf744437f0d77f696d26eb14843f59d8539f872d4865b833c6fcbd",
+        "metrics.json": "6312e242bf32ba2a814fe7a2788a1a7ebb06b10b751ae55d15452ead21cfa4c2",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "941ad49bd7b03941ed3709c6d5236eb449a4dbb02b87d648a82da6cf220aa1af",
+        "signal_ledger.csv.gz": "622180ec55c1dbd3be8bbcbf8cbd9ea3abf6261aac3e3c9232a3d03bd760c719"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\slip_25\\daily\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\slip_25\\daily\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2021-05-07 14:45:00+05:30",
+          "signal": 709,
+          "spread": 700,
+          "excess_currency": 3.005406226748164
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "2d7e81f2d2a5695ced20dfc69ffc30cfa0a1c6ceed4000ed516a79ad35181efa",
+        "configuration.json": "058618fe45f2a46d3e040efd256301856f880df24c4e7bc9a40eee29bb236abf",
+        "equity.csv.gz": "dd618cc29c515873e0eab2d82569b1b02dc81d4f06642501af897f1be286d412",
+        "events.csv.gz": "c6cb0f379d11ccc746a445fa374311582de76f6d1f84def4b4eb606286d8e77f",
+        "greek_history.csv.gz": "8c320079bb9ef79e42b06a1488cb0b93cfe1ce2d96b185958e73ebc822da7ae4",
+        "leg_ledger.csv.gz": "a42ca30fd76d097a0d7212bc4aac873e7611738c31f07b741327a24090edd5e1",
+        "metrics.json": "3641cb51bcbf27ee29606241ed056c36e44ec098455cac116bef63a5af454f6e",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "a37bd5330ad9bb8deb793a6b707ca99df8949cdcca875b48ba84903b9b88bfa2",
+        "signal_ledger.csv.gz": "800395ac49e0c6ca0be200936f99dcc30de1158a79a3ae0a14d067970b2f4f4a"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\slip_25\\daily\\IS",
+      "corrected": true
+    },
+    {
+      "path": "end\\slip_25\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-08 13:00:00+05:30",
+          "signal": 66,
+          "spread": 57,
+          "excess_currency": 0.8865561534476001
+        },
+        {
+          "time": "2020-05-15 14:15:00+05:30",
+          "signal": 599,
+          "spread": 590,
+          "excess_currency": 2.7048871927254368
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "17b39946c4c6eb766d4f350fcdbd95a33bf93867a3abd3ecd62ee5644d78deaf",
+        "configuration.json": "5664af925b837db7fcd52e84c99b55ef41b60fd4d6399feead17b9e84f7edfd1",
+        "equity.csv.gz": "3cf5226fdc70b1bc021dfbe85255218151803fdfcbff38a33a5064e77ed00500",
+        "events.csv.gz": "0b4313a5f505f6e9ed75f2602eb7f7798b91e1c17648f84037771f0933980bcb",
+        "greek_history.csv.gz": "d97afbe0cc7201123650abd93993e1362df74b9998bdef799afcd95a172be278",
+        "leg_ledger.csv.gz": "0b7a43b25bf4bf24601840bceda9e8a4d0ab37e8b1e7b7283fba8220d2f8b497",
+        "metrics.json": "7d8506b9aaa4641a945a121aa239aa66f84b01df791f47eef172b7ffa6ecb510",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "d731cfbe15db9005d9503fbcc7d924ca1adc4d7c0724faac1e2e742cd3362039",
+        "signal_ledger.csv.gz": "ed14a16b79e057c96f9fe3aa75c91770079a141e35bfd2bbfa730c5b54e7f2d0"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\slip_25\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\slip_25\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-08 13:00:00+05:30",
+          "signal": 66,
+          "spread": 57,
+          "excess_currency": 0.8865561534476001
+        },
+        {
+          "time": "2020-05-15 14:15:00+05:30",
+          "signal": 599,
+          "spread": 590,
+          "excess_currency": 2.7048871927254368
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "c3fa7c01b2de29c1e26cd17cddff0aa0f33ed0daf5ed7ec15953708bd0bd9c86",
+        "configuration.json": "510ad12d31a43bab17b067d57fa96938f6937a10d1336e58fb8902a7ccf2bcc7",
+        "equity.csv.gz": "95760e398c83d1b43585927081a579f0000208e5fc4e601093424dfae876dd2c",
+        "events.csv.gz": "ef765c8a4d6dd48b35313d889a8a3dc3c93aed01bb35436e837f8b149e2e3f5c",
+        "greek_history.csv.gz": "ce4131521dbea01d669ad087712a21a892af90badc26c9793f3529441798b0bb",
+        "leg_ledger.csv.gz": "60f0b963a610ce2bee37bc894fb2100082ce901528fd0f7022777fb0336997d6",
+        "metrics.json": "880a76168276768f2d9a28f5720c49026bbaba177405cbfbd92ebcea8edb1e02",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "6a27662e1dea558f2885c638aa341db181fce83640c433e5b44ab044d294ebe1",
+        "signal_ledger.csv.gz": "0b7b88d43ffb146fbcb03a71b40a005d0a7037bddb2c9ac04ee8fb96e9bf40a7"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\slip_25\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "end\\vol_1_0\\daily\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2022-03-22 13:00:00+05:30",
+          "signal": 802,
+          "spread": 793,
+          "excess_currency": 0.2605436576268403
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "c8349da917550c06203404a5255b7ac984dda12d3625b1e0955d9e874a5aff2c",
+        "configuration.json": "4287f83fd03a4aa1c9024480613488fcd142fab9510dbc823613a353dfaafdab",
+        "equity.csv.gz": "ad613415f7b2fc9cf17bc5bad0a172296921d982d62535f5f793653b94e68f1d",
+        "events.csv.gz": "ba8300480155e2c64abfabc2009201327a526fdc8e556ec08b7eeebdad697d48",
+        "greek_history.csv.gz": "65a453c48db40fbd99a06f2a49340433ef466f54297aae7d08e340eecd7a8126",
+        "leg_ledger.csv.gz": "687228751f31369cf14a93ddd9d70e4f50193efe20627e39016598a5b4176ad9",
+        "metrics.json": "cc82fde433d2e6e39bc4c55b89cb4a9e5585084c4d9d3d2e669473486447facc",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "373ef8ae6540fcbb6016a39e8e158c8216699e0e86932762645942dff66275c1",
+        "signal_ledger.csv.gz": "19287e23065e125af0400d40655008ebb3a5f712479cef9ec682c6b23acb0966"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\vol_1_0\\daily\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\vol_1_5\\entry\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2022-06-17 14:00:00+05:30",
+          "signal": 832,
+          "spread": 823,
+          "excess_currency": 2.2460688842220407
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "3ab9fecb582d80080633cb45755d1086b3f73115604a5e4f5c83609ef3bb7762",
+        "configuration.json": "1262c1f003e007258434886412ccfc8237794caa0e114d9b9bf781793d0ee1e8",
+        "equity.csv.gz": "33f9dd62dc5b9e6ee3ab2e03c00b4ccb5a02c2531eef3cdd9a2095fa1f8e23e2",
+        "events.csv.gz": "0d86da2a453cfc8a4b9bb513a81f89d261344148713ed3c79c596d8e4f1d1b71",
+        "greek_history.csv.gz": "6e7822f682e5cb53e669cbc6d8c086425fc731eb9f963daedbaa8999d2b49417",
+        "leg_ledger.csv.gz": "0443e0fb34ca8aadfdaa917a5a0d356ce952f80ba8dcdde6af29f8b943bd1c6c",
+        "metrics.json": "1d322a2af9ffd78c2f61c5b882b65dcff8ffbfe9555c7f9fc39a27fa8be1d37c",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "1efbb68b011310b3fcf7d84a16d6e67c16c711c51401d97d2451edb3f2d08bf4",
+        "signal_ledger.csv.gz": "ecfd8223a80aa6420972c85476f172c12fdddeb76508932fe22db6d4566d2147"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\vol_1_5\\entry\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\vol_1_5\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2020-05-11 09:45:00+05:30",
+          "signal": 597,
+          "spread": 588,
+          "excess_currency": 3.402856296943355
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "4d240081188e20a29d08dc698ef1fe8cc90f1fc4f51c4f8ad0068daf4669bf2e",
+        "configuration.json": "393c183f1ae6063a77a4c16e22ded6529c475b259449a68118e5baa344c0838d",
+        "equity.csv.gz": "d329bd6f4f4cbce99ccc49c63c1185e0cdffa0c42592e22b9cece0e8420fbd86",
+        "events.csv.gz": "67315ada69fd835f585fc05327b89d0fd019525d05a97eb4b39914b2791efd16",
+        "greek_history.csv.gz": "4f0db9048d4e87faa5d03e06a05e7c370ab76562ac32887f54c7790615bc6069",
+        "leg_ledger.csv.gz": "36c72e676e2b23f7d4fdf2618b7e697603a63bdee3bda8af635a3281f9ca2c5f",
+        "metrics.json": "5bb374dde473e7505cebfadb3a2973ba1b63ec6332c2c61d26a9b9b3f5b69121",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "5cfe3b4ed730f9f401e5d468d2956bddeb3809c65d640d205f40eee7b4121256",
+        "signal_ledger.csv.gz": "3d358395cefd86de8b8ac709b48f616dc2d227b4c5a22c267d112b3437761f14"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\vol_1_5\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "end\\vol_1_5\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2020-05-11 09:45:00+05:30",
+          "signal": 597,
+          "spread": 588,
+          "excess_currency": 3.402856296943355
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "264fe2018789e26aa315f711eb354d2086aba5f5b015effc68bf4b5bfe870de0",
+        "configuration.json": "1dadf010e1303778f313a50d8947c9f37e2ec844ba5829ab3faf535d3cff2379",
+        "equity.csv.gz": "b76e61e75c67ef77a0e19fe79091a49520998fbc987821d7e629b280ad31b5b1",
+        "events.csv.gz": "a4d0d9dccad30548c74e0d54742636b1f4ce3d1ec56887e97b2a3c3efc95094d",
+        "greek_history.csv.gz": "fe935c110ef1da7a4b53e6335acb8734af2fc9428501b9618baa359921c73acf",
+        "leg_ledger.csv.gz": "e96779a6b9cf1a7dfa107342932203d2bf04c96df3605a4458cb73514be415b2",
+        "metrics.json": "cd0f261e6f7a27e87dcda96c23d8961391a12efff3ecd02c7472a10db1631e02",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "7fb4390a2a8f3554ee2534e520f103001a88cab486941d907cdccb719f34d464",
+        "signal_ledger.csv.gz": "b0c4e7be95953ebe22f59d1663a7c374d38c5baa89d9af9d63874dad96652211"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\end\\vol_1_5\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\combined_flat\\daily\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2020-03-19 12:30:00+05:30",
+          "signal": 588,
+          "spread": 579,
+          "excess_currency": 2.2192147373098123
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "3cb82b0703b0519916e7f6575b093b61cbcb1e8b712deec7576f0b9f754ec8b7",
+        "configuration.json": "d25deafa9ea58093c852b96173d1b6ea8e087cb1d36f5da5566b0e7816c7366e",
+        "equity.csv.gz": "3aeeac91420c587fc3618f2c1ddb813ee049c0a0799c23cb1a3171880823c794",
+        "events.csv.gz": "d7aa06d5c4e842c4d43b3d07dea63688b9e70cd5e6a0816d19bb4463d8d79b80",
+        "greek_history.csv.gz": "1f00fad8a75514ca2283a1ff3556398f81d76c4e9ae0e05eb0d91cca522eb407",
+        "leg_ledger.csv.gz": "7099c6e2251181c403c4e1e3799839ddf2a843570c54679f26ad03584b24fb86",
+        "metrics.json": "1634cb708b5ccb983c63f002e3829fc4c518d533806476c402f6ee00424cd59f",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "9f1de309b02d9601b8a0d9ac1f461d50516b6902a6780f188dd756f71b8b201b",
+        "signal_ledger.csv.gz": "016172de8b07fbbed395002178dd30210535ea9ac44ec8881000b8c013e8714e"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\combined_flat\\daily\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\combined_flat\\daily\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2020-03-19 12:30:00+05:30",
+          "signal": 588,
+          "spread": 579,
+          "excess_currency": 2.2192147373098123
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "8e40df7b21484ebd3a09305c9486b27925f67c086550e64d8bfedd10cef51893",
+        "configuration.json": "1f35984dd690e487601f7e3d1d2167e160aa82db1ccce79483c88c4ed8a27911",
+        "equity.csv.gz": "b5e90a4aeb1b2878b0da6f9bffacbda443f0d03db33bcea815b5f65b8bcb9de3",
+        "events.csv.gz": "2c19031f64f2165834ea2d9afb2645e1c66db8b3c78f50bb68818c8d7b3d01a1",
+        "greek_history.csv.gz": "f428fe493b871d905fb8dcdc26fbf1576dad9f8fec4d02180c53e03027368c21",
+        "leg_ledger.csv.gz": "92d4150ca1ffa659b3d29d5f4dfb39a962d13a01e2edda33897ee4a16e1191da",
+        "metrics.json": "6159d6bb4165ffeb209e0a37fcef8b1ff64fe8228c1d72f1c4452768ccac78ff",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "70119981a62ae695351fa87844e5dd119c8ca99f753df13afc6f2bafa6f94f1f",
+        "signal_ledger.csv.gz": "2ebd236a10a2d8b4e80529c527fbd1257a0eb4571334f3e5a674785e4329b6db"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\combined_flat\\daily\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\combined_flat\\entry\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2020-03-19 12:30:00+05:30",
+          "signal": 588,
+          "spread": 579,
+          "excess_currency": 1.4940315669664415
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "d4b141d5eb65edf3ac905c6ee2859f973e18e4111a40c040f72288a8474c684b",
+        "configuration.json": "edb241272fa59f14e64fb3c1d8e96c6dbdac17a9430c92eafd5374eb646d816c",
+        "equity.csv.gz": "189ba3a580724ffb380c81cf3a73c9c814653bb783abeae0d81177150965d00f",
+        "events.csv.gz": "7c62121225bea127af568a4ed7e5599ddd47ca15a8e87ac1151526af28f9c5bc",
+        "greek_history.csv.gz": "815025916d763d35f65a171a8f86379824872a0fbfa4410a9656653d4c08ed50",
+        "leg_ledger.csv.gz": "fb0c546f4a7b01a0c0626af94781cfdc73ab054e9c9588d963d49fbd2c86fcce",
+        "metrics.json": "336d4d03cadfe6b14b3ae83e03aff66ffdf589e7239188a1b438bf075c7dbbf5",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "df00471bd55cd40c410c22346d2546b8f4cca3020e934d318d3a9edf9c348d3f",
+        "signal_ledger.csv.gz": "2aac42cbec1397dbfd135a0aea079fb26211194920a9606d8c884d2985f9e442"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\combined_flat\\entry\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\combined_flat\\entry\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2020-03-19 12:30:00+05:30",
+          "signal": 588,
+          "spread": 579,
+          "excess_currency": 1.4940315669664415
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "9cf010ba0dbb394261f0e1c90966bf6e31d0338b88e25cce471ce7aed4e6dd67",
+        "configuration.json": "7d7e86afa5d24d2e47ffc015b5bb8943aef6a120e06add342eae6c5d3aa44b49",
+        "equity.csv.gz": "0bbf189ae4b95639153b57ea7938d435fb4f2bcda92149c3d44b028dd2c3f0fb",
+        "events.csv.gz": "f1e226e1faac5cde52d5a086ea91771e8688b609a8c3a077711d2bcd494ceb95",
+        "greek_history.csv.gz": "ddc2d4da5a11fdbdbb7c22af866c7fcdd224b6dcc5b8d02f60250bf7e6c813d4",
+        "leg_ledger.csv.gz": "38b6732004dc8f18bfc60a6117eba606b06603a0db5745a78cf0886a015c1149",
+        "metrics.json": "2e9356344768f2aea266bffa1afc51e05d8240f5c76b2ac8c3a615c676d7919d",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "d2a81de2b39ff69d6131a94c24fae4ee640e9581fd1afb578ab53facbf5ac74b",
+        "signal_ledger.csv.gz": "16b0b683493b56ac75adcc63d477e3165af0fd1fa4db295178322976767d08d3"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\combined_flat\\entry\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\combined_steep\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2021-12-27 12:00:00+05:30",
+          "signal": 797,
+          "spread": 788,
+          "excess_currency": 0.5588016801229969
+        },
+        {
+          "time": "2022-06-14 09:15:00+05:30",
+          "signal": 851,
+          "spread": 842,
+          "excess_currency": 1.1041999802728242
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "931bd08b197a3816372537c1a9bf65e9a6d154b7629bfa425bc6a75628cebbc7",
+        "configuration.json": "7be8c64fe37c220fc17d56662f694c34dc2097796432ca952c50b042f69592f5",
+        "equity.csv.gz": "456ea3f8892ab01c1f6254919960e9eae93b1e029a4cf7d92c143410bd589bb8",
+        "events.csv.gz": "db2cbc7d1a4f33c22a913ac88eedc55cc69d0c6fbda5d5cb7b6969be955e7afc",
+        "greek_history.csv.gz": "ff2e71365432f667e8d2725a17e82f8a33d28b83dde4628eca86ceaf5ec560d4",
+        "leg_ledger.csv.gz": "396b73c825064ababc33986443943087e184e6f681a76b4aa61d85ef575106f8",
+        "metrics.json": "ca6a3ac6cb63ffc2287a2a2ecb6e4bec60ccd23aa4696abb1dbb3ef49695ce32",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "52f0b117b80091cae820f9dd9f468847363598aa0382d19dc9af063f16fceeab",
+        "signal_ledger.csv.gz": "74fc9d9eb1196738dedc889f9c8b5aea0003039102d0d7d4963aa8889a54c650"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\combined_steep\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\combined_steep\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2021-12-27 12:00:00+05:30",
+          "signal": 797,
+          "spread": 788,
+          "excess_currency": 0.5588016801229969
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "178e8b36951828e962b36ae018dc526b43dae693991124f322356a254eebe761",
+        "configuration.json": "d0b44856c825d9bae7c8c2a311b58184abaa8d0642ee82c33621433bc23a3086",
+        "equity.csv.gz": "fd2738fcb8e99fc901e531b0bbf3b2d0b79245cc88e853ffa922d4351c386bba",
+        "events.csv.gz": "4f298d328f9628019c738574a5313812b3622aaec1f9b05b6a680320baf16f1c",
+        "greek_history.csv.gz": "70684b45be8f8d00c16c1e65d3aef871692463bfb574f3e2d41af235242b828e",
+        "leg_ledger.csv.gz": "e15b3d475ade5795ab46ad742883c90eb07a265768f68a5ca8f0a4f6749a8ae0",
+        "metrics.json": "947ee05dfcc16e115757bb0909babe2e3ec812875c0bb2b102e3b9d308527479",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "a1cbf907bce79256b8782dbc3fd2f5912b85248a2da9061595695724359984e5",
+        "signal_ledger.csv.gz": "35b5d82d25ed146d271203b546416f40a46ed6b364737c41063b22567bb5cef7"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\combined_steep\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\near_0_9\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-23 12:30:00+05:30",
+          "signal": 72,
+          "spread": 63,
+          "excess_currency": 4.376672485544987
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "1af760568e1984b97f3f94ad4701c45900c9098c515f5ebd1298a0ff74382661",
+        "configuration.json": "22e4774f4d4ba5788bbd362dacf53a6bff558acb35083054488c9c95f8afe131",
+        "equity.csv.gz": "724a2b466b4d8cfb636c5923b55274c031bf46050a3dad1eaaba15b1db81a571",
+        "events.csv.gz": "fa509593d1ce0b86e0cb8542ae0ec748152ed7c157f6efe458fc29bcd1bb7637",
+        "greek_history.csv.gz": "23211d22da9fc1f440a94ea9fd1935add74a949b9f3c4dcbf5f7235377b67a4e",
+        "leg_ledger.csv.gz": "0a2192e9e878f40d35544a0b44a34e93a5070dad666bb56405eb9d55c8bdad7a",
+        "metrics.json": "8df548eb646cb78ef7d9efbe467f667a393fca1e0e6f328f3a8547fbd3f906b6",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "eeaa58c65f95c1f05e96726d54cdd5d29eacce6417c5690c23eb2c151b32aef8",
+        "signal_ledger.csv.gz": "0913bd3cb2acd33dc4492702f77ce852acd6f0e33e4717d7fa0fcd038b7773ef"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\near_0_9\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\near_0_9\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-23 12:30:00+05:30",
+          "signal": 72,
+          "spread": 63,
+          "excess_currency": 4.376672485544987
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "5f838c8e89aa0b3e48347ebec5b1e7109ee43858ad442f8e65b2f619a295d4c7",
+        "configuration.json": "c87b901b2058d770c113387d1356482071e336d5559682a216acad34e0223b7f",
+        "equity.csv.gz": "4dbcf4cb7fdc917f88f24dc728c8d22ab866c5d965306649a0054b14e7cd4179",
+        "events.csv.gz": "592bf3ac212e255c08acdaa3279c298de7703ec3874c5b277fa752397b465c18",
+        "greek_history.csv.gz": "88935bb976d374ec6aecfa5e1105da5530a36d9e32d40662e5f652f895c95b1d",
+        "leg_ledger.csv.gz": "cd05bb5fdf2b94946d3f824f2b9971e916ae5b68f60e02042abef22d56984929",
+        "metrics.json": "710dbfd9b31a6445ead818f65892d24df3623b2897b2ae29e8e98e2bc36e1f8a",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "82abda7b7b3eb50cf087d911a40bacc006ef6bdb6ca072a25bf7195eec26bc36",
+        "signal_ledger.csv.gz": "47dc203289ee2ffa2a7a2c75bb27561512ec782bffb01d2807771e9c222b0aa1"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\near_0_9\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\primary\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-14 11:00:00+05:30",
+          "signal": 69,
+          "spread": 60,
+          "excess_currency": 2.4637881332600955
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "cff216e183036fece2e93e3dfe87e31769c69ad5a5235f1fa5c2b2886e2f8903",
+        "configuration.json": "01d0d07c79b54c69792403526d770f4d93d19710810883a7ebae8d4e726e747f",
+        "equity.csv.gz": "22c88099cc71fb0c756e1a6546ea662676e136543b5796c0edb3fef9beafab82",
+        "events.csv.gz": "151e7b53c9b536c9f1878e2c10a968a991f0eeba4394269832b80860110183c1",
+        "greek_history.csv.gz": "d2d9071b6f959d85d9a1635d6587937c41cd4edaac4dd5e2e781f3df8cbd00fb",
+        "leg_ledger.csv.gz": "49e8e025556744280127a515f20a7631c04e446b2f5c38748ecb2fe5ea1fa3f5",
+        "metrics.json": "9df4e357fc3d5ce001e43573413ec00a33e6f14554f6432706126ef5abf1af76",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "91f1de2e4b92d11681f17d4add42ff5b95c0141d23f3009f3a2b5793fb8a84bb",
+        "signal_ledger.csv.gz": "765001403967505ff574aefffaa0983abcf3426cd52db94e2927cfd51b310b91"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\primary\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\primary\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2015-09-14 11:00:00+05:30",
+          "signal": 69,
+          "spread": 60,
+          "excess_currency": 2.4637881332600955
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "36138a04642074a67d205cc1fba22b0a9dbf76f9d5df857f1334b8c136389efc",
+        "configuration.json": "b53a821c89bbd85c9d5fd42cf3f54ed113fb01b2a52c7a3d0ea621903893b36f",
+        "equity.csv.gz": "ed0225f78c4b0e6e9fbbd6ddbe1778fa3ab035cb4143d9689675c312f89fe991",
+        "events.csv.gz": "e3c692b330b7cf18b054196039778b6c6b76d0b06d8826080713c172ac48c8f3",
+        "greek_history.csv.gz": "ac3833ad17a8ebfa3407034ae06d131bd33283cf37ec7d8167f0e16cf850a3c0",
+        "leg_ledger.csv.gz": "48293564c411978a9e9bd01751fc270066634fd7a17d3bb542215ae876b70d53",
+        "metrics.json": "04016ec57c25e852b113dbef0c55024c84b8e8e8d03d85f08f90252002720c8c",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "96f1aa947f6847122788d19b87b384520db672657299686497a6950735c0d6ec",
+        "signal_ledger.csv.gz": "adf31409226df58b1283c08e15966095556b7f2253a6d81bb5cc50d2655fa873"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\primary\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\slip_25\\daily\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2020-10-13 10:30:00+05:30",
+          "signal": 654,
+          "spread": 645,
+          "excess_currency": 3.340521663438267
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "2973653294fb391dcd52dfc947a9ce3168bb51a194be3b3e2132587f01efbccf",
+        "configuration.json": "11d615d8cca709bdfeaedfc2fad2eb815e627a3d92e6d3f4bd4a76edbf751e5c",
+        "equity.csv.gz": "66f05860d26f06c52b0b0d8009366a31b442076733c751fa338439b550d34e4c",
+        "events.csv.gz": "ebc33deea176111c9b999636819ad03f62caa27e287f22d93667097acb2f60e2",
+        "greek_history.csv.gz": "fa031393fa7fcd0ae3b6749b8163114ba108d5e74538fef36c3f7aea7bc3d2f8",
+        "leg_ledger.csv.gz": "d875527fc59b0c8cc8c0b83f31ec245daa1abf15dd932ac5a5f213cb49d5ec98",
+        "metrics.json": "c8fcecf51149d03d653456921eb2439ea0e760f7156830e5fb19cd2092bfe924",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "a2efd782da17f89284e19c94a6b30025c2d87d915e7bb52d5fb6cc7cc6f28b29",
+        "signal_ledger.csv.gz": "0f81542d06e7327a320bb2691591518163541b272c6887d3c7e7b16e02f1ecec"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\slip_25\\daily\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\slip_25\\daily\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2020-10-13 10:30:00+05:30",
+          "signal": 654,
+          "spread": 645,
+          "excess_currency": 3.340521663438267
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "912f97ac377073cb4015acc5cc8250f25493d51e30f7b68d4f67b9c11158d05f",
+        "configuration.json": "310cf1484749e8a38b9fb7164b3d604fdb40ee1fd7aa8ad2a62408658095861c",
+        "equity.csv.gz": "8788b6c6bd41bedce04f5914e08288a16d7d63d582bd6db93280503149b7a53c",
+        "events.csv.gz": "4cca854d876305f8f2e1ed7ee93749d758faf3791354d7fcb61d8615a3fabd84",
+        "greek_history.csv.gz": "30c5ae470f68c0d42bfae602047f45f316c6937856efc1e6482c438200f9039f",
+        "leg_ledger.csv.gz": "8f5152fd7d7fa6d48229820a1223ab7a23d7d2f8feac0c9bfb46beb244c7145d",
+        "metrics.json": "e0f2c6bbed5524d67c1efbc998a1f96b1a9afe93fd4d6ee48af47afb1476e58a",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "31d5e6b45e87f25b61e90e6038d38a787b787b244ca5a4d9ecddab3ff00c6369",
+        "signal_ledger.csv.gz": "e022e162881aba33cae8de81c06ab8298b35c0e8e3006da8ed2e59541e4b36ce"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\slip_25\\daily\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\slip_25\\equal_control\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2019-10-01 09:15:00+05:30",
+          "signal": 535,
+          "spread": 526,
+          "excess_currency": 4.609960328696616
+        },
+        {
+          "time": "2022-03-16 09:30:00+05:30",
+          "signal": 822,
+          "spread": 813,
+          "excess_currency": 3.1122512546062353
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "a60d222781e317b7c5b9c0aadab4f78ae41bf7e48ce6ad55190afbcf5cca807f",
+        "configuration.json": "4a9793480d1be194258ba7be5c7fccc790357c6ccec859f62d1bb75118e44217",
+        "equity.csv.gz": "0f2e152602a5093e21cab6cb40dd8601a2385a6085b20e473eaa6de4d9e04871",
+        "events.csv.gz": "09c0a19e7cba6fed1a2f02605727ba78dc78cf2d52621a589bfa0f9930ed6e5d",
+        "greek_history.csv.gz": "3457ebe75787011dbb089b58f6f41c8561dc173557c380159fea4afa05d076f2",
+        "leg_ledger.csv.gz": "228e367a93b03898ff141f2b217048a48936f1b9d48b356d74382d5e6fdc174e",
+        "metrics.json": "ea00df7ad3a0bccd06c0bf05a9679060c90f276624f25817b9d6a504e3119f20",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "53f103347cc425ea0365c9e7e5fbd406cb1f7c29adb40acbaf1b794d07596154",
+        "signal_ledger.csv.gz": "55cb7029e4aca745cd7aba906c645f2112a509e363c50b054672fdd8ecd3b9ca"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\slip_25\\equal_control\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\slip_25\\equal_control\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2019-10-01 09:15:00+05:30",
+          "signal": 535,
+          "spread": 526,
+          "excess_currency": 4.609960328696616
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "79920e1cba2d96296c7d732e6ac06a0508fefd8af9e1788daf7339173e7c5bc8",
+        "configuration.json": "a847536036754b40bd61a94563181f98a51a967bd8248df46df088a6034d60e3",
+        "equity.csv.gz": "28d9e2ef18d5a688fab611c89c37a3217ba5e0ab12a543f6806398a714b9e826",
+        "events.csv.gz": "e18d399cdca5e614f350ce4cf48eeacd978c149b0bd556c6c10cdb6d331e8511",
+        "greek_history.csv.gz": "948309c279d33a9180530f9f3013ce8ab8d057425e51260513dc49046d7cca47",
+        "leg_ledger.csv.gz": "522fdc9b08123525dc0d4533dc189c33ed00bff37b7731041eb390f4dd1a0fc1",
+        "metrics.json": "65573a675583c9a9b3945c3a39a46811a3bbab58abd03107761c8bbe80c43139",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "804f087885562b7c2f58e8c0801dd7b555a69ecae02ddca27b262753d37848d7",
+        "signal_ledger.csv.gz": "142fc36c93d407b0e6a3ec3b5ea3b57a54ac1c04d815eb70c8622f9b0a7cf901"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\slip_25\\equal_control\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\vol_1_5\\daily\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2016-03-22 15:15:00+05:30",
+          "signal": 135,
+          "spread": 126,
+          "excess_currency": 1.912979146323778
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "3c82022815c4f9b3080d6ba9125b6e7caad4f25465ff7e01c86f76c5295d2736",
+        "configuration.json": "1fea5c219779dd356423cec257a8e508d446ca6e766df66542a9086c1b0f9a95",
+        "equity.csv.gz": "03a7dba1b2f707126a899be2e8bfae1b06fc1a08519e1425b157b858831a7a28",
+        "events.csv.gz": "fd5c17c3016a5b3856ead65fc043f0aab6bbfc7abc8dc382c40cf7351530585e",
+        "greek_history.csv.gz": "543bcaea5f31be616172d595c4af5a8d1aafb4a6bc28a83377ada01bc8790df6",
+        "leg_ledger.csv.gz": "7ce281aa0a699e14661e133bc32c6bec8175f25f72021e1c4e642286b53a48e5",
+        "metrics.json": "27d3557fa0375617d2f617613a4ce054f46576f740134fad7380e9f50ca6189a",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "8d0175d944c62c61332d391a2149937a1ecfb1d1d0469ced6fd9afc6dd4fb159",
+        "signal_ledger.csv.gz": "abf20a87872a0cc13fa4a62e75a46fc0d73ecfdfd9c0d480e0f4789ef4ca7037"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\vol_1_5\\daily\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\vol_1_5\\daily\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2016-03-22 15:15:00+05:30",
+          "signal": 135,
+          "spread": 126,
+          "excess_currency": 1.912979146323778
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "8022fb43c19edef947f8179941a8938a61fb6aaa5f1086ef13dbb8c20910f683",
+        "configuration.json": "ae8eb86fd80b7b51185ec5e42dbeab3134389721c127e784031fc03414410fb9",
+        "equity.csv.gz": "81c262b0d2a6972d9469b1b3ef55e699653c81a72a5338907f7bfa69690abb1a",
+        "events.csv.gz": "3234eb35ddb299836fc186b4e38e503979a74831a50f4fd0b6418bc273af79ed",
+        "greek_history.csv.gz": "af170873407750815ab19a213f6a1a9dcacc5f0be0b32676b8803666fa70dcdf",
+        "leg_ledger.csv.gz": "182d9e33e3312512d961cef18319ae38559cb4e371038c06f8bdecc2dac1a155",
+        "metrics.json": "8e57b41faca985c929110bcc930e03d37d573f633656f642fbf7b085d09bdf0a",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "cb488e87fdb52664dc667221a05e1e6d9853650a31aa2a05f3506060715ec903",
+        "signal_ledger.csv.gz": "b0c696ec4debd5e3cd65b81ebcbda16d5eabf1af8c63fdd3843df31c001db36a"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\vol_1_5\\daily\\IS",
+      "corrected": true
+    },
+    {
+      "path": "start\\vol_1_5\\entry\\FULL",
+      "preliminary_excess": [
+        {
+          "time": "2016-03-22 15:15:00+05:30",
+          "signal": 135,
+          "spread": 126,
+          "excess_currency": 1.912979146323778
+        },
+        {
+          "time": "2020-03-06 13:15:00+05:30",
+          "signal": 585,
+          "spread": 576,
+          "excess_currency": 3.8691987135280215
+        },
+        {
+          "time": "2022-05-13 10:30:00+05:30",
+          "signal": 841,
+          "spread": 832,
+          "excess_currency": 4.250455553661595
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "6b62334a09db27ac35d4ddb8fa449f9b28955647357edff648d3c4220c6d1217",
+        "configuration.json": "3d2dcfa37cb8fb15d004590f181849d19d57ba3b054d2d7e46b1e30b2ed75e5b",
+        "equity.csv.gz": "089354bd7865ed8d786492ebece9b73c1da368dfa69f41d14343879b1a62e16d",
+        "events.csv.gz": "9aa7bb6c7c3729589544530d3842a8e75ad890d1acb5795963c9073d42917efc",
+        "greek_history.csv.gz": "c7b4c9921d234b0dbab54b458d611055eeca3c5a52e5e5a9bb78f351c1f38fcd",
+        "leg_ledger.csv.gz": "b22dcb00687fb37d2c5d63234fd39dfd14ab6c89643b8e648e9562db5d313de1",
+        "metrics.json": "eb33e1228c17fc732c6091c0554487ae5dcb6d2b76fd8077217fabe003caacfa",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "95a7da7c29edb8d3c73ac96294e15797558c274fc929f74e98097fb6be7d435b",
+        "signal_ledger.csv.gz": "48798f603aaa1eb2a874756791430faf67e703d56b215355eaf9aabed0c85961"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\vol_1_5\\entry\\FULL",
+      "corrected": true
+    },
+    {
+      "path": "start\\vol_1_5\\entry\\IS",
+      "preliminary_excess": [
+        {
+          "time": "2016-03-22 15:15:00+05:30",
+          "signal": 135,
+          "spread": 126,
+          "excess_currency": 1.912979146323778
+        },
+        {
+          "time": "2020-03-06 13:15:00+05:30",
+          "signal": 585,
+          "spread": 576,
+          "excess_currency": 3.8691987135280215
+        }
+      ],
+      "original_sha256": {
+        "annual_net.csv": "04a3c6487f11f10f614094053af952c736185a9da6d4d3fe27b602840d502b8b",
+        "configuration.json": "ecf831c157ac3eb889d0249e2787921965692a5f50ba2bffa71cee7f1a5fcb49",
+        "equity.csv.gz": "f2c00ac80965f01f4530cf72f5d8fa263ee96cc5952c58e100bd537304ad5a44",
+        "events.csv.gz": "d99789e0d78c6c5859537faf378d95e28132c941c62e75ad507e96f7c8cf98b6",
+        "greek_history.csv.gz": "6bae780610118a397c8e9131ab66b7f3adaa3e4c51305787e438a36bbd5974fb",
+        "leg_ledger.csv.gz": "e28348b3a1612742b62e6ee68482d2632498de48708c06b341b138e8aace7e41",
+        "metrics.json": "2853817a4458e10bb8bbd194556def312acae5fd6b4e74e61885f729daf5bc2d",
+        "open_signal.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "reconciliation.json": "7619d48a14ed1794626b1e2705f7bb60b58e91968f8c432512a4415791e259e0",
+        "signal_ledger.csv.gz": "3afee94c1b2517b075edaa6db8f5e71125cf223393f60c529dd2cd5d8354d0b7"
+      },
+      "backup": "C:\\Users\\beqmd\\Documents\\halftrend-the-holy-grail-for-indian-indices\\verification\\stage3_budget_correction\\original\\start\\vol_1_5\\entry\\IS",
+      "corrected": true
+    }
+  ],
+  "prior_stages_untouched": true
+}

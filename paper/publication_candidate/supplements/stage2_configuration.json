@@ -1,0 +1,40 @@
+{
+  "label": "index-based futures proxy",
+  "initial_capital": 500000.0,
+  "amplitude": 3,
+  "channel_deviation": 2,
+  "sensitivity_amplitudes": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "transaction_cost_bps_each_side": 5,
+  "primary_slippage_points": 0,
+  "stress_slippage_points": [
+    1,
+    2
+  ],
+  "execution_delay_bars": [
+    1,
+    2
+  ],
+  "fractional_units": true,
+  "idle_cash_rate": 0,
+  "risk_free_rate": 0,
+  "interpretations": [
+    "start",
+    "end"
+  ],
+  "duplicates": "exclude",
+  "partial_bars": "exclude",
+  "evening": false,
+  "data_path": "C:\\Users\\beqmd\\Documents\\QuantResearch\\data\\NIFTY_50_minute.csv",
+  "data_sha256": "e7e1e8c8e0c02b03103eef80bca71dd56ee3de128bf2f79435936a66d84eb6ae",
+  "fixed_boundaries": {
+    "IS_START": "2015-01-09",
+    "IS_END": "2022-01-08",
+    "OOS_START": "2022-01-09",
+    "OOS_END": "2025-07-25"
+  }
+}

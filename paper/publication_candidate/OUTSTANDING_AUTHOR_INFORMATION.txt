@@ -1,0 +1,18 @@
+Outstanding author-supplied information
+
+1. Exact Kaggle dataset URL, uploader/version, acquisition date and reuse terms.
+2. The full institution name represented by “CU” and confirmation of degree status.
+3. Correspondence email, if one should be published.
+4. Funding and competing-interest statements; no absence is presumed here.
+5. Original HalfTrend publication/version and attribution terms.
+6. Dates, symbols, matched observations and evidence for the author-reported
+   TradingView timestamp check. It has not been independently replicated.
+7. Confirm public availability and licensing of the exact code/results revision.
+8. The historical holdout was previously examined. No confidence intervals,
+   p-values or selection-adjusted inference are supplied.
+9. Research conclusion: distinguish historical returns from statistical alpha;
+   modeled option prices from observed premiums; and proxy futures from actual
+   contracts, basis, rolls, liquidity and margin requirements.
+
+Until these details and legal/data rights are resolved, this is a polished
+publication candidate rather than a submission-ready paper.

@@ -1,0 +1,273 @@
+{
+  "causality": [
+    {
+      "interpretation": "start",
+      "amplitude": 3,
+      "cutoff": 32475,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 1197,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 1197,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 1197,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 1197,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "interpretation": "start",
+      "amplitude": 2,
+      "cutoff": 32475,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 1551,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 1551,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 1551,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 1551,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "interpretation": "start",
+      "amplitude": 4,
+      "cutoff": 32475,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 1039,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 1039,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 1039,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 1039,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "interpretation": "start",
+      "amplitude": 5,
+      "cutoff": 32475,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 923,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 923,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 923,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 922,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "interpretation": "end",
+      "amplitude": 3,
+      "cutoff": 31174,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 1182,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 1182,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 1182,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 1182,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "interpretation": "end",
+      "amplitude": 2,
+      "cutoff": 31174,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 1527,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 1527,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 1527,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 1527,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "interpretation": "end",
+      "amplitude": 4,
+      "cutoff": 31174,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 1030,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 1030,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 1030,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 1030,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "interpretation": "end",
+      "amplitude": 5,
+      "cutoff": 31174,
+      "indicator_prefix_passed": true,
+      "future_perturbation_passed": true,
+      "fills_and_equity": [
+        {
+          "slippage_points": 0,
+          "execution_delay": 1,
+          "historical_fills": 898,
+          "passed": true
+        },
+        {
+          "slippage_points": 1,
+          "execution_delay": 1,
+          "historical_fills": 898,
+          "passed": true
+        },
+        {
+          "slippage_points": 2,
+          "execution_delay": 1,
+          "historical_fills": 898,
+          "passed": true
+        },
+        {
+          "slippage_points": 0,
+          "execution_delay": 2,
+          "historical_fills": 898,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "zero_cost_equivalence": true,
+  "all_run_reconciliations": true,
+  "run_count": 60,
+  "preserved_existing_results": 56,
+  "raw_data_unchanged": true
+}

@@ -1,0 +1,113 @@
+{
+  "label": "SIMULATED",
+  "data_path": "C:\\Users\\beqmd\\Documents\\QuantResearch\\data\\NIFTY_50_minute.csv",
+  "data_sha256": "e7e1e8c8e0c02b03103eef80bca71dd56ee3de128bf2f79435936a66d84eb6ae",
+  "initial_capital": 500000,
+  "amplitude": 3,
+  "channel_deviation": 2,
+  "vol_sessions": 21,
+  "pricing_risk_free_rate": 0.06,
+  "dividend_yield": 0.01,
+  "risk_ratio_annual_rf": 0.06,
+  "idle_cash_rate": 0,
+  "primary_case": [
+    "primary",
+    3,
+    0,
+    1.2,
+    1.0
+  ],
+  "cases": [
+    [
+      "primary",
+      3,
+      0,
+      1.2,
+      1.0
+    ],
+    [
+      "fee_2",
+      2,
+      0,
+      1.2,
+      1.0
+    ],
+    [
+      "slip_10",
+      3,
+      10,
+      1.2,
+      1.0
+    ],
+    [
+      "slip_25",
+      3,
+      25,
+      1.2,
+      1.0
+    ],
+    [
+      "vol_1_0",
+      3,
+      0,
+      1.0,
+      1.0
+    ],
+    [
+      "vol_1_5",
+      3,
+      0,
+      1.5,
+      1.0
+    ],
+    [
+      "near_0_9",
+      3,
+      0,
+      1.2,
+      0.9
+    ],
+    [
+      "near_1_1",
+      3,
+      0,
+      1.2,
+      1.1
+    ],
+    [
+      "combined_flat",
+      3,
+      25,
+      1.0,
+      0.9
+    ],
+    [
+      "combined_steep",
+      3,
+      25,
+      1.5,
+      1.1
+    ]
+  ],
+  "modes": [
+    "entry",
+    "daily",
+    "equal_control"
+  ],
+  "long_days": 60,
+  "short_days": 30,
+  "premium_budget": 0.05,
+  "theta_threshold": 0.1,
+  "collateral": "short_quantity*strike reserved INSIDE cash",
+  "integer_units": true,
+  "synthetic_strike": "preceding_completed_close",
+  "stage2_directory": "results\\stage2_futures_proxy_20261007_completed",
+  "fixed_boundaries": {
+    "IS_START": "2015-01-09",
+    "IS_END": "2022-01-08",
+    "OOS_START": "2022-01-09",
+    "OOS_END": "2025-07-25"
+  },
+  "entry_budget": "long premium PLUS BOTH entry fees <=5% pre-entry equity; no short receipt credit",
+  "delta_policy": "positive at entry/adjustment; report intraday drift; no risk exits"
+}

@@ -1,0 +1,22 @@
+category,saved_code,reader_label
+Stage 2 scenario,gross,No transaction costs
+Stage 2 scenario,net,5 bps per side; zero slippage
+Stage 2 scenario,buy_hold_net,Price-index buy-and-hold
+Stage 2 scenario,slip_1,1 adverse index point per fill
+Stage 2 scenario,slip_2,2 adverse index points per fill
+Stage 2 scenario,delay_2,One additional included bar of delay
+Stage 3 scenario,primary,Primary volatility; 3 bps fees; no slippage
+Stage 3 scenario,fee_2,2 bps premium fees per side
+Stage 3 scenario,slip_10,10 bps adverse premium slippage per fill
+Stage 3 scenario,slip_25,25 bps adverse premium slippage per fill
+Stage 3 scenario,vol_1_0,Volatility multiplier 1.0
+Stage 3 scenario,vol_1_5,Volatility multiplier 1.5
+Stage 3 scenario,near_0_9,Near-term volatility 0.9 × long-term volatility
+Stage 3 scenario,near_1_1,Near-term volatility 1.1 × long-term volatility
+Stage 3 scenario,combined_flat,Combined flat-term scenario; 25 bps slippage
+Stage 3 scenario,combined_steep,Combined steep-term scenario; 25 bps slippage
+Timestamp grouping,start,Author-reported primary grouping
+Timestamp grouping,end,Alternative candle-aggregation sensitivity
+Evaluation period,IS,Earlier period
+Evaluation period,OOS,Previously examined holdout
+Evaluation period,FULL,Full sample

@@ -1,0 +1,18 @@
+{
+  "editable_docx_created": true,
+  "ooxml_parts_well_formed": true,
+  "embedded_figures": 11,
+  "tables": 23,
+  "pdf_pages": 27,
+  "pdf_renderer": "ReportLab; same manuscript source, independent pagination",
+  "word_automation_available": false,
+  "word_automation_failure": "HRESULT 0x80070520: no interactive logon session",
+  "word_native_pagination_not_verified": true,
+  "source_files_verified_unchanged": 48,
+  "raw_csv_hash_verified": true,
+  "all_manuscript_paragraphs_and_table_cells_match_docx": true,
+  "repository_ruff": "passed",
+  "repository_black_check": "passed (39 files)",
+  "strategy_tests_not_rerun": "document-only work; historical test results labeled in manuscript",
+  "all_final_pdf_pages_rendered": 27
+}

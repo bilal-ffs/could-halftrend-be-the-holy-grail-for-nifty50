@@ -1,0 +1,325 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Supplementary results and research audit</title><style>
+        @page {size:A4; margin:0.75in;}
+        body {font-family:'Times New Roman';
+        font-size:11pt;line-height:115%;color:#202020;}
+        p {margin:0 0 7pt 0;text-align:justify;}
+        h1 {font-size:16pt;color:#173b55;margin:16pt 0 8pt;page-break-after:avoid;}
+        h2 {font-size:12pt;color:#173b55;margin:12pt 0 6pt;page-break-after:avoid;}
+        .title
+        {font-size:24pt;font-weight:bold;text-align:center;color:#173b55;margin-top:40pt;}
+        .subtitle {font-size:15pt;text-align:center;margin:18pt 0;}
+        .center {text-align:center;margin:12pt 0;}
+        .review {font-size:10pt;color:#924500;border-top:1px solid
+        #aaaaaa;padding-top:10pt;}
+        .pagebreak {page-break-before:always;margin:0;font-size:1pt;}
+        .caption {font-size:9.5pt;text-align:left;margin:7pt 0;page-break-after:avoid;}
+        .note {font-size:9pt;text-align:left;margin:6pt 0 12pt;}
+        .equation {text-align:center;font-family:'Cambria Math';margin:8pt 0;}
+        .figure {text-align:center;page-break-inside:avoid;margin:10pt 0 0;}
+        table {border-collapse:collapse;width:100%;font-size:9pt;margin-bottom:8pt;}
+        td,th {border:0.5pt solid #b7c4ce;padding:4pt;vertical-align:top;}
+        th {background:#173b55;color:white;font-weight:bold;}
+        tr {page-break-inside:avoid;} thead {display:table-header-group;}
+        a {color:#176b87;} .reference {text-align:left;font-size:10pt;}
+        </style></head><body><h1>Supplementary results and research audit</h1><p class="">Supplement to <i>HalfTrend on NIFTY 50: Transaction Costs, Execution Sensitivity, and Simulated Call Calendar Spreads</i>. All values summarize the completed saved runs; this document does not contain newly computed research results.</p><h1>Appendix A. Complete Stage 2 run summary</h1>
+<p class="">The following 60 rows cover all saved Stage 2 runs. Start is the author-reported primary grouping; end is the alternative candle grouping. Buy-and-hold amplitude is N/A: its inherited run identifier does not imply that HalfTrend is applied to the benchmark. Fees and slippage/delay follow Section 5. The companion futures_all_runs.csv includes every saved metric, including risk ratios, fees, exposure and open P&amp;L. Values are descriptive.</p>
+<p class="caption">Table 13. All index-based futures proxy runs</p>
+<table><thead><tr><th>Grouping</th><th>Amplitude</th><th>Evaluation window</th><th>Run assumptions</th><th>Total return</th><th>Maximum drawdown</th><th>Fees (INR)</th></tr></thead><tbody>
+<tr><td>E</td><td>2</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>15.52%</td><td>28.20%</td><td>825,412.86</td></tr>
+<tr><td>E</td><td>2</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>29.72%</td><td>28.20%</td><td>508,186.77</td></tr>
+<tr><td>E</td><td>2</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>-10.82%</td><td>21.25%</td><td>244,410.03</td></tr>
+<tr><td>E</td><td>3</td><td>Full sample</td><td>buy_hold_gross</td><td>199.56%</td><td>38.97%</td><td>0.00</td></tr>
+<tr><td>E</td><td>N/A</td><td>Full sample</td><td>Price-index buy-and-hold</td><td>199.41%</td><td>38.97%</td><td>249.88</td></tr>
+<tr><td>E</td><td>3</td><td>Full sample</td><td>One additional included bar of delay</td><td>69.69%</td><td>19.65%</td><td>715,301.71</td></tr>
+<tr><td>E</td><td>3</td><td>Full sample</td><td>No transaction costs</td><td>392.34%</td><td>17.62%</td><td>0.00</td></tr>
+<tr><td>E</td><td>3</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>51.29%</td><td>20.70%</td><td>680,651.08</td></tr>
+<tr><td>E</td><td>3</td><td>Full sample</td><td>1 adverse index point per fill</td><td>24.75%</td><td>28.45%</td><td>602,693.96</td></tr>
+<tr><td>E</td><td>3</td><td>Full sample</td><td>2 adverse index points per fill</td><td>2.87%</td><td>36.65%</td><td>535,362.20</td></tr>
+<tr><td>E</td><td>3</td><td>Earlier period</td><td>buy_hold_gross</td><td>114.84%</td><td>38.97%</td><td>0.00</td></tr>
+<tr><td>E</td><td>N/A</td><td>Earlier period</td><td>Price-index buy-and-hold</td><td>114.73%</td><td>38.97%</td><td>249.88</td></tr>
+<tr><td>E</td><td>3</td><td>Earlier period</td><td>One additional included bar of delay</td><td>49.33%</td><td>19.65%</td><td>415,848.13</td></tr>
+<tr><td>E</td><td>3</td><td>Earlier period</td><td>No transaction costs</td><td>205.64%</td><td>17.62%</td><td>0.00</td></tr>
+<tr><td>E</td><td>3</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>40.10%</td><td>20.70%</td><td>404,623.61</td></tr>
+<tr><td>E</td><td>3</td><td>Earlier period</td><td>1 adverse index point per fill</td><td>20.29%</td><td>28.45%</td><td>370,887.47</td></tr>
+<tr><td>E</td><td>3</td><td>Earlier period</td><td>2 adverse index points per fill</td><td>3.28%</td><td>36.65%</td><td>340,664.84</td></tr>
+<tr><td>E</td><td>3</td><td>Previously examined holdout</td><td>buy_hold_gross</td><td>38.62%</td><td>17.13%</td><td>0.00</td></tr>
+<tr><td>E</td><td>N/A</td><td>Previously examined holdout</td><td>Price-index buy-and-hold</td><td>38.55%</td><td>17.13%</td><td>249.88</td></tr>
+<tr><td>E</td><td>3</td><td>Previously examined holdout</td><td>One additional included bar of delay</td><td>13.63%</td><td>14.84%</td><td>200,528.90</td></tr>
+<tr><td>E</td><td>3</td><td>Previously examined holdout</td><td>No transaction costs</td><td>61.09%</td><td>9.43%</td><td>0.00</td></tr>
+<tr><td>E</td><td>3</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>7.98%</td><td>15.76%</td><td>197,014.71</td></tr>
+<tr><td>E</td><td>3</td><td>Previously examined holdout</td><td>1 adverse index point per fill</td><td>3.71%</td><td>17.03%</td><td>192,706.34</td></tr>
+<tr><td>E</td><td>3</td><td>Previously examined holdout</td><td>2 adverse index points per fill</td><td>-0.39%</td><td>18.39%</td><td>188,518.74</td></tr>
+<tr><td>E</td><td>4</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>31.40%</td><td>24.12%</td><td>533,990.32</td></tr>
+<tr><td>E</td><td>4</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>28.05%</td><td>24.12%</td><td>333,365.02</td></tr>
+<tr><td>E</td><td>4</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>2.61%</td><td>21.85%</td><td>156,680.00</td></tr>
+<tr><td>E</td><td>5</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>14.07%</td><td>26.78%</td><td>441,466.14</td></tr>
+<tr><td>E</td><td>5</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>17.41%</td><td>25.75%</td><td>287,634.45</td></tr>
+<tr><td>E</td><td>5</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>-2.85%</td><td>24.19%</td><td>131,016.88</td></tr>
+<tr><td>S</td><td>2</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>61.85%</td><td>27.37%</td><td>969,429.91</td></tr>
+<tr><td>S</td><td>2</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>54.82%</td><td>27.37%</td><td>556,526.78</td></tr>
+<tr><td>S</td><td>2</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>4.54%</td><td>19.19%</td><td>266,702.42</td></tr>
+<tr><td>S</td><td>3</td><td>Full sample</td><td>buy_hold_gross</td><td>199.71%</td><td>38.82%</td><td>0.00</td></tr>
+<tr><td>S</td><td>N/A</td><td>Full sample</td><td>Price-index buy-and-hold</td><td>199.56%</td><td>38.82%</td><td>249.88</td></tr>
+<tr><td>S</td><td>3</td><td>Full sample</td><td>One additional included bar of delay</td><td>78.46%</td><td>23.70%</td><td>722,314.79</td></tr>
+<tr><td>S</td><td>3</td><td>Full sample</td><td>No transaction costs</td><td>659.47%</td><td>16.29%</td><td>0.00</td></tr>
+<tr><td>S</td><td>3</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>128.52%</td><td>18.28%</td><td>852,637.05</td></tr>
+<tr><td>S</td><td>3</td><td>Full sample</td><td>1 adverse index point per fill</td><td>87.84%</td><td>18.72%</td><td>748,300.00</td></tr>
+<tr><td>S</td><td>3</td><td>Full sample</td><td>2 adverse index points per fill</td><td>54.41%</td><td>24.89%</td><td>658,790.54</td></tr>
+<tr><td>S</td><td>3</td><td>Earlier period</td><td>buy_hold_gross</td><td>115.05%</td><td>38.82%</td><td>0.00</td></tr>
+<tr><td>S</td><td>N/A</td><td>Earlier period</td><td>Price-index buy-and-hold</td><td>114.95%</td><td>38.82%</td><td>249.88</td></tr>
+<tr><td>S</td><td>3</td><td>Earlier period</td><td>One additional included bar of delay</td><td>42.51%</td><td>23.70%</td><td>420,384.52</td></tr>
+<tr><td>S</td><td>3</td><td>Earlier period</td><td>No transaction costs</td><td>282.30%</td><td>16.29%</td><td>0.00</td></tr>
+<tr><td>S</td><td>3</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>71.61%</td><td>18.28%</td><td>467,807.24</td></tr>
+<tr><td>S</td><td>3</td><td>Earlier period</td><td>1 adverse index point per fill</td><td>46.85%</td><td>18.72%</td><td>426,340.03</td></tr>
+<tr><td>S</td><td>3</td><td>Earlier period</td><td>2 adverse index points per fill</td><td>25.67%</td><td>24.89%</td><td>389,392.07</td></tr>
+<tr><td>S</td><td>3</td><td>Previously examined holdout</td><td>buy_hold_gross</td><td>38.62%</td><td>17.12%</td><td>0.00</td></tr>
+<tr><td>S</td><td>N/A</td><td>Previously examined holdout</td><td>Price-index buy-and-hold</td><td>38.56%</td><td>17.12%</td><td>249.88</td></tr>
+<tr><td>S</td><td>3</td><td>Previously examined holdout</td><td>One additional included bar of delay</td><td>25.23%</td><td>13.61%</td><td>211,866.08</td></tr>
+<tr><td>S</td><td>3</td><td>Previously examined holdout</td><td>No transaction costs</td><td>98.66%</td><td>9.14%</td><td>0.00</td></tr>
+<tr><td>S</td><td>3</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>33.16%</td><td>12.61%</td><td>224,248.57</td></tr>
+<tr><td>S</td><td>3</td><td>Previously examined holdout</td><td>1 adverse index point per fill</td><td>27.91%</td><td>13.94%</td><td>219,240.43</td></tr>
+<tr><td>S</td><td>3</td><td>Previously examined holdout</td><td>2 adverse index points per fill</td><td>22.87%</td><td>15.25%</td><td>214,373.78</td></tr>
+<tr><td>S</td><td>4</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>77.93%</td><td>21.47%</td><td>616,713.33</td></tr>
+<tr><td>S</td><td>4</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>48.90%</td><td>21.47%</td><td>361,721.53</td></tr>
+<tr><td>S</td><td>4</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>19.49%</td><td>17.89%</td><td>171,249.14</td></tr>
+<tr><td>S</td><td>5</td><td>Full sample</td><td>5 bps per side; zero slippage</td><td>39.10%</td><td>24.87%</td><td>501,398.83</td></tr>
+<tr><td>S</td><td>5</td><td>Earlier period</td><td>5 bps per side; zero slippage</td><td>35.42%</td><td>24.87%</td><td>307,364.07</td></tr>
+<tr><td>S</td><td>5</td><td>Previously examined holdout</td><td>5 bps per side; zero slippage</td><td>2.72%</td><td>19.74%</td><td>143,280.17</td></tr>
+</tbody></table>
+<h1>Appendix B. Complete SIMULATED Stage 3 run summary</h1>
+<p class="">The following 180 rows cover all ten modeled cases, three management/control modes, three evaluation windows and two groupings. The equal-unit control always contains both calls. Full metric precision, Greek diagnostics, fee/slippage totals, adjustment turnover and open P&amp;L are in options_all_runs.csv. Case definitions are in Table The scenario definitions and run_label_mapping.csv; no scenario is selected as a headline based on its return. Positive drawdown magnitudes in these tables correspond to negative underwater values in plots.</p>
+<p class="caption">Table 14. SIMULATED start grouping / Earlier period</p>
+<table><thead><tr><th>Scenario assumptions</th><th>Mode</th><th>Total return</th><th>Maximum drawdown</th><th>Fees (INR)</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Entry</td><td>13.08%</td><td>2.59%</td><td>12,229.86</td><td>0</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Daily</td><td>12.99%</td><td>2.59%</td><td>12,236.92</td><td>4</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Equal</td><td>1.18%</td><td>1.42%</td><td>12,534.22</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Entry</td><td>13.67%</td><td>2.53%</td><td>8,176.16</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Daily</td><td>13.57%</td><td>2.54%</td><td>8,179.29</td><td>4</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Equal</td><td>2.01%</td><td>1.31%</td><td>8,395.04</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Entry</td><td>4.65%</td><td>3.24%</td><td>11,735.62</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Daily</td><td>4.62%</td><td>3.23%</td><td>11,747.40</td><td>5</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Equal</td><td>-6.89%</td><td>6.89%</td><td>12,021.59</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Entry</td><td>-6.90%</td><td>8.13%</td><td>11,076.47</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Daily</td><td>-6.88%</td><td>8.09%</td><td>11,082.26</td><td>5</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Equal</td><td>-17.78%</td><td>17.78%</td><td>11,300.64</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Entry</td><td>11.77%</td><td>2.44%</td><td>10,766.96</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Daily</td><td>11.64%</td><td>2.44%</td><td>10,773.74</td><td>7</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Equal</td><td>-1.91%</td><td>2.26%</td><td>10,784.03</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Entry</td><td>11.02%</td><td>2.22%</td><td>13,480.06</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Daily</td><td>11.19%</td><td>2.22%</td><td>13,494.16</td><td>3</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Equal</td><td>5.21%</td><td>1.08%</td><td>14,933.56</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Entry</td><td>2.11%</td><td>2.31%</td><td>10,890.82</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Daily</td><td>2.34%</td><td>2.31%</td><td>10,899.95</td><td>6</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Equal</td><td>-6.73%</td><td>6.73%</td><td>11,549.08</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Entry</td><td>25.25%</td><td>2.84%</td><td>13,253.34</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Daily</td><td>25.36%</td><td>2.84%</td><td>13,259.93</td><td>3</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Equal</td><td>9.16%</td><td>0.50%</td><td>13,518.26</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Entry</td><td>-14.32%</td><td>14.34%</td><td>8,753.56</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Daily</td><td>-14.35%</td><td>14.38%</td><td>8,760.64</td><td>16</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Equal</td><td>-23.94%</td><td>23.94%</td><td>9,137.26</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Entry</td><td>-2.50%</td><td>4.94%</td><td>13,168.95</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Daily</td><td>-2.50%</td><td>4.94%</td><td>13,168.95</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Equal</td><td>-11.49%</td><td>11.49%</td><td>14,203.80</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 15. SIMULATED start grouping / Previously examined holdout</p>
+<table><thead><tr><th>Scenario assumptions</th><th>Mode</th><th>Total return</th><th>Maximum drawdown</th><th>Fees (INR)</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Entry</td><td>7.48%</td><td>1.54%</td><td>5,791.11</td><td>0</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Daily</td><td>7.31%</td><td>1.54%</td><td>5,790.57</td><td>6</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Equal</td><td>1.40%</td><td>0.59%</td><td>5,973.21</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Entry</td><td>7.85%</td><td>1.52%</td><td>3,869.62</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Daily</td><td>7.78%</td><td>1.52%</td><td>3,871.56</td><td>6</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Equal</td><td>1.78%</td><td>0.54%</td><td>3,989.15</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Entry</td><td>3.21%</td><td>2.12%</td><td>5,618.87</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Daily</td><td>3.19%</td><td>2.11%</td><td>5,623.03</td><td>5</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Equal</td><td>-2.56%</td><td>2.76%</td><td>5,850.82</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Entry</td><td>-2.64%</td><td>4.09%</td><td>5,518.78</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Daily</td><td>-2.52%</td><td>4.09%</td><td>5,524.06</td><td>7</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Equal</td><td>-8.18%</td><td>8.20%</td><td>5,672.38</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Entry</td><td>7.71%</td><td>1.51%</td><td>5,190.33</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Daily</td><td>7.74%</td><td>1.51%</td><td>5,195.94</td><td>5</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Equal</td><td>0.01%</td><td>0.99%</td><td>5,165.40</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Entry</td><td>7.67%</td><td>1.48%</td><td>6,752.92</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Daily</td><td>7.75%</td><td>1.48%</td><td>6,757.07</td><td>3</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Equal</td><td>3.22%</td><td>0.61%</td><td>7,100.42</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Entry</td><td>2.14%</td><td>1.50%</td><td>5,294.46</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Daily</td><td>2.21%</td><td>1.50%</td><td>5,299.58</td><td>5</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Equal</td><td>-2.29%</td><td>2.69%</td><td>5,619.46</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Entry</td><td>13.36%</td><td>2.01%</td><td>6,343.84</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Daily</td><td>13.40%</td><td>2.01%</td><td>6,349.22</td><td>3</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Equal</td><td>4.89%</td><td>0.29%</td><td>6,296.28</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Entry</td><td>-5.50%</td><td>6.07%</td><td>4,508.24</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Daily</td><td>-5.45%</td><td>6.02%</td><td>4,511.04</td><td>7</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Equal</td><td>-11.19%</td><td>11.20%</td><td>4,672.56</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Entry</td><td>1.79%</td><td>3.98%</td><td>6,698.29</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Daily</td><td>1.83%</td><td>3.98%</td><td>6,700.76</td><td>2</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Equal</td><td>-5.19%</td><td>5.33%</td><td>7,055.89</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 16. SIMULATED start grouping / Full sample</p>
+<table><thead><tr><th>Scenario assumptions</th><th>Mode</th><th>Total return</th><th>Maximum drawdown</th><th>Fees (INR)</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Entry</td><td>21.06%</td><td>2.59%</td><td>18,828.06</td><td>0</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Daily</td><td>21.15%</td><td>2.59%</td><td>18,843.65</td><td>11</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Equal</td><td>2.58%</td><td>1.42%</td><td>18,570.84</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Entry</td><td>22.36%</td><td>2.53%</td><td>12,612.72</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Daily</td><td>22.45%</td><td>2.54%</td><td>12,622.61</td><td>11</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Equal</td><td>3.81%</td><td>1.31%</td><td>12,464.25</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Entry</td><td>8.63%</td><td>3.24%</td><td>17,707.85</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Daily</td><td>8.59%</td><td>3.23%</td><td>17,725.29</td><td>12</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Equal</td><td>-9.24%</td><td>9.28%</td><td>17,459.31</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Entry</td><td>-9.28%</td><td>9.95%</td><td>16,237.46</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Daily</td><td>-9.10%</td><td>9.91%</td><td>16,256.55</td><td>13</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Equal</td><td>-24.47%</td><td>24.47%</td><td>15,949.72</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Entry</td><td>20.74%</td><td>2.44%</td><td>16,583.36</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Daily</td><td>20.29%</td><td>2.44%</td><td>16,569.80</td><td>13</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Equal</td><td>-1.94%</td><td>2.64%</td><td>15,848.95</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Entry</td><td>19.12%</td><td>2.22%</td><td>20,935.52</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Daily</td><td>19.38%</td><td>2.22%</td><td>20,961.13</td><td>6</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Equal</td><td>8.60%</td><td>1.08%</td><td>22,419.74</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Entry</td><td>4.61%</td><td>2.31%</td><td>16,299.40</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Daily</td><td>5.01%</td><td>2.31%</td><td>16,331.36</td><td>10</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Equal</td><td>-8.81%</td><td>9.04%</td><td>16,786.73</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Entry</td><td>41.42%</td><td>2.84%</td><td>21,153.66</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Daily</td><td>41.53%</td><td>2.84%</td><td>21,164.13</td><td>5</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Equal</td><td>14.53%</td><td>0.50%</td><td>20,401.38</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Entry</td><td>-19.73%</td><td>19.76%</td><td>12,504.71</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Daily</td><td>-19.73%</td><td>19.76%</td><td>12,510.07</td><td>20</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Equal</td><td>-32.39%</td><td>32.39%</td><td>12,672.96</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Entry</td><td>-0.86%</td><td>5.61%</td><td>19,738.29</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Daily</td><td>-0.83%</td><td>5.61%</td><td>19,739.97</td><td>2</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Equal</td><td>-16.10%</td><td>16.10%</td><td>20,413.81</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 17. SIMULATED end grouping / Earlier period</p>
+<table><thead><tr><th>Scenario assumptions</th><th>Mode</th><th>Total return</th><th>Maximum drawdown</th><th>Fees (INR)</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Entry</td><td>10.04%</td><td>2.54%</td><td>11,603.81</td><td>0</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Daily</td><td>10.06%</td><td>2.52%</td><td>11,610.49</td><td>6</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Equal</td><td>1.07%</td><td>2.02%</td><td>12,233.00</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Entry</td><td>10.81%</td><td>2.44%</td><td>7,759.47</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Daily</td><td>10.82%</td><td>2.41%</td><td>7,764.47</td><td>6</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Equal</td><td>1.90%</td><td>1.90%</td><td>8,192.81</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Entry</td><td>1.15%</td><td>3.62%</td><td>11,090.40</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Daily</td><td>1.22%</td><td>3.61%</td><td>11,096.49</td><td>4</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Equal</td><td>-6.80%</td><td>6.80%</td><td>11,749.33</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Entry</td><td>-9.20%</td><td>11.13%</td><td>10,547.40</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Daily</td><td>-9.10%</td><td>11.06%</td><td>10,552.53</td><td>5</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Equal</td><td>-17.44%</td><td>17.44%</td><td>11,060.68</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Entry</td><td>8.36%</td><td>2.55%</td><td>10,216.89</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Daily</td><td>8.39%</td><td>2.55%</td><td>10,222.17</td><td>8</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Equal</td><td>-2.10%</td><td>2.39%</td><td>10,508.20</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Entry</td><td>9.28%</td><td>2.55%</td><td>13,147.33</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Daily</td><td>9.38%</td><td>2.55%</td><td>13,156.23</td><td>3</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Equal</td><td>5.13%</td><td>1.68%</td><td>14,575.03</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Entry</td><td>-0.10%</td><td>2.97%</td><td>10,550.29</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Daily</td><td>-0.20%</td><td>2.96%</td><td>10,554.78</td><td>8</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Equal</td><td>-6.87%</td><td>6.88%</td><td>11,232.06</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Entry</td><td>19.07%</td><td>2.89%</td><td>12,558.58</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Daily</td><td>19.16%</td><td>2.89%</td><td>12,565.08</td><td>2</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Equal</td><td>9.07%</td><td>0.65%</td><td>13,173.79</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Entry</td><td>-15.25%</td><td>15.29%</td><td>8,541.17</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Daily</td><td>-15.32%</td><td>15.35%</td><td>8,546.94</td><td>10</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Equal</td><td>-23.57%</td><td>23.57%</td><td>8,845.80</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Entry</td><td>-4.53%</td><td>7.96%</td><td>12,603.93</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Daily</td><td>-4.53%</td><td>7.96%</td><td>12,603.93</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Equal</td><td>-10.97%</td><td>10.97%</td><td>13,878.25</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 18. SIMULATED end grouping / Previously examined holdout</p>
+<table><thead><tr><th>Scenario assumptions</th><th>Mode</th><th>Total return</th><th>Maximum drawdown</th><th>Fees (INR)</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Entry</td><td>4.05%</td><td>2.11%</td><td>5,689.42</td><td>0</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Daily</td><td>3.96%</td><td>2.11%</td><td>5,693.82</td><td>7</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Equal</td><td>1.28%</td><td>0.71%</td><td>5,923.87</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Entry</td><td>4.39%</td><td>2.07%</td><td>3,804.74</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Daily</td><td>4.32%</td><td>2.07%</td><td>3,810.56</td><td>7</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Equal</td><td>1.69%</td><td>0.65%</td><td>3,957.21</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Entry</td><td>0.57%</td><td>3.31%</td><td>5,595.00</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Daily</td><td>0.48%</td><td>3.31%</td><td>5,600.86</td><td>6</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Equal</td><td>-2.62%</td><td>3.07%</td><td>5,799.66</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Entry</td><td>-4.62%</td><td>5.87%</td><td>5,443.50</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Daily</td><td>-4.69%</td><td>5.88%</td><td>5,448.89</td><td>6</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Equal</td><td>-8.21%</td><td>8.25%</td><td>5,636.50</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Entry</td><td>4.26%</td><td>2.25%</td><td>5,045.04</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Daily</td><td>4.22%</td><td>2.25%</td><td>5,051.45</td><td>7</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Equal</td><td>-0.15%</td><td>1.31%</td><td>5,102.37</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Entry</td><td>4.67%</td><td>1.79%</td><td>6,630.62</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Daily</td><td>4.75%</td><td>1.79%</td><td>6,635.00</td><td>3</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Equal</td><td>3.26%</td><td>0.63%</td><td>7,051.68</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Entry</td><td>-0.28%</td><td>2.37%</td><td>5,268.36</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Daily</td><td>-0.25%</td><td>2.37%</td><td>5,270.40</td><td>5</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Equal</td><td>-2.30%</td><td>3.00%</td><td>5,579.71</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Entry</td><td>8.20%</td><td>2.29%</td><td>6,096.95</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Daily</td><td>8.22%</td><td>2.29%</td><td>6,101.11</td><td>4</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Equal</td><td>4.82%</td><td>0.40%</td><td>6,266.96</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Entry</td><td>-7.50%</td><td>7.73%</td><td>4,361.54</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Daily</td><td>-7.45%</td><td>7.67%</td><td>4,365.18</td><td>9</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Equal</td><td>-11.17%</td><td>11.20%</td><td>4,614.52</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Entry</td><td>-1.62%</td><td>5.58%</td><td>6,517.28</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Daily</td><td>-1.60%</td><td>5.58%</td><td>6,519.36</td><td>2</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Equal</td><td>-5.14%</td><td>5.26%</td><td>7,028.50</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 19. SIMULATED end grouping / Full sample</p>
+<table><thead><tr><th>Scenario assumptions</th><th>Mode</th><th>Total return</th><th>Maximum drawdown</th><th>Fees (INR)</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Entry</td><td>14.00%</td><td>2.54%</td><td>17,864.45</td><td>0</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Daily</td><td>13.89%</td><td>2.52%</td><td>17,878.93</td><td>13</td></tr>
+<tr><td>Primary volatility; 3 bps fees; no slippage</td><td>Equal</td><td>2.37%</td><td>2.02%</td><td>18,218.58</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Entry</td><td>15.20%</td><td>2.44%</td><td>11,952.05</td><td>0</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Daily</td><td>15.13%</td><td>2.41%</td><td>11,961.48</td><td>12</td></tr>
+<tr><td>2 bps premium fees per side</td><td>Equal</td><td>3.61%</td><td>1.90%</td><td>12,227.04</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Entry</td><td>1.53%</td><td>3.62%</td><td>16,734.56</td><td>0</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Daily</td><td>1.57%</td><td>3.61%</td><td>16,750.44</td><td>11</td></tr>
+<tr><td>10 bps adverse premium slippage per fill</td><td>Equal</td><td>-9.23%</td><td>9.59%</td><td>17,151.09</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Entry</td><td>-13.17%</td><td>14.16%</td><td>15,449.48</td><td>0</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Daily</td><td>-13.15%</td><td>14.10%</td><td>15,458.23</td><td>11</td></tr>
+<tr><td>25 bps adverse premium slippage per fill</td><td>Equal</td><td>-24.19%</td><td>24.20%</td><td>15,692.44</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Entry</td><td>14.10%</td><td>2.55%</td><td>15,717.42</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Daily</td><td>14.15%</td><td>2.55%</td><td>15,726.22</td><td>13</td></tr>
+<tr><td>Volatility multiplier 1.0</td><td>Equal</td><td>-2.26%</td><td>3.29%</td><td>15,502.75</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Entry</td><td>13.90%</td><td>2.55%</td><td>20,314.35</td><td>0</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Daily</td><td>14.19%</td><td>2.55%</td><td>20,348.13</td><td>7</td></tr>
+<tr><td>Volatility multiplier 1.5</td><td>Equal</td><td>8.53%</td><td>1.68%</td><td>21,996.03</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Entry</td><td>-0.36%</td><td>2.97%</td><td>15,817.72</td><td>0</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Daily</td><td>-0.39%</td><td>2.96%</td><td>15,814.86</td><td>13</td></tr>
+<tr><td>Near-term volatility 0.9 × long-term volatility</td><td>Equal</td><td>-9.01%</td><td>9.56%</td><td>16,427.74</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Entry</td><td>29.94%</td><td>2.89%</td><td>19,914.58</td><td>0</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Daily</td><td>29.97%</td><td>2.89%</td><td>19,929.45</td><td>4</td></tr>
+<tr><td>Near-term volatility 1.1 × long-term volatility</td><td>Equal</td><td>14.34%</td><td>0.65%</td><td>20,024.31</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Entry</td><td>-22.14%</td><td>22.18%</td><td>12,301.58</td><td>0</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Daily</td><td>-22.15%</td><td>22.19%</td><td>12,308.67</td><td>14</td></tr>
+<tr><td>Combined flat-term scenario; 25 bps slippage</td><td>Equal</td><td>-32.05%</td><td>32.07%</td><td>12,351.82</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Entry</td><td>-6.29%</td><td>9.35%</td><td>18,833.37</td><td>0</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Daily</td><td>-6.28%</td><td>9.35%</td><td>18,834.23</td><td>1</td></tr>
+<tr><td>Combined steep-term scenario; 25 bps slippage</td><td>Equal</td><td>-15.57%</td><td>15.59%</td><td>20,113.23</td><td>0</td></tr>
+</tbody></table>
+<p class="pagebreak">&nbsp;</p>
+<h1>Appendix C. Formulas, reconciliation and implementation details</h1>
+<p class="">Simple return: rₜ = Eₜ / Eₜ₋₁ − 1; total return = E_T / E₀ − 1. Calendar CAGR = (E_T/E₀)^(1/elapsed calendar years) − 1. Daily returns use the final included account mark each session, with initial capital E₀ for the first denominator. Drawdown Dₜ = Eₜ/max(E₀, max prior E) − 1. CAGR uses 365.25 days/year; option maturity uses 365 days/year.</p>
+<p class="">Sharpe = √252 × mean(xₜ)/s(xₜ), where xₜ = daily return − annual RF/252 and s is sample standard deviation. The implemented Sortino is √252 × mean(xₜ)/s(xₜ | xₜ &lt; 0), with the denominator the sample standard deviation of negative excess observations (not root-mean-square downside). Calmar = CAGR/|maximum drawdown). Profit factor = total positive completed net P&amp;L / absolute total negative completed net P&amp;L. Expectancy = mean completed net P&amp;L.</p>
+<p class="">With φ the standard normal density, call Greeks are Δ = e^(−qτ)N(d₁), Γ = e^(−qτ)φ(d₁)/(Sσ√τ), and Vega per 1 volatility percentage point = S e^(−qτ)φ(d₁)√τ/100. Passage-of-time θ per calendar day is [−S e^(−qτ)φ(d₁)σ/(2√τ) − rK e^(−rτ)N(d₂) + qS e^(−qτ)N(d₁)]/365. Expired calls use max(S−K, 0), delta 1/0/0.5 for in/out/at-the-money and other expired Greeks zero. Expired contracts are not opened as new calendars.</p>
+<p class="">Proxy final equity = initial capital + closed net P&amp;L + open gross P&amp;L - open entry fee. Calendar final equity = initial capital + completed signal net P&amp;L + open signal net P&amp;L. Closed net P&amp;L already includes its fees, so total fees must not be subtracted again. Separate fill reconstructions verify cumulative cash, fixed quantities, fee arithmetic and market values. Calendar reserved collateral is not another asset added to equity.</p>
+<p class="">Input validation rejects nonfinite/negative costs and nonpositive capital/prices/quantities. Proxy entry sizing requires fee rate below one for positive quantity; option adverse sell slippage requires slippage rate below one for positive premium fills. These are mathematical conditions, not arbitrary fee caps. Nonfinite or nonpositive equity triggers explicit insolvency.</p>
+<h1>Appendix D. Reproducibility and evidence inventory</h1>
+<p class="note">The stage test counts below are historical values recorded in the completed research artifacts. They were not rerun for this editorial revision.</p>
+<p class="caption">Table 20. Previously recorded checks and bounded accounting result</p>
+<table><thead><tr><th>Research stage</th><th>Previously recorded tests</th><th>Saved scope or result</th></tr></thead><tbody>
+<tr><td>Loader/accounting corrections</td><td>85 passed</td><td>1,000 retained bars; 16 closed trades; ending equity 98,491.96 INR; reconciliation difference 0 INR</td></tr>
+<tr><td>Index-based futures proxy</td><td>103 passed</td><td>60 runs; saved-curve and zero-cost checks</td></tr>
+<tr><td>SIMULATED call calendars</td><td>129 passed</td><td>180 runs; independent saved-artifact pricing and reconciliation</td></tr>
+<tr><td>Formatting tools</td><td>Ruff and Black passed (recorded)</td><td>Historical recorded completion checks</td></tr>
+</tbody></table>
+<p class="">The Stage 1 bounded sample recorded net P&amp;L of -1,508.04 INR and fees already included in net P&amp;L of 1,597.52 INR. This was an accounting check, not a strategy-wide result.</p>
+<p class="">The saved Stage 3 correction record documents an earlier premium-budget calculation that omitted the short leg’s entry fee. It reports 37 affected saved paths, which were recomputed for the completed results. Only completed corrected outputs are used in this paper. This correction history is reproduced from the saved record and was not rerun here.</p>
+<p class="note">Raw input file SHA-256: e7e1e8c8e0c02b03103eef80bca71dd56ee3de128bf2f79435936a66d84eb6ae</p>
+<p class="">Run from the repository root after installing the saved environment’s dependencies. The data path is local and must be replaced on another machine. Research commands require NEW output directories. The current assembly only reads saved results; it does not execute these research commands.</p>
+<p class="note">python -m src.futures_proxy --data &quot;PATH/NIFTY_50_minute.csv&quot; --output results/stage2_repeat</p>
+<p class="note">python -m src.simulated_calendars --data &quot;PATH/NIFTY_50_minute.csv&quot; --output results/stage3_repeat</p>
+<p class="note">python -m tests.verify_futures_proxy_outputs results/stage2_futures_proxy_20261007_completed</p>
+<p class="note">python -m tests.verify_simulated_calendar_outputs results/stage3_SIMULATED_calendars_20261007_completed</p>
+<p class="note">python -m pytest -q; python -m ruff check .; python -m black --check .</p>
+<p class="caption">Table 21. Evidence and accompanying material</p>
+<table><thead><tr><th>Material</th><th>Location / meaning</th></tr></thead><tbody>
+<tr><td>Data/accounting audit</td><td>DISCREPANCY_RESOLUTION.md; verification/discrepancy_fix/</td></tr>
+<tr><td>Stage 2 completed research</td><td>results/stage2_futures_proxy_20261007_completed/</td></tr>
+<tr><td>Stage 3 completed SIMULATED research</td><td>results/stage3_SIMULATED_calendars_20261007_completed/</td></tr>
+<tr><td>Full saved metrics and readable case labels</td><td>supplements/futures_all_runs.csv, options_all_runs.csv, run_label_mapping.csv</td></tr>
+<tr><td>Annual outcomes and common-rate comparisons</td><td>supplements/annual_* and stage2_comparison.csv</td></tr>
+<tr><td>Pricing/causality/accounting evidence</td><td>supplements/*verification*.json and completed-stage checks/</td></tr>
+<tr><td>Plot sources / figure exports</td><td>supplements/*session_equity.csv; figures/*.png and *.svg</td></tr>
+<tr><td>Immutable source identification</td><td>source_manifest.json; assembly_verification.json</td></tr>
+</tbody></table>
+<p class="">Full leg, fill, signal and Greek histories remain in the listed completed research directories. Companion CSV tables summarize all 240 completed runs; SVG files preserve vector versions of the figures.</p></body></html>

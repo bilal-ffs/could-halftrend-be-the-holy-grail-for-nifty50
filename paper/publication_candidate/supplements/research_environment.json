@@ -1,0 +1,29 @@
+{
+  "python": "3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)]",
+  "package_versions": {
+    "pandas": "2.3.3",
+    "numpy": "2.3.5",
+    "quant-research-tools": "0.1.0",
+    "pytest": "9.1.1",
+    "ruff": "0.16.2",
+    "black": "26.5.1"
+  },
+  "source_sha256": {
+    "src\\accounting.py": "2d17937f07d60bd2ecfa7a4639e4fe694bae199445a79730e860fca56a56b8a0",
+    "src\\backtest.py": "e0d7cdbff2e2577b85d4312ee9e364d9034cd8c6b4d4f3a77150fd01e500c519",
+    "src\\calendar_spread.py": "c848bbd1c930bd951684e4c00c66d243b25b84505f59b92a436317b47ac4559d",
+    "src\\costs.py": "e5ab3945d83c64e42851ac96108e1c08ea6f9b66932ef9c64134378c8dc4df4a",
+    "src\\data.py": "ceb30726aea815458595633e90ce970abdd8e9055c4bdaef6015e05fc614fa81",
+    "src\\futures_proxy.py": "b0f2980d604fb435abde5c722c460f67c02318804988618ded924a9be568e862",
+    "src\\halftrend.py": "c617481a9bb5c2cfc7c5c2e3170c7b2542a1516dab401fe458345294575aed87",
+    "src\\option_model.py": "41d62a0a998429234abd04ba52d71b38e572be672376bdc06131c6f5a1f56574",
+    "src\\portfolio.py": "d5109fb73e844bd23ec3030a1abf490896a2bef3323ce7f29479586fa63d2578",
+    "src\\research.py": "dfdc211f735e4c849a165e238fd9734fa2f3c651381fd56d9457f844d55da8f3",
+    "src\\run_oos.py": "1c921653182cbdf5799f9183854c91fc2060c4ef93a4bba811fe722225da7b1e",
+    "src\\run_research.py": "c69fbd5674ca04b8314da2ded77623b1dace915ea05dd0059f7c85529b3eda71",
+    "src\\simulated_calendars.py": "f06ff16bbdf0e007c0d49846a4e43ade82810eafc11cb4cdf1dac369c0d053c7",
+    "src\\trading.py": "cf52c43acce525ee33db6b512d5ee424d37b8e1d7bc4e40b3da6a1abbefdb4e2",
+    "src\\validation.py": "ec0c63cfaa36a056085bd5b32076dda4d298d7b2ef238e07d4b2e35196d7fbb0",
+    "pyproject.toml": "b9fa16af06bf3e23f4ce2168f9aa7304c3a83eb8269883a532ce5ab0e06a1678"
+  }
+}

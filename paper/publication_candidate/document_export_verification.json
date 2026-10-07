@@ -1,0 +1,13 @@
+{
+  "editable_docx_created": true,
+  "ooxml_parts_well_formed": true,
+  "embedded_figures": 11,
+  "tables": 12,
+  "main_pdf_pages": 16,
+  "supplementary_pdf_pages": 11,
+  "main_tables": 12,
+  "supplementary_tables": 9,
+  "pdf_renderer": "ReportLab; same manuscript source, independent pagination",
+  "word_automation_available": false,
+  "word_native_pagination_not_verified": true
+}

@@ -1,0 +1,595 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>HalfTrend NIFTY 50 working paper - author review draft</title><style>
+        @page {size:A4; margin:0.75in;}
+        body {font-family:'Times New Roman';font-size:11pt;line-height:115%;color:#202020;}
+        p {margin:0 0 7pt 0;text-align:justify;}
+        h1 {font-size:16pt;color:#173b55;margin:16pt 0 8pt;page-break-after:avoid;}
+        h2 {font-size:12pt;color:#173b55;margin:12pt 0 6pt;page-break-after:avoid;}
+        .title
+        {font-size:24pt;font-weight:bold;text-align:center;color:#173b55;margin-top:40pt;}
+        .subtitle {font-size:15pt;text-align:center;margin:18pt 0;}
+        .center {text-align:center;margin:12pt 0;}
+        .review {font-size:10pt;color:#924500;border-top:1px solid
+        #aaaaaa;padding-top:10pt;}
+        .pagebreak {page-break-before:always;margin:0;font-size:1pt;}
+        .caption {font-size:9.5pt;text-align:left;margin:7pt 0;page-break-after:avoid;}
+        .note {font-size:9pt;text-align:left;margin:6pt 0 12pt;}
+        .equation {text-align:center;font-family:'Cambria Math';margin:8pt 0;}
+        .figure {text-align:center;page-break-inside:avoid;margin:10pt 0 0;}
+        table {border-collapse:collapse;width:100%;font-size:9pt;margin-bottom:8pt;}
+        td,th {border:0.5pt solid #b7c4ce;padding:4pt;vertical-align:top;}
+        th {background:#173b55;color:white;font-weight:bold;}
+        tr {page-break-inside:avoid;} thead {display:table-header-group;}
+        a {color:#176b87;} .reference {text-align:left;font-size:10pt;}
+        </style></head><body><p class="title">Could HalfTrend Be a ‘Holy Grail’ for NIFTY 50?</p>
+<p class="subtitle">Evidence from Transaction Costs, Execution Sensitivity, and SIMULATED Call Calendar Spreads</p>
+<p class="center">Mohd Bilal</p>
+<p class="center">Independent Researcher | MSc Data Science, CU ’28</p>
+<p class="center">Working paper • Author-review draft • 7 October 2026</p>
+<p class="center">Correspondence: [AUTHOR TO ADD EMAIL]</p>
+<p class="review">This draft summarizes completed research; it has not been submitted or peer reviewed. Start-labeled minutes are primary following the author’s personal TradingView check. End-labeled results are retained as an alternative candle-grouping sensitivity test. The exact Kaggle dataset page is missing and its citation must be completed or the provenance limitation explicitly resolved before submission.</p>
+<h1>Abstract</h1>
+<p class="">This exploratory study evaluates a long-only HalfTrend rule on historical NIFTY 50 minute observations from January 2015 to July 2025. A corrected research pipeline uses completed 15-minute candles, next-available-open execution, causal indicator state, daily risk ratios, calendar-time growth and independently reconciled cash accounting. Start-labeled minutes are the primary data convention. An index-based futures proxy starts with INR 500,000, remains fully funded and pays 5 basis points per side on underlying notional. In the previously examined 2022-2025 historical holdout, its net return is 33.16%, versus 38.56% for price-index buy-and-hold, with maximum drawdown of 12.61% versus 17.12%. Two points of adverse slippage per fill reduce proxy return to 22.87%. A separate SIMULATED option study uses dividend-yield Black-Scholes call calendars with approximately 60/30-day maturities and integer theta-matched quantities. Its primary entry-only holdout return is 7.48%, with 1.54% maximum drawdown, at 3 basis points per side on premiums and zero slippage. Daily threshold adjustments return 7.31%. At 25 basis points premium slippage, modeled calendar profitability reverses. Theta matching changes directional exposure as well as time decay, preventing attribution to theta alone. The study reports descriptive historical outcomes, not statistical proof of alpha or executable futures/options returns. Results suggest conditional trading usefulness, but do not establish a ‘holy grail’.</p>
+<p class="note">AI-use disclosure: OpenAI Codex assisted with implementation, verification, research synthesis, figure preparation and manuscript drafting. The author must review and validate all claims, data provenance, references and final text before submission and remains responsible for the paper. This disclosure accompanies the abstract and is repeated in the declarations.</p>
+<p class="note">Keywords: NIFTY 50; HalfTrend; technical trading; transaction costs; causal backtesting; futures proxy; simulated call calendars; theta matching.</p>
+<p class="pagebreak">&nbsp;</p>
+<h1>1. Introduction and research questions</h1>
+<p class="">A ‘holy grail’ trading rule would need more than an attractive historical equity curve: returns must remain useful after realistic costs, uncertainty and risk constraints. This paper tests an existing trend-following rule rather than introducing a new indicator. It focuses on one index, NIFTY 50; conclusions cannot be generalized to all Indian indices. HalfTrend generates bullish and bearish transitions, but only bullish positions are taken in this research.</p>
+<p class="">The research has three stages. Stage 1 corrects data handling, performance measurement and cash accounting. Stage 2 evaluates a fully funded index-based futures proxy against buy-and-hold. Stage 3 studies a SIMULATED bullish call calendar using the same underlying signals. The contribution is an auditable case study of cost drag, execution sensitivity and option-model dependence. No broker execution engine, market-data downloads, parameter optimization or standalone long-call strategy is introduced.</p>
+<p class="">The questions are: (i) does amplitude 3 remain profitable after stated fees; (ii) how do return and marked-to-market risk compare with buy-and-hold; (iii) how sensitive are findings to fill assumptions and candle grouping; and (iv) does approximately matching model theta improve the modeled calendar tradeoff, and does daily rebalancing add value? Positive historical profitability is distinguished from statistical significance and practical executability.</p>
+<h1>2. Related literature</h1>
+<p class="">Brock, Lakonishok and LeBaron (1992) evaluate moving-average and trading-range rules using historical Dow Jones data and bootstrap comparisons. Their study motivates explicit technical-rule testing, but does not establish that HalfTrend works on NIFTY 50. Sullivan, Timmermann and White (1999) examine selection bias when many technical rules are considered. This motivates disclosure of the previously examined holdout and the distinction between sensitivity analysis and independent experiments. The cases here are not independent statistical replications, and no multiple-testing-adjusted superiority test is claimed.</p>
+<p class="">Black and Scholes (1973) provide a theoretical option-valuation foundation. The dividend-yield European-call expressions summarized by Back, Liu and Loewenstein (n.d., Chapter 9) are used for scenario pricing and Greeks. Theory does not make these marks observed market premiums. Politis and Romano (1994) develop resampling for weakly dependent observations, relevant to future uncertainty analysis; no such bootstrap estimates were computed in these stages.</p>
+<p class="">HalfTrend is an existing public indicator, commonly attributed to everget. The operational definition in this paper is the repository’s supplied Pine-style state logic and its Python implementation, not an independently invented indicator. An exact original Pine publication/version citation remains an author-review item. This related-literature section is selective, not a systematic review or a claim of being the first study of these strategies.</p>
+<h1>3. Data, provenance and research chronology</h1>
+<p class="">The local input is NIFTY_50_minute.csv, obtained from Kaggle according to the author. Its 975,321 rows are parsed explicitly as day-month-year hour:minute and localized to Asia/Kolkata. The precise Kaggle page, uploader, download date and usage terms have not been recovered; independent acquisition of the identical source is therefore not currently guaranteed. A file hash identifies the exact local sample, but cannot establish its provenance or license. Raw data were never rewritten.</p>
+<p class="">The author personally compared observations with TradingView and confirmed start-labeled minutes. This later confirmation determines the primary convention; it was not selected because of higher returns. Earlier reports remain archived as originally written. Dates, symbols and matched observations from that check should be retained as publication evidence. End-label aggregation remains a deliberate alternative-grouping sensitivity test, not the true timestamp interpretation or a second independent dataset.</p>
+<p class="caption">Table 1. Data coverage and exclusions</p>
+<table><thead><tr><th>Item</th><th>Primary start labels</th><th>End grouping test</th></tr></thead><tbody>
+<tr><td>Raw source rows</td><td>975,321</td><td>Same raw input</td></tr>
+<tr><td>Conflicting duplicate groups / rows</td><td>4 / 8 excluded</td><td>Same exclusion</td></tr>
+<tr><td>Included complete regular bars</td><td>64,951</td><td>62,349</td></tr>
+<tr><td>Evening minutes excluded</td><td>612</td><td>612</td></tr>
+<tr><td>Outside regular/evening minute windows</td><td>0</td><td>2,600</td></tr>
+<tr><td>Regular incomplete bars excluded</td><td>40</td><td>5,264</td></tr>
+<tr><td>Volume</td><td>Unavailable (all zero)</td><td>Unavailable (all zero)</td></tr>
+</tbody></table>
+<p class="note">The loader rejects conflicts by default. Research runs explicitly select whole-group exclusion. Alternative grouping changes coverage as well as OHLC values.</p>
+<p class="">The four conflicting timestamp groups are 29 June 2015 11:54, 10 August 2015 09:36 and 10:54, and 13 August 2015 09:23. Audits retain the eight original rows and policy decisions. Regular hours are 09:15-15:30. Fifteen-minute candles are anchored at 09:15 and a normal session has 25 complete candles. Evening observations and incomplete regular candles are excluded; complete candles on otherwise partial days remain. Missing prices or sessions are not filled. All-zero volume is unavailable information, not evidence of no trading. Classification uses clock windows without an independently verified historical exchange calendar.</p>
+<p class="">Fixed earlier-period boundaries are 9 January 2015-8 January 2022; fixed historical holdout boundaries are 9 January 2022-25 July 2025. Actual included opens and closing marks determine elapsed time. For the primary holdout they are 10 January 2022 09:15 and 25 July 2025 15:30. Earlier/holdout portfolios restart flat, discard pending pre-boundary signals and retain indicator history. Full-history portfolios carry positions and equity across the split; full-history returns are not obtained by adding the two reset-window returns. The holdout was examined previously. Stage configurations were fixed for their runs, not externally preregistered before all historical exposure.</p>
+<h1>4. Corrected signal, accounting and metric methods</h1>
+<h2>4.1. HalfTrend and next-bar execution</h2>
+<p class="">Primary amplitude is 3 and channel deviation is 2. HalfTrend uses rolling high/low extrema and simple averages over the amplitude window, a 100-bar Wilder average true range, and stateful trend transitions. A bullish transition requires the low average above the maintained minimum high and the completed close above the preceding high; the bearish transition uses the corresponding high average, maximum low and preceding low. Signals are gated by the implemented ATR warmup. Channel deviation scales the displayed channel; it is not separately optimized as an entry filter.</p>
+<p class="">For each timestamp grouping, the production indicator is computed once over full causal history, then sliced for evaluation. Decisions use the last completed candle; purchases and exits fill at the next available included open, potentially after a data gap. No current candle’s future close/high/low determines that fill. Prefix and future-price perturbation checks compare earlier indicator values, signals, fills and equity. These checks establish implementation causality for tested cases, not the attainability of an idealized opening-price fill in live markets.</p>
+<h2>4.2. Stage 1 verification and preserved sizing</h2>
+<p class="caption">Table 2. Stage 1 bounded real-data accounting check</p>
+<table><thead><tr><th>Measure</th><th>Recorded result</th></tr></thead><tbody>
+<tr><td>Scope / period</td><td>First 1,000 retained bars; 9 Jan-11 Mar 2015</td></tr>
+<tr><td>Capital / completed trades</td><td>INR 100,000 / 16</td></tr>
+<tr><td>Fees</td><td>1,597.52 INR</td></tr>
+<tr><td>Net P&amp;L</td><td>-1,508.04 INR (-1.51%)</td></tr>
+<tr><td>Final equity</td><td>98,491.96 INR</td></tr>
+<tr><td>Independent reconciliation difference</td><td>0.00 INR</td></tr>
+<tr><td>Stage 1 tests</td><td>85 passed</td></tr>
+</tbody></table>
+<p class="note">This is a correctness check, not a full research result or validation of profitability.</p>
+<p class="">Stage 1 preserves the existing fee-reserved fractional sizing. At an entry, Q = cash x (1 - f) / purchase fill, where f is the per-side fee rate. Quantity remains fixed through the trade. Entry notional plus entry fees consumes cash x (1 - f²), retaining cash x f² rather than silently deleting it or switching sizing. Fees equal actual quantity times each leg’s actual fill price times f. One cash-and-position model generates both the ledger and equity; closed net P&amp;L already includes entry and exit fees. Final equity is reconciled against closed net P&amp;L, open gross P&amp;L and the open entry fee, and separately reconstructed from fills. Invalid or insolvent equity raises explicitly.</p>
+<h2>4.3. Performance conventions</h2>
+<p class="">Initial capital is timestamped at the first evaluated observed open; terminal equity is marked at the final included interval end. Calendar CAGR uses elapsed seconds divided by 365.25 days per year. Sharpe and Sortino use daily last-mark account returns, include the first change from capital, and annualize at 252 sessions per year. Missing dates are not inserted as zero returns. Annual risk-free rates are divided arithmetically by 252: 0% in Stage 2 and 6% in the main Stage 3 ratios. Zero-rate Stage 3 ratios and matched 6%-rate Stage 2 comparisons are also provided. The 6% continuous pricing discount rate is a separate model input; idle cash earns zero in every run.</p>
+<p class="">Sharpe uses sample standard deviation. The repository’s Sortino variant uses sample standard deviation of negative excess daily observations, not root-mean-square downside deviation across all observations; this must be considered before comparing with external Sortino reports. Undefined ratios are null with reasons. Calmar divides calendar CAGR by absolute maximum drawdown. Drawdown uses starting capital and all included 15-minute marks; its duration is the longest consecutive underwater observation count, not elapsed calendar recovery time. Equity charts sample session-end values for readability, while drawdown plots retain all marked observations.</p>
+<p class="">Profit factor, win rate and expectancy refer to completed trades or completed option signal groups. Expectancy is actual INR per group with changing entry equity, not fixed-stake points. Open P&amp;L is reported separately. Calendar-year returns compare annual last marks with the previous annual last mark; 2015 and 2025 are partial years. Fee totals are already deducted from equity. Gross-minus-net returns are not simply paid fees because later quantities and compounding differ.</p>
+<h1>5. Stage 2: index-based futures proxy</h1>
+<p class="">Every Stage 2 output is an index-based futures proxy. It uses spot-index observations, INR 500,000 starting capital, fractional normalized units and no leverage. Quantity follows the preserved sizing rule and is fixed within each trade. Gross means zero fees/slippage; primary net means 5 bps each side on actual underlying notional and zero slippage. This is not an actual-contract futures strategy. Basis, funding, historical lots, margin, rolls and executable quotes are not represented.</p>
+<p class="">Buy-and-hold purchases at the first included open using the same capital, fractional sizing and fee rate, holds fixed quantity and remains open at the final mark. There is no hypothetical exit fee. The comparison is to NIFTY’s price index, excluding dividends; it is not an observed ETF return or a total-return benchmark. Strategy and benchmark observations match within each grouping/window.</p>
+<p class="caption">Table 3. Primary Stage 2 returns and risk</p>
+<table><thead><tr><th>Period</th><th>Case</th><th>Return</th><th>CAGR</th><th>Max drop</th><th>Final INR</th></tr></thead><tbody>
+<tr><td>IS</td><td>Proxy gross</td><td>282.30%</td><td>21.13%</td><td>16.29%</td><td>1,911,521</td></tr>
+<tr><td>IS</td><td>Proxy net</td><td>71.61%</td><td>8.03%</td><td>18.28%</td><td>858,043</td></tr>
+<tr><td>IS</td><td>Buy-and-hold net</td><td>114.95%</td><td>11.56%</td><td>38.82%</td><td>1,074,733</td></tr>
+<tr><td>OOS</td><td>Proxy gross</td><td>98.66%</td><td>21.41%</td><td>9.14%</td><td>993,286</td></tr>
+<tr><td>OOS</td><td>Proxy net</td><td>33.16%</td><td>8.43%</td><td>12.61%</td><td>665,820</td></tr>
+<tr><td>OOS</td><td>Buy-and-hold net</td><td>38.56%</td><td>9.66%</td><td>17.12%</td><td>692,775</td></tr>
+<tr><td>FULL</td><td>Proxy gross</td><td>659.47%</td><td>21.21%</td><td>16.29%</td><td>3,797,374</td></tr>
+<tr><td>FULL</td><td>Proxy net</td><td>128.52%</td><td>8.16%</td><td>18.28%</td><td>1,142,604</td></tr>
+<tr><td>FULL</td><td>Buy-and-hold net</td><td>199.56%</td><td>10.97%</td><td>38.82%</td><td>1,497,793</td></tr>
+</tbody></table>
+<p class="note">IS is the earlier period; OOS is the previously examined historical holdout; FULL carries the account through the whole sample. Each starts at INR 500,000.</p>
+<p class="caption">Table 4. Primary Stage 2 completed trades and costs</p>
+<table><thead><tr><th>Period</th><th>Trades</th><th>Win rate</th><th>Profit factor</th><th>Expectancy INR</th><th>Fees INR</th><th>Exposure</th></tr></thead><tbody>
+<tr><td>IS</td><td>801</td><td>41.70%</td><td>1.229</td><td>446.99</td><td>467,807.24</td><td>53.95%</td></tr>
+<tr><td>OOS</td><td>400</td><td>40.00%</td><td>1.254</td><td>414.55</td><td>224,248.57</td><td>54.45%</td></tr>
+<tr><td>FULL</td><td>1201</td><td>41.13%</td><td>1.239</td><td>535.06</td><td>852,637.05</td><td>54.12%</td></tr>
+</tbody></table>
+<p class="note">Exposure is the fraction of included observations with a long position; calendar holding fractions are in the supplement. Primary terminal strategy P&amp;L is closed.</p>
+<p class="caption">Table 5. Primary Stage 2 daily ratios and drawdown duration</p>
+<table><thead><tr><th>Period</th><th>Sharpe (0%)</th><th>Sortino variant (0%)</th><th>Calmar</th><th>Duration (bars)</th></tr></thead><tbody>
+<tr><td>IS</td><td>0.704</td><td>0.937</td><td>0.439</td><td>16319</td></tr>
+<tr><td>OOS</td><td>0.892</td><td>1.381</td><td>0.669</td><td>10264</td></tr>
+<tr><td>FULL</td><td>0.755</td><td>1.036</td><td>0.446</td><td>16319</td></tr>
+</tbody></table>
+<p class="">The primary historical holdout ends at INR 665,819.57, a net profit of INR 165,819.57, after INR 224,248.57 of modeled fees across 400 trades. Its 33.16% return trails buy-and-hold’s 38.56%, while its 12.61% maximum drawdown is smaller than 17.12%. Average closed-trade net P&amp;L is INR 414.55. Positive profitability and reduced drawdown may be useful historically; they do not establish superior risk-adjusted alpha.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_01_futures_equity.png" width="640"></p>
+<p class="caption">Figure 1. Primary start-labeled index-based futures proxy and price-index buy-and-hold after fees. Session-end account values; both start with INR 5 lakh. Full and holdout panels are separate runs.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_02_futures_drawdown.png" width="640"></p>
+<p class="caption">Figure 2. Primary proxy and buy-and-hold drawdowns after fees, calculated at every included 15-minute mark with starting capital as the initial peak.</p>
+<h2>5.1. Execution, amplitude and concentration sensitivity</h2>
+<p class="caption">Table 6. Primary-grouping futures execution stress, historical holdout</p>
+<table><thead><tr><th>Case</th><th>Net return</th><th>Max drop</th><th>Expectancy INR</th></tr></thead><tbody>
+<tr><td>Primary</td><td>33.16%</td><td>12.61%</td><td>414.55</td></tr>
+<tr><td>+1 point per fill</td><td>27.91%</td><td>13.94%</td><td>348.92</td></tr>
+<tr><td>+2 points per fill</td><td>22.87%</td><td>15.25%</td><td>285.89</td></tr>
+<tr><td>One extra bar delay</td><td>25.23%</td><td>13.61%</td><td>315.33</td></tr>
+</tbody></table>
+<p class="note">Slippage increases purchase fills and decreases sales. All rows use 5 bps fees; slippage and delay are separate stresses, not combined cases.</p>
+<p class="">Two adverse index points per fill reduce primary holdout return to 22.87%; one extra included bar of delay gives 25.23%. Amplitudes 2-5 are sensitivity cases and amplitude 3 remains primary. The five best completed primary holdout trades total INR 112,519.62, or 67.86% of aggregate closed net P&amp;L and 13.73% of positive P&amp;L. This is descriptive concentration: those trades are not removed and subsequent sizing is not recomputed. Concentration ratios can exceed 100% if other trades lose money in aggregate, as in the end-label sensitivity case.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_03_futures_execution_sensitivity.png" width="640"></p>
+<p class="caption">Figure 3. Historical holdout proxy return under fees, adverse fills and delay. Start is primary; end is an alternative-grouping sensitivity case. No-fee and fee-paying runs have different subsequent sizing.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_04_amplitude_sensitivity.png" width="640"></p>
+<p class="caption">Figure 4. Historical holdout amplitude sensitivity at 5 bps per side and zero slippage. No parameter is selected from these outcomes.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_05_trade_concentration.png" width="640"></p>
+<p class="caption">Figure 5. Share of aggregate closed net P&amp;L attributable to the five best completed proxy trades. Ratios above 100% indicate aggregate losses in the other trades; this is not a trade-exclusion experiment.</p>
+<h1>6. Stage 3: SIMULATED bullish call calendars</h1>
+<h2>6.1. Pricing, synthetic maturities and causal volatility</h2>
+<p class="">On a bullish signal, the calendar buys a longer-dated European call and sells a nearer-dated call at the same strike. The strike is exactly the preceding completed underlying close, not an assumed exchange strike grid. Both legs execute at the next included open. The strike remains frozen while that spread is active. Synthetic expiries are the entry local date plus 60 and 30 calendar days, weekend dates advanced to Monday at 15:30 Asia/Kolkata. No historical weekly/monthly exchange expiry or holiday calendar is claimed.</p>
+<p class="">The model uses continuous annual r = 6% and dividend yield q = 1%. With tau measured by actual seconds / (365 x 86,400), each European call is valued using dividend-yield Black-Scholes:</p>
+<p class="equation">C = S exp(-q tau) N(d1) - K exp(-r tau) N(d2)</p>
+<p class="equation">d1 = [ln(S/K) + (r - q + sigma²/2) tau] / (sigma sqrt(tau)); d2 = d1 - sigma sqrt(tau)</p>
+<p class="">Sigma is the sample standard deviation of 21 observed-session daily log returns times sqrt(252), available only from the following session. Primary sigma is 1.2 times that estimate for both maturities. Multipliers 1.0 and 1.5 and near-leg relative multipliers 0.9 and 1.1 are sensitivity assumptions, not observed IV. Volatility updates causally at session opens and remains fixed within that session. Calendar-time decay and overnight gaps are included. Undefined or zero estimates prevent entry; no artificial volatility floor or standalone-call substitute is used. The 21-return estimate requires 22 prior observed closes. Initial evaluated warmup remains cash.</p>
+<h2>6.2. Theta matching, Greek units and capital</h2>
+<p class="">At execution the target short/long quantity ratio is abs(theta_long)/abs(theta_short). Integer normalized units are chosen to minimize absolute ratio error globally over feasible pairs, with larger long quantity breaking ties. Both quantities are at least one, long quantity is at least short quantity, and net model delta is positive at construction. These are INR 1 per premium/index point research units, not actual exchange lots.</p>
+<p class="">Gross long-leg purchase premium PLUS BOTH entry fees must be at most 5% of pre-entry equity. Short premium receipts cannot enlarge that budget. Cash after both fills must cover reserved collateral equal to short units times strike. This conservative research collateral is not historical exchange margin. One spread is active at a time. Infeasible or unaffordable constructions are skipped with reasons. There is no unhedged long-call fallback.</p>
+<p class="">Theta is currency per calendar day for the passage of time, and net theta is long units times long theta minus short units times short theta. Residual theta divides this quantity by initial long units times absolute long theta for that spread; the denominator resets at a new spread or roll, not daily. Delta exposure is net delta times underlying price. Gamma is delta change per index point; vega is currency per one volatility percentage point. Net Greeks are signed leg sums. Model theta matching does not remove gamma, vega, jump, model or execution risks.</p>
+<h2>6.3. Management, rolls, costs and liabilities</h2>
+<p class="">The primary version matches theta only at entry and makes no interim adjustment. Daily management checks the preceding completed session’s final marks once per session. If absolute residual theta exceeds 10% of initial absolute long theta, it chooses the closest feasible integer short target using those marks and fills at the next observed session open. The long quantity stays fixed until a roll. Current-open Greeks and cash validate positive delta and collateral feasibility, but do not replace the preceding-mark theta target. Positive delta is enforced at entry and adjustment; intraday drift is reported without adding risk exits.</p>
+<p class="">Both legs close on a bearish completed-bar signal. A roll is scheduled at 09:15 on the weekday on or before short-expiry minus five calendar days. If still bullish, a new spread opens at that open and pays all leg costs. Missing sessions use the next available open; late-buffer and expiry-crossing gaps are explicit events. An expired leg uses intrinsic at that observed open, not a reconstructed historical settlement price. No historical run actually reached a roll or expiry crossing; synthetic tests verify those mechanisms.</p>
+<p class="">Primary fees are 3 bps each side of each leg’s actual premium notional; 2 bps is the fee sensitivity. Adverse premium slippage of 0, 10 and 25 bps raises buy fills and lowers sell fills. Fees and slippage apply to every entry, exit, roll and adjustment separately. They are research assumptions, not calibrated all-inclusive brokerage, tax or observed bid/ask schedules. Short receipts increase cash while short market values create liabilities:</p>
+<p class="equation">Equity = cash + long quantity x long call value - short quantity x short call value</p>
+<p class="">Reserved collateral remains part of cash and equity, but is unavailable for added exposure; it is never added twice. Completed signal groups combine both legs, rolls and adjustments using net signed cash flows. Open group P&amp;L includes its remaining net option value and is separate from completed-trade expectancy. Terminal positions remain marked, without invented closing fees.</p>
+<h2>6.4. Primary modeled results</h2>
+<p class="caption">Table 7. SIMULATED primary calendar results</p>
+<table><thead><tr><th>Period</th><th>Management</th><th>Net return</th><th>CAGR</th><th>Max drop</th><th>Sharpe 6%</th><th>Sharpe 0%</th></tr></thead><tbody>
+<tr><td>IS</td><td>Entry-only</td><td>13.08%</td><td>1.77%</td><td>2.59%</td><td>-2.245</td><td>0.972</td></tr>
+<tr><td>IS</td><td>Daily checks</td><td>12.99%</td><td>1.76%</td><td>2.59%</td><td>-2.253</td><td>0.967</td></tr>
+<tr><td>IS</td><td>Equal-unit control</td><td>1.18%</td><td>0.17%</td><td>1.42%</td><td>-9.307</td><td>0.277</td></tr>
+<tr><td>OOS</td><td>Entry-only</td><td>7.48%</td><td>2.06%</td><td>1.54%</td><td>-2.140</td><td>1.143</td></tr>
+<tr><td>OOS</td><td>Daily checks</td><td>7.31%</td><td>2.02%</td><td>1.54%</td><td>-2.171</td><td>1.122</td></tr>
+<tr><td>OOS</td><td>Equal-unit control</td><td>1.40%</td><td>0.39%</td><td>0.59%</td><td>-8.436</td><td>0.606</td></tr>
+<tr><td>FULL</td><td>Entry-only</td><td>21.06%</td><td>1.83%</td><td>2.59%</td><td>-2.238</td><td>1.012</td></tr>
+<tr><td>FULL</td><td>Daily checks</td><td>21.15%</td><td>1.84%</td><td>2.59%</td><td>-2.239</td><td>1.018</td></tr>
+<tr><td>FULL</td><td>Equal-unit control</td><td>2.58%</td><td>0.24%</td><td>1.42%</td><td>-9.010</td><td>0.389</td></tr>
+</tbody></table>
+<p class="note">Fees 3 bps per side, zero slippage, volatility x1.2 and flat relative maturity volatility. Equal-unit calendars are a control, not standalone long calls.</p>
+<p class="caption">Table 8. SIMULATED primary holdout signal groups and fees</p>
+<table><thead><tr><th>Management</th><th>Closed groups</th><th>Win rate</th><th>Expectancy INR</th><th>Fees INR</th><th>Adjustments</th><th>Open P&amp;L INR</th></tr></thead><tbody>
+<tr><td>Entry-only</td><td>400</td><td>41.00%</td><td>93.47</td><td>5,791.11</td><td>0</td><td>0.00</td></tr>
+<tr><td>Daily checks</td><td>400</td><td>41.00%</td><td>91.42</td><td>5,790.57</td><td>6</td><td>0.00</td></tr>
+<tr><td>Equal-unit control</td><td>400</td><td>44.00%</td><td>17.51</td><td>5,973.21</td><td>0</td><td>0.00</td></tr>
+</tbody></table>
+<p class="caption">Table 9. SIMULATED primary holdout theta and allocation</p>
+<table><thead><tr><th>Management</th><th>Entry residual</th><th>Mean abs drift</th><th>Marks within 10%</th><th>Mean delta exposure</th><th>Mean collateral</th></tr></thead><tbody>
+<tr><td>Entry-only</td><td>0.16%</td><td>1.33%</td><td>97.88%</td><td>7.72%</td><td>42.35%</td></tr>
+<tr><td>Daily checks</td><td>0.16%</td><td>1.21%</td><td>98.82%</td><td>7.64%</td><td>42.31%</td></tr>
+<tr><td>Equal-unit control</td><td>29.82%</td><td>29.44%</td><td>1.56%</td><td>0.10%</td><td>52.43%</td></tr>
+</tbody></table>
+<p class="note">Theta percentages are normalized by initial long-leg absolute theta. Drift uses active marks; exposure/collateral fractions average all evaluated marks.</p>
+<p class="">Primary entry-only calendars return 7.48% in the historical holdout and finish at INR 537,386.17 after INR 5,791.11 fees, with 1.54% drawdown. Daily checks return 7.31%, with six adjustments and the same maximum drawdown. Their main 6%-comparison-rate Sharpe ratios are negative because portfolio returns are low relative to that opportunity-cost assumption. Pricing at continuous 6% does not credit interest to idle cash or collateral.</p>
+<p class="">Entry matching exceeds equal-unit calendar return (1.40%) and zero-rate Sharpe in the primary holdout, but has larger drawdown (1.54% versus 0.59%). It also raises mean net directional exposure from about 0.10% to 7.72% of portfolio equity. The comparator therefore does not isolate theta matching. The equal-unit control can drift to negative net delta; this is reported rather than presented as a permanently bullish or equal-risk benchmark.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_06_options_equity.png" width="640"></p>
+<p class="caption">Figure 6. SIMULATED primary calendar account values after fees. Entry matching, daily checks and the equal-unit calendar control. Different allocation and exposure prohibit attributing the whole difference to theta.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_07_options_drawdown.png" width="640"></p>
+<p class="caption">Figure 7. SIMULATED primary calendar drawdowns at every included marked observation. Smaller risk than the futures proxy partly reflects lower directional exposure; figures use different vertical scales.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_08_theta_and_exposure.png" width="640"></p>
+<p class="caption">Figure 8. SIMULATED primary holdout theta drift and allocation. Left: empirical distribution over active 15-minute marks, not a sampling confidence interval. Right: mean fractions over all evaluated marks; gross exposure is (long units + short units) times spot divided by equity.</p>
+<h2>6.5. Modeled fee, fill and volatility sensitivity</h2>
+<p class="caption">Table 10. SIMULATED scenario definitions</p>
+<table><thead><tr><th>Case</th><th>Fee bps/side</th><th>Slip bps/fill</th><th>Long vol multiplier</th><th>Near/long vol</th></tr></thead><tbody>
+<tr><td>Primary</td><td>3</td><td>0</td><td>1.2</td><td>1.0</td></tr>
+<tr><td>2 bps fees</td><td>2</td><td>0</td><td>1.2</td><td>1.0</td></tr>
+<tr><td>10 bps slippage</td><td>3</td><td>10</td><td>1.2</td><td>1.0</td></tr>
+<tr><td>25 bps slippage</td><td>3</td><td>25</td><td>1.2</td><td>1.0</td></tr>
+<tr><td>Volatility x1.0</td><td>3</td><td>0</td><td>1.0</td><td>1.0</td></tr>
+<tr><td>Volatility x1.5</td><td>3</td><td>0</td><td>1.5</td><td>1.0</td></tr>
+<tr><td>Near volatility x0.9</td><td>3</td><td>0</td><td>1.2</td><td>0.9</td></tr>
+<tr><td>Near volatility x1.1</td><td>3</td><td>0</td><td>1.2</td><td>1.1</td></tr>
+<tr><td>Combined flat</td><td>3</td><td>25</td><td>1.0</td><td>0.9</td></tr>
+<tr><td>Combined steep</td><td>3</td><td>25</td><td>1.5</td><td>1.1</td></tr>
+</tbody></table>
+<p class="note">One-factor alternatives plus two combined corners, not a full factorial. Combined flat: 3/25/1.0/0.9; combined steep: 3/25/1.5/1.1. Both management modes and the equal-unit control run all cases in all windows.</p>
+<p class="caption">Table 11. SIMULATED primary-grouping holdout sensitivity</p>
+<table><thead><tr><th>Case</th><th>Entry return</th><th>Daily return</th><th>Entry max drop</th><th>Daily max drop</th></tr></thead><tbody>
+<tr><td>Primary</td><td>7.48%</td><td>7.31%</td><td>1.54%</td><td>1.54%</td></tr>
+<tr><td>2 bps fees</td><td>7.85%</td><td>7.78%</td><td>1.52%</td><td>1.52%</td></tr>
+<tr><td>10 bps slippage</td><td>3.21%</td><td>3.19%</td><td>2.12%</td><td>2.11%</td></tr>
+<tr><td>25 bps slippage</td><td>-2.64%</td><td>-2.52%</td><td>4.09%</td><td>4.09%</td></tr>
+<tr><td>Volatility x1.0</td><td>7.71%</td><td>7.74%</td><td>1.51%</td><td>1.51%</td></tr>
+<tr><td>Volatility x1.5</td><td>7.67%</td><td>7.75%</td><td>1.48%</td><td>1.48%</td></tr>
+<tr><td>Near volatility x0.9</td><td>2.14%</td><td>2.21%</td><td>1.50%</td><td>1.50%</td></tr>
+<tr><td>Near volatility x1.1</td><td>13.36%</td><td>13.40%</td><td>2.01%</td><td>2.01%</td></tr>
+<tr><td>Combined flat</td><td>-5.50%</td><td>-5.45%</td><td>6.07%</td><td>6.02%</td></tr>
+<tr><td>Combined steep</td><td>1.79%</td><td>1.83%</td><td>3.98%</td><td>3.98%</td></tr>
+</tbody></table>
+<p class="">The primary grouping’s entry-only holdout returns range from about -5.50% to 13.36% over the stated scenarios. At 25 bps premium slippage with otherwise primary pricing, return is -2.64%; daily management is -2.52%. Near-leg volatility x0.9 gives 2.14% entry return and x1.1 gives 13.36%. These are conditional model outcomes on one historical path, not observed IV estimates or probabilistic forecasts. No favorable scenario is substituted for the headline.</p>
+<p class="">Across ten cases and two groupings, entry matching increases zero-rate Sharpe in 16 of 20 paired holdout comparisons. It improves both raw return and absolute drawdown in only 8 of 20. Daily checks improve both in 3 of 20 and improve return in 12 of 20. These descriptive counts are not significance tests and the paired cases are not independent. Primary daily management does not improve return, zero-rate Sharpe or maximum drawdown. Some stressed daily cases drift to nonpositive delta between checks, consistent with the stated construction/adjustment policy.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_09_option_sensitivity.png" width="640"></p>
+<p class="caption">Figure 9. SIMULATED holdout net returns under all ten predeclared-for-run scenarios. Primary start grouping and end grouping sensitivity are shown separately. These bars are not confidence intervals.</p>
+<h1>7. Cross-stage comparison and annual outcomes</h1>
+<p class="">All main Stage 2/3 runs start with INR 500,000 and use matching included observations within each grouping/window. The primary holdout proxy is invested at approximately full account notional when long and is long for 54.45% of included marks; buy-and-hold is continuously exposed. The entry-only calendar’s mean net delta exposure is about 7.72% of equity, with 42.35% reserved cash collateral. Lower raw calendar drawdown does not establish better performance at equal risk. Common 6%-rate comparison ratios are supplied separately; original Stage 2 ratios use 0%.</p>
+<p class="caption">Table 12. Primary historical holdout comparison</p>
+<table><thead><tr><th>Implementation</th><th>Net return</th><th>CAGR</th><th>Max drop</th><th>Fees INR</th></tr></thead><tbody>
+<tr><td>Futures proxy net</td><td>33.16%</td><td>8.43%</td><td>12.61%</td><td>224,248.57</td></tr>
+<tr><td>Buy-and-hold net</td><td>38.56%</td><td>9.66%</td><td>17.12%</td><td>249.88</td></tr>
+<tr><td>SIMULATED calendar entry</td><td>7.48%</td><td>2.06%</td><td>1.54%</td><td>5,791.11</td></tr>
+<tr><td>SIMULATED calendar daily</td><td>7.31%</td><td>2.02%</td><td>1.54%</td><td>5,790.57</td></tr>
+</tbody></table>
+<p class="note">These are unequal exposures and different fee bases. Buy-and-hold remains open and pays only its recorded entry fee. No imaginary terminal exit is charged.</p>
+<p class="caption">Table 13. Primary full-history annual net returns</p>
+<table><thead><tr><th>Year</th><th>Futures proxy</th><th>Buy-and-hold</th><th>SIMULATED entry calendar</th></tr></thead><tbody>
+<tr><td>2015 (partial)</td><td>-1.19%</td><td>-4.22%</td><td>-0.70%</td></tr>
+<tr><td>2016</td><td>2.48%</td><td>2.95%</td><td>1.57%</td></tr>
+<tr><td>2017</td><td>-0.80%</td><td>28.78%</td><td>1.06%</td></tr>
+<tr><td>2018</td><td>6.50%</td><td>3.19%</td><td>2.52%</td></tr>
+<tr><td>2019</td><td>11.97%</td><td>12.10%</td><td>2.61%</td></tr>
+<tr><td>2020</td><td>31.44%</td><td>14.71%</td><td>2.43%</td></tr>
+<tr><td>2021</td><td>7.65%</td><td>24.32%</td><td>2.91%</td></tr>
+<tr><td>2022</td><td>4.61%</td><td>4.34%</td><td>1.57%</td></tr>
+<tr><td>2023</td><td>14.47%</td><td>19.93%</td><td>2.39%</td></tr>
+<tr><td>2024</td><td>5.18%</td><td>8.93%</td><td>2.21%</td></tr>
+<tr><td>2025 (partial)</td><td>7.07%</td><td>4.92%</td><td>0.76%</td></tr>
+</tbody></table>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_10_annual_returns.png" width="640"></p>
+<p class="caption">Figure 10. Primary full-history calendar-year net returns. Asterisks mark partial 2015/2025. Strategies have unequal exposure; these are annual realized account changes, not independently reset annual backtests.</p>
+<h1>8. Capital efficiency: an untested futures implementation</h1>
+<p class="">Actual futures can give exposure with less upfront cash than fully funded exposure of the same notional size. That may make a profitable signal more capital-efficient, but it also increases losses relative to the total account. NSE requires upfront SPAN/extreme-loss margins and settlement obligations; requirements are not a fixed percentage guaranteed over history (NSE, n.d.-a). The corrected research has not modeled them.</p>
+<p class="caption">Table 14. Illustrative capital-efficiency example; NOT a tested result</p>
+<table><thead><tr><th>Assumption or arithmetic</th><th>Value</th></tr></thead><tbody>
+<tr><td>Assumed contract exposure</td><td>INR 2,000,000 (20 lakh)</td></tr>
+<tr><td>Assumed initial margin</td><td>INR 200,000 (2 lakh)</td></tr>
+<tr><td>Assumed additional buffer</td><td>INR 400,000 (4 lakh)</td></tr>
+<tr><td>Total committed capital / exposure ratio</td><td>INR 600,000 / 3.33x</td></tr>
+<tr><td>Illustrative 1% adverse move, before costs</td><td>INR 20,000 loss; 3.33% of total capital</td></tr>
+</tbody></table>
+<p class="note">User-supplied illustrative amounts, not current verified contract/margin quotes. They are not used in any performance table or equity curve.</p>
+<p class="">A buffer of INR 400,000 is not established as sufficient. A proper leveraged study would need actual contract prices, changing lot sizes, daily mark-to-market cash settlement, margin calls, rolls, funding and liquidation rules. Returns must use all committed capital, including the buffer. One cannot multiply the reported 33.16% by a leverage factor and present it as a tested outcome: Stage 2 uses varying fractional units and reinvested equity, not a fixed historical futures lot. Buy-and-hold through ETF units also does not require one full futures-equivalent lot (NSE, n.d.-b). This is a potential application, not validation of a margin-backed implementation.</p>
+<h1>9. Robustness, verification and uncertainty</h1>
+<p class="">The end-label test shifts minute observations back one minute before 09:15-anchored grouping. It changes candles, excluded incomplete bars and signals; it is not just a harmless relabeling. Its primary-fee holdout proxy returns 7.98% with 15.76% drawdown, and two-point slippage gives -0.39%. Its SIMULATED entry calendar returns 4.05% versus the start grouping’s 7.48%. These results document aggregation sensitivity while start labels remain the actual primary convention confirmed by the author.</p>
+<p class="figure"><img src="file:///C:/Users/beqmd/Documents/halftrend-the-holy-grail-for-indian-indices/paper/HalfTrend_NIFTY50_Review_Draft/figures/figure_11_grouping_sensitivity.png" width="640"></p>
+<p class="caption">Figure 11. Historical holdout grouping sensitivity, net of modeled fees. Start is the verified primary convention; end is an alternative aggregation stress, not an independent sample.</p>
+<p class="caption">Table 15. Verification evidence from completed stages</p>
+<table><thead><tr><th>Stage</th><th>Tests at completion</th><th>Saved evidence</th></tr></thead><tbody>
+<tr><td>1</td><td>85 passing</td><td>Bounded real-data accounting and causal checks; raw/prior results unchanged</td></tr>
+<tr><td>2</td><td>103 passing</td><td>60 runs reconciled; saved curves independently reconstructed; zero-cost equivalence</td></tr>
+<tr><td>3</td><td>129 passing</td><td>180 saved runs independently repriced/reconciled; leg and marked Greeks checked</td></tr>
+<tr><td>Quality</td><td>Ruff / Black passed</td><td>Checks and exit codes preserved with results</td></tr>
+</tbody></table>
+<p class="note">These are recorded completion checks. Manuscript assembly does not rerun the strategies or claim new tests. Independent verification refers to separate computational checks, not an external unaffiliated replication.</p>
+<p class="">Stage 3’s preliminary premium cap omitted the short leg’s entry fee in some scenarios. The corrected rule includes both entry fees; all 37 affected paths were recomputed in full and all final artifacts passed the stricter check. Preliminary backups are preserved separately and are not manuscript evidence. The archived incomplete export attempts are explicitly marked and excluded. Every final curve is checked from signed fills, fees, quantities and marks; Stage 3 also uses a separate pricing formula for premium/Greek verification. Raw/prior-result preservation is recorded by hashes.</p>
+<p class="">No confidence intervals, p-values, dependence-aware bootstrap or selection-adjusted performance tests were calculated here. All conclusions are descriptive and conditional on the one historical path and stated assumptions. Hypothesis tests of superiority would need additional analysis; dependence-aware resampling could help quantify uncertainty, but would not create an untouched holdout or validate real option prices. The 60/180 accounting runs are not 60/180 independent samples.</p>
+<h1>10. Limitations and trading interpretation</h1>
+<p class="">1. Data provenance: the exact Kaggle source/version and rights remain unresolved. Personal TradingView verification establishes the chosen convention as reported by the author, not a full independent audit of every historical candle.</p>
+<p class="">2. Single instrument and historical selection: only NIFTY 50 is studied, with a previously examined holdout and no demonstrated correction for all earlier strategy/model choices. Amplitude sensitivity is not fresh validation.</p>
+<p class="">3. Execution: next-open spot proxies and modeled premium fills exclude real order-book spread, liquidity, latency, basis, changing taxes/fees and rolls. The stress assumptions were not calibrated to historical executable quotes.</p>
+<p class="">4. Model dependence: realized-volatility scenarios, synthetic maturities/strikes, flat or simple term multipliers and fixed rates do not reproduce market IV surfaces or actual expiry calendars. Greeks are model derivatives, not protection from overnight gaps or pricing error.</p>
+<p class="">5. Unequal risk: theta matching also changes size, net delta and collateral. Cross-stage raw drawdown comparisons and equal-unit controls cannot establish a pure theta effect or superiority at matched exposure.</p>
+<p class="">6. Capital: the proxy is unleveraged, option collateral is conservative research collateral, and idle cash earns zero. Historical exchange/broker margins and cash-buffer sufficiency have not been tested.</p>
+<p class="">7. Uncertainty and unobserved mechanisms: no sampling intervals or new untouched test exist. Historical trades do not demonstrate rolls/expiry crossings; those are synthetic-verification mechanisms only.</p>
+<p class="">The profitable primary proxy warrants further implementation research and may support conditional trading usefulness. Calling it deployable or safe on a particular margin budget would go beyond the evidence. Paper trading and actual contract/premium validation would address different questions from mathematical correctness of the current simulation.</p>
+<h1>11. Conclusion</h1>
+<p class="">HalfTrend amplitude 3 retains positive primary net expectancy under 5-bps-per-side index-notional fees and the stated individual slippage/delay stresses. It produces smaller historical drawdown but lower return than price-index buy-and-hold. Model-theta-matched calendars are profitable under primary SIMULATED assumptions, but profits reverse under premium slippage and combined model stresses. Daily threshold management does not improve the primary holdout return/drawdown tradeoff. The evidence does not establish a ‘holy grail’, statistically reliable alpha or executable derivative performance. Its contribution is a reproducible account of how costs, aggregation, capital conventions and option-model assumptions alter an appealing trading claim.</p>
+<h1>Declarations and research availability</h1>
+<p class="">Author: Mohd Bilal, Independent Researcher; MSc Data Science, CU ’28 as supplied. The institution’s full name, expected qualification wording and correspondence email require author confirmation.</p>
+<p class="">Funding and competing interests: [AUTHOR TO COMPLETE]. No assertion of no funding or no conflicts is made in this review draft.</p>
+<p class="">AI assistance: OpenAI Codex was used for implementation, verification, research synthesis, figures and drafting. The author is responsible for review and final validation. This statement should appear with the SSRN abstract and in the submitted PDF, consistent with SSRN’s current guidance (SSRN, 2026).</p>
+<p class="">Code and saved research: https://github.com/bilal-ffs/halftrend-the-holy-grail-for-indian-indices . Source revision at manuscript assembly: 3247aabbfefcc1da87d4db2c78d923d25e88d6f1. Local presence does not confirm that the revision has been pushed. The output includes full per-run metric CSVs, figure sources, configuration copies and a hash manifest. Large fill/equity/Greek ledgers remain in the completed Stage 2/3 result directories. The raw CSV is not redistributed in this document package. Source provenance and code/data licensing must be clarified for external reuse.</p>
+<h1>References</h1>
+<p class="reference">Back, K., Liu, H., and Loewenstein, M. (n.d.). Pricing and Hedging Derivative Securities, Chapter 9: The Black-Scholes Formula. Online draft textbook. Accessed 7 October 2026.</p>
+<p class="reference"><a href="https://book.derivative-securities.org/Chapter_BlackScholes.html">https://book.derivative-securities.org/Chapter_BlackScholes.html</a></p>
+<p class="reference">Black, F., and Scholes, M. (1973). The pricing of options and corporate liabilities. Journal of Political Economy, 81(3), 637-654.</p>
+<p class="reference"><a href="https://doi.org/10.1086/260062">https://doi.org/10.1086/260062</a></p>
+<p class="reference">Brock, W., Lakonishok, J., and LeBaron, B. (1992). Simple technical trading rules and the stochastic properties of stock returns. Journal of Finance, 47(5), 1731-1764.</p>
+<p class="reference"><a href="https://doi.org/10.1111/j.1540-6261.1992.tb04681.x">https://doi.org/10.1111/j.1540-6261.1992.tb04681.x</a></p>
+<p class="reference">Politis, D. N., and Romano, J. P. (1994). The stationary bootstrap. Journal of the American Statistical Association, 89(428), 1303-1313.</p>
+<p class="reference"><a href="https://doi.org/10.1080/01621459.1994.10476870">https://doi.org/10.1080/01621459.1994.10476870</a></p>
+<p class="reference">Sullivan, R., Timmermann, A., and White, H. (1999). Data-snooping, technical trading rule performance, and the bootstrap. Journal of Finance, 54(5), 1647-1691.</p>
+<p class="reference"><a href="https://doi.org/10.1111/0022-1082.00163">https://doi.org/10.1111/0022-1082.00163</a></p>
+<p class="reference">National Stock Exchange of India (n.d.-a). Equity Derivatives: Margins. Accessed 7 October 2026.</p>
+<p class="reference"><a href="https://www.nseindia.com/static/products-services/equity-derivatives-margins">https://www.nseindia.com/static/products-services/equity-derivatives-margins</a></p>
+<p class="reference">National Stock Exchange of India (n.d.-b). Structure of ETF. Accessed 7 October 2026.</p>
+<p class="reference"><a href="https://www.nseindia.com/static/products-services/etfs-structure">https://www.nseindia.com/static/products-services/etfs-structure</a></p>
+<p class="reference">SSRN (2026). What are SSRN’s submission guidelines? Updated 3 August 2026; accessed 7 October 2026.</p>
+<p class="reference"><a href="https://www.elsevier.support/ssrn/answer/get-started">https://www.elsevier.support/ssrn/answer/get-started</a></p>
+<p class="reference">Bilal, M. (2026). HalfTrend NIFTY 50 research code, discrepancy report and completed Stage 2/3 outputs.</p>
+<p class="reference"><a href="https://github.com/bilal-ffs/halftrend-the-holy-grail-for-indian-indices">https://github.com/bilal-ffs/halftrend-the-holy-grail-for-indian-indices</a></p>
+<p class="review">Incomplete source citations for author review: exact Kaggle dataset page, uploader/version/download date and license; exact original HalfTrend Pine script publication/version. These have not been invented.</p>
+<p class="pagebreak">&nbsp;</p>
+<h1>Appendix A. Complete Stage 2 run summary</h1>
+<p class="">The following 60 rows cover every saved Stage 2 run. S=start primary; E=end grouping sensitivity. Fees and slippage/delay conventions follow Section 5. The companion futures_all_runs.csv includes every saved metric, including risk ratios, fees, exposure and open P&amp;L. Values are descriptive.</p>
+<p class="caption">Table 16. All index-based futures proxy runs</p>
+<table><thead><tr><th>Group</th><th>Amp</th><th>Period</th><th>Case</th><th>Return</th><th>Max drop</th><th>Fees INR</th></tr></thead><tbody>
+<tr><td>E</td><td>2</td><td>FULL</td><td>net</td><td>15.52%</td><td>28.20%</td><td>825,413</td></tr>
+<tr><td>E</td><td>2</td><td>IS</td><td>net</td><td>29.72%</td><td>28.20%</td><td>508,187</td></tr>
+<tr><td>E</td><td>2</td><td>OOS</td><td>net</td><td>-10.82%</td><td>21.25%</td><td>244,410</td></tr>
+<tr><td>E</td><td>3</td><td>FULL</td><td>buy_hold_gross</td><td>199.56%</td><td>38.97%</td><td>0</td></tr>
+<tr><td>E</td><td>3</td><td>FULL</td><td>buy_hold_net</td><td>199.41%</td><td>38.97%</td><td>250</td></tr>
+<tr><td>E</td><td>3</td><td>FULL</td><td>delay_2</td><td>69.69%</td><td>19.65%</td><td>715,302</td></tr>
+<tr><td>E</td><td>3</td><td>FULL</td><td>gross</td><td>392.34%</td><td>17.62%</td><td>0</td></tr>
+<tr><td>E</td><td>3</td><td>FULL</td><td>net</td><td>51.29%</td><td>20.70%</td><td>680,651</td></tr>
+<tr><td>E</td><td>3</td><td>FULL</td><td>slip_1</td><td>24.75%</td><td>28.45%</td><td>602,694</td></tr>
+<tr><td>E</td><td>3</td><td>FULL</td><td>slip_2</td><td>2.87%</td><td>36.65%</td><td>535,362</td></tr>
+<tr><td>E</td><td>3</td><td>IS</td><td>buy_hold_gross</td><td>114.84%</td><td>38.97%</td><td>0</td></tr>
+<tr><td>E</td><td>3</td><td>IS</td><td>buy_hold_net</td><td>114.73%</td><td>38.97%</td><td>250</td></tr>
+<tr><td>E</td><td>3</td><td>IS</td><td>delay_2</td><td>49.33%</td><td>19.65%</td><td>415,848</td></tr>
+<tr><td>E</td><td>3</td><td>IS</td><td>gross</td><td>205.64%</td><td>17.62%</td><td>0</td></tr>
+<tr><td>E</td><td>3</td><td>IS</td><td>net</td><td>40.10%</td><td>20.70%</td><td>404,624</td></tr>
+<tr><td>E</td><td>3</td><td>IS</td><td>slip_1</td><td>20.29%</td><td>28.45%</td><td>370,887</td></tr>
+<tr><td>E</td><td>3</td><td>IS</td><td>slip_2</td><td>3.28%</td><td>36.65%</td><td>340,665</td></tr>
+<tr><td>E</td><td>3</td><td>OOS</td><td>buy_hold_gross</td><td>38.62%</td><td>17.13%</td><td>0</td></tr>
+<tr><td>E</td><td>3</td><td>OOS</td><td>buy_hold_net</td><td>38.55%</td><td>17.13%</td><td>250</td></tr>
+<tr><td>E</td><td>3</td><td>OOS</td><td>delay_2</td><td>13.63%</td><td>14.84%</td><td>200,529</td></tr>
+<tr><td>E</td><td>3</td><td>OOS</td><td>gross</td><td>61.09%</td><td>9.43%</td><td>0</td></tr>
+<tr><td>E</td><td>3</td><td>OOS</td><td>net</td><td>7.98%</td><td>15.76%</td><td>197,015</td></tr>
+<tr><td>E</td><td>3</td><td>OOS</td><td>slip_1</td><td>3.71%</td><td>17.03%</td><td>192,706</td></tr>
+<tr><td>E</td><td>3</td><td>OOS</td><td>slip_2</td><td>-0.39%</td><td>18.39%</td><td>188,519</td></tr>
+<tr><td>E</td><td>4</td><td>FULL</td><td>net</td><td>31.40%</td><td>24.12%</td><td>533,990</td></tr>
+<tr><td>E</td><td>4</td><td>IS</td><td>net</td><td>28.05%</td><td>24.12%</td><td>333,365</td></tr>
+<tr><td>E</td><td>4</td><td>OOS</td><td>net</td><td>2.61%</td><td>21.85%</td><td>156,680</td></tr>
+<tr><td>E</td><td>5</td><td>FULL</td><td>net</td><td>14.07%</td><td>26.78%</td><td>441,466</td></tr>
+<tr><td>E</td><td>5</td><td>IS</td><td>net</td><td>17.41%</td><td>25.75%</td><td>287,634</td></tr>
+<tr><td>E</td><td>5</td><td>OOS</td><td>net</td><td>-2.85%</td><td>24.19%</td><td>131,017</td></tr>
+<tr><td>S</td><td>2</td><td>FULL</td><td>net</td><td>61.85%</td><td>27.37%</td><td>969,430</td></tr>
+<tr><td>S</td><td>2</td><td>IS</td><td>net</td><td>54.82%</td><td>27.37%</td><td>556,527</td></tr>
+<tr><td>S</td><td>2</td><td>OOS</td><td>net</td><td>4.54%</td><td>19.19%</td><td>266,702</td></tr>
+<tr><td>S</td><td>3</td><td>FULL</td><td>buy_hold_gross</td><td>199.71%</td><td>38.82%</td><td>0</td></tr>
+<tr><td>S</td><td>3</td><td>FULL</td><td>buy_hold_net</td><td>199.56%</td><td>38.82%</td><td>250</td></tr>
+<tr><td>S</td><td>3</td><td>FULL</td><td>delay_2</td><td>78.46%</td><td>23.70%</td><td>722,315</td></tr>
+<tr><td>S</td><td>3</td><td>FULL</td><td>gross</td><td>659.47%</td><td>16.29%</td><td>0</td></tr>
+<tr><td>S</td><td>3</td><td>FULL</td><td>net</td><td>128.52%</td><td>18.28%</td><td>852,637</td></tr>
+<tr><td>S</td><td>3</td><td>FULL</td><td>slip_1</td><td>87.84%</td><td>18.72%</td><td>748,300</td></tr>
+<tr><td>S</td><td>3</td><td>FULL</td><td>slip_2</td><td>54.41%</td><td>24.89%</td><td>658,791</td></tr>
+<tr><td>S</td><td>3</td><td>IS</td><td>buy_hold_gross</td><td>115.05%</td><td>38.82%</td><td>0</td></tr>
+<tr><td>S</td><td>3</td><td>IS</td><td>buy_hold_net</td><td>114.95%</td><td>38.82%</td><td>250</td></tr>
+<tr><td>S</td><td>3</td><td>IS</td><td>delay_2</td><td>42.51%</td><td>23.70%</td><td>420,385</td></tr>
+<tr><td>S</td><td>3</td><td>IS</td><td>gross</td><td>282.30%</td><td>16.29%</td><td>0</td></tr>
+<tr><td>S</td><td>3</td><td>IS</td><td>net</td><td>71.61%</td><td>18.28%</td><td>467,807</td></tr>
+<tr><td>S</td><td>3</td><td>IS</td><td>slip_1</td><td>46.85%</td><td>18.72%</td><td>426,340</td></tr>
+<tr><td>S</td><td>3</td><td>IS</td><td>slip_2</td><td>25.67%</td><td>24.89%</td><td>389,392</td></tr>
+<tr><td>S</td><td>3</td><td>OOS</td><td>buy_hold_gross</td><td>38.62%</td><td>17.12%</td><td>0</td></tr>
+<tr><td>S</td><td>3</td><td>OOS</td><td>buy_hold_net</td><td>38.56%</td><td>17.12%</td><td>250</td></tr>
+<tr><td>S</td><td>3</td><td>OOS</td><td>delay_2</td><td>25.23%</td><td>13.61%</td><td>211,866</td></tr>
+<tr><td>S</td><td>3</td><td>OOS</td><td>gross</td><td>98.66%</td><td>9.14%</td><td>0</td></tr>
+<tr><td>S</td><td>3</td><td>OOS</td><td>net</td><td>33.16%</td><td>12.61%</td><td>224,249</td></tr>
+<tr><td>S</td><td>3</td><td>OOS</td><td>slip_1</td><td>27.91%</td><td>13.94%</td><td>219,240</td></tr>
+<tr><td>S</td><td>3</td><td>OOS</td><td>slip_2</td><td>22.87%</td><td>15.25%</td><td>214,374</td></tr>
+<tr><td>S</td><td>4</td><td>FULL</td><td>net</td><td>77.93%</td><td>21.47%</td><td>616,713</td></tr>
+<tr><td>S</td><td>4</td><td>IS</td><td>net</td><td>48.90%</td><td>21.47%</td><td>361,722</td></tr>
+<tr><td>S</td><td>4</td><td>OOS</td><td>net</td><td>19.49%</td><td>17.89%</td><td>171,249</td></tr>
+<tr><td>S</td><td>5</td><td>FULL</td><td>net</td><td>39.10%</td><td>24.87%</td><td>501,399</td></tr>
+<tr><td>S</td><td>5</td><td>IS</td><td>net</td><td>35.42%</td><td>24.87%</td><td>307,364</td></tr>
+<tr><td>S</td><td>5</td><td>OOS</td><td>net</td><td>2.72%</td><td>19.74%</td><td>143,280</td></tr>
+</tbody></table>
+<p class="pagebreak">&nbsp;</p>
+<h1>Appendix B. Complete SIMULATED Stage 3 run summary</h1>
+<p class="">The following 180 rows cover all ten cases, three management/control modes, three windows and two groupings. The equal-unit control always contains both calls. S=start primary; E=end sensitivity. Full metric precision, Greek diagnostics, fee/slippage totals, adjustment turnover and open P&amp;L are in options_all_runs.csv. Case definitions are in Table 10 and configuration.json; this appendix does not select a best case.</p>
+<p class="caption">Table 17. SIMULATED primary start / IS</p>
+<table><thead><tr><th>Case</th><th>Mode</th><th>Return</th><th>Max drop</th><th>Fees INR</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>primary</td><td>Entry</td><td>13.08%</td><td>2.59%</td><td>12,230</td><td>0</td></tr>
+<tr><td>primary</td><td>Daily</td><td>12.99%</td><td>2.59%</td><td>12,237</td><td>4</td></tr>
+<tr><td>primary</td><td>Equal</td><td>1.18%</td><td>1.42%</td><td>12,534</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Entry</td><td>13.67%</td><td>2.53%</td><td>8,176</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Daily</td><td>13.57%</td><td>2.54%</td><td>8,179</td><td>4</td></tr>
+<tr><td>fee_2</td><td>Equal</td><td>2.01%</td><td>1.31%</td><td>8,395</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Entry</td><td>4.65%</td><td>3.24%</td><td>11,736</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Daily</td><td>4.62%</td><td>3.23%</td><td>11,747</td><td>5</td></tr>
+<tr><td>slip_10</td><td>Equal</td><td>-6.89%</td><td>6.89%</td><td>12,022</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Entry</td><td>-6.90%</td><td>8.13%</td><td>11,076</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Daily</td><td>-6.88%</td><td>8.09%</td><td>11,082</td><td>5</td></tr>
+<tr><td>slip_25</td><td>Equal</td><td>-17.78%</td><td>17.78%</td><td>11,301</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Entry</td><td>11.77%</td><td>2.44%</td><td>10,767</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Daily</td><td>11.64%</td><td>2.44%</td><td>10,774</td><td>7</td></tr>
+<tr><td>vol_1_0</td><td>Equal</td><td>-1.91%</td><td>2.26%</td><td>10,784</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Entry</td><td>11.02%</td><td>2.22%</td><td>13,480</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Daily</td><td>11.19%</td><td>2.22%</td><td>13,494</td><td>3</td></tr>
+<tr><td>vol_1_5</td><td>Equal</td><td>5.21%</td><td>1.08%</td><td>14,934</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Entry</td><td>2.11%</td><td>2.31%</td><td>10,891</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Daily</td><td>2.34%</td><td>2.31%</td><td>10,900</td><td>6</td></tr>
+<tr><td>near_0_9</td><td>Equal</td><td>-6.73%</td><td>6.73%</td><td>11,549</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Entry</td><td>25.25%</td><td>2.84%</td><td>13,253</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Daily</td><td>25.36%</td><td>2.84%</td><td>13,260</td><td>3</td></tr>
+<tr><td>near_1_1</td><td>Equal</td><td>9.16%</td><td>0.50%</td><td>13,518</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Entry</td><td>-14.32%</td><td>14.34%</td><td>8,754</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Daily</td><td>-14.35%</td><td>14.38%</td><td>8,761</td><td>16</td></tr>
+<tr><td>combined_flat</td><td>Equal</td><td>-23.94%</td><td>23.94%</td><td>9,137</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Entry</td><td>-2.50%</td><td>4.94%</td><td>13,169</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Daily</td><td>-2.50%</td><td>4.94%</td><td>13,169</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Equal</td><td>-11.49%</td><td>11.49%</td><td>14,204</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 18. SIMULATED primary start / OOS</p>
+<table><thead><tr><th>Case</th><th>Mode</th><th>Return</th><th>Max drop</th><th>Fees INR</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>primary</td><td>Entry</td><td>7.48%</td><td>1.54%</td><td>5,791</td><td>0</td></tr>
+<tr><td>primary</td><td>Daily</td><td>7.31%</td><td>1.54%</td><td>5,791</td><td>6</td></tr>
+<tr><td>primary</td><td>Equal</td><td>1.40%</td><td>0.59%</td><td>5,973</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Entry</td><td>7.85%</td><td>1.52%</td><td>3,870</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Daily</td><td>7.78%</td><td>1.52%</td><td>3,872</td><td>6</td></tr>
+<tr><td>fee_2</td><td>Equal</td><td>1.78%</td><td>0.54%</td><td>3,989</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Entry</td><td>3.21%</td><td>2.12%</td><td>5,619</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Daily</td><td>3.19%</td><td>2.11%</td><td>5,623</td><td>5</td></tr>
+<tr><td>slip_10</td><td>Equal</td><td>-2.56%</td><td>2.76%</td><td>5,851</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Entry</td><td>-2.64%</td><td>4.09%</td><td>5,519</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Daily</td><td>-2.52%</td><td>4.09%</td><td>5,524</td><td>7</td></tr>
+<tr><td>slip_25</td><td>Equal</td><td>-8.18%</td><td>8.20%</td><td>5,672</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Entry</td><td>7.71%</td><td>1.51%</td><td>5,190</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Daily</td><td>7.74%</td><td>1.51%</td><td>5,196</td><td>5</td></tr>
+<tr><td>vol_1_0</td><td>Equal</td><td>0.01%</td><td>0.99%</td><td>5,165</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Entry</td><td>7.67%</td><td>1.48%</td><td>6,753</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Daily</td><td>7.75%</td><td>1.48%</td><td>6,757</td><td>3</td></tr>
+<tr><td>vol_1_5</td><td>Equal</td><td>3.22%</td><td>0.61%</td><td>7,100</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Entry</td><td>2.14%</td><td>1.50%</td><td>5,294</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Daily</td><td>2.21%</td><td>1.50%</td><td>5,300</td><td>5</td></tr>
+<tr><td>near_0_9</td><td>Equal</td><td>-2.29%</td><td>2.69%</td><td>5,619</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Entry</td><td>13.36%</td><td>2.01%</td><td>6,344</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Daily</td><td>13.40%</td><td>2.01%</td><td>6,349</td><td>3</td></tr>
+<tr><td>near_1_1</td><td>Equal</td><td>4.89%</td><td>0.29%</td><td>6,296</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Entry</td><td>-5.50%</td><td>6.07%</td><td>4,508</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Daily</td><td>-5.45%</td><td>6.02%</td><td>4,511</td><td>7</td></tr>
+<tr><td>combined_flat</td><td>Equal</td><td>-11.19%</td><td>11.20%</td><td>4,673</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Entry</td><td>1.79%</td><td>3.98%</td><td>6,698</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Daily</td><td>1.83%</td><td>3.98%</td><td>6,701</td><td>2</td></tr>
+<tr><td>combined_steep</td><td>Equal</td><td>-5.19%</td><td>5.33%</td><td>7,056</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 19. SIMULATED primary start / FULL</p>
+<table><thead><tr><th>Case</th><th>Mode</th><th>Return</th><th>Max drop</th><th>Fees INR</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>primary</td><td>Entry</td><td>21.06%</td><td>2.59%</td><td>18,828</td><td>0</td></tr>
+<tr><td>primary</td><td>Daily</td><td>21.15%</td><td>2.59%</td><td>18,844</td><td>11</td></tr>
+<tr><td>primary</td><td>Equal</td><td>2.58%</td><td>1.42%</td><td>18,571</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Entry</td><td>22.36%</td><td>2.53%</td><td>12,613</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Daily</td><td>22.45%</td><td>2.54%</td><td>12,623</td><td>11</td></tr>
+<tr><td>fee_2</td><td>Equal</td><td>3.81%</td><td>1.31%</td><td>12,464</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Entry</td><td>8.63%</td><td>3.24%</td><td>17,708</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Daily</td><td>8.59%</td><td>3.23%</td><td>17,725</td><td>12</td></tr>
+<tr><td>slip_10</td><td>Equal</td><td>-9.24%</td><td>9.28%</td><td>17,459</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Entry</td><td>-9.28%</td><td>9.95%</td><td>16,237</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Daily</td><td>-9.10%</td><td>9.91%</td><td>16,257</td><td>13</td></tr>
+<tr><td>slip_25</td><td>Equal</td><td>-24.47%</td><td>24.47%</td><td>15,950</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Entry</td><td>20.74%</td><td>2.44%</td><td>16,583</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Daily</td><td>20.29%</td><td>2.44%</td><td>16,570</td><td>13</td></tr>
+<tr><td>vol_1_0</td><td>Equal</td><td>-1.94%</td><td>2.64%</td><td>15,849</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Entry</td><td>19.12%</td><td>2.22%</td><td>20,936</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Daily</td><td>19.38%</td><td>2.22%</td><td>20,961</td><td>6</td></tr>
+<tr><td>vol_1_5</td><td>Equal</td><td>8.60%</td><td>1.08%</td><td>22,420</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Entry</td><td>4.61%</td><td>2.31%</td><td>16,299</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Daily</td><td>5.01%</td><td>2.31%</td><td>16,331</td><td>10</td></tr>
+<tr><td>near_0_9</td><td>Equal</td><td>-8.81%</td><td>9.04%</td><td>16,787</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Entry</td><td>41.42%</td><td>2.84%</td><td>21,154</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Daily</td><td>41.53%</td><td>2.84%</td><td>21,164</td><td>5</td></tr>
+<tr><td>near_1_1</td><td>Equal</td><td>14.53%</td><td>0.50%</td><td>20,401</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Entry</td><td>-19.73%</td><td>19.76%</td><td>12,505</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Daily</td><td>-19.73%</td><td>19.76%</td><td>12,510</td><td>20</td></tr>
+<tr><td>combined_flat</td><td>Equal</td><td>-32.39%</td><td>32.39%</td><td>12,673</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Entry</td><td>-0.86%</td><td>5.61%</td><td>19,738</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Daily</td><td>-0.83%</td><td>5.61%</td><td>19,740</td><td>2</td></tr>
+<tr><td>combined_steep</td><td>Equal</td><td>-16.10%</td><td>16.10%</td><td>20,414</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 20. SIMULATED end grouping sensitivity / IS</p>
+<table><thead><tr><th>Case</th><th>Mode</th><th>Return</th><th>Max drop</th><th>Fees INR</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>primary</td><td>Entry</td><td>10.04%</td><td>2.54%</td><td>11,604</td><td>0</td></tr>
+<tr><td>primary</td><td>Daily</td><td>10.06%</td><td>2.52%</td><td>11,610</td><td>6</td></tr>
+<tr><td>primary</td><td>Equal</td><td>1.07%</td><td>2.02%</td><td>12,233</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Entry</td><td>10.81%</td><td>2.44%</td><td>7,759</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Daily</td><td>10.82%</td><td>2.41%</td><td>7,764</td><td>6</td></tr>
+<tr><td>fee_2</td><td>Equal</td><td>1.90%</td><td>1.90%</td><td>8,193</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Entry</td><td>1.15%</td><td>3.62%</td><td>11,090</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Daily</td><td>1.22%</td><td>3.61%</td><td>11,096</td><td>4</td></tr>
+<tr><td>slip_10</td><td>Equal</td><td>-6.80%</td><td>6.80%</td><td>11,749</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Entry</td><td>-9.20%</td><td>11.13%</td><td>10,547</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Daily</td><td>-9.10%</td><td>11.06%</td><td>10,553</td><td>5</td></tr>
+<tr><td>slip_25</td><td>Equal</td><td>-17.44%</td><td>17.44%</td><td>11,061</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Entry</td><td>8.36%</td><td>2.55%</td><td>10,217</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Daily</td><td>8.39%</td><td>2.55%</td><td>10,222</td><td>8</td></tr>
+<tr><td>vol_1_0</td><td>Equal</td><td>-2.10%</td><td>2.39%</td><td>10,508</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Entry</td><td>9.28%</td><td>2.55%</td><td>13,147</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Daily</td><td>9.38%</td><td>2.55%</td><td>13,156</td><td>3</td></tr>
+<tr><td>vol_1_5</td><td>Equal</td><td>5.13%</td><td>1.68%</td><td>14,575</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Entry</td><td>-0.10%</td><td>2.97%</td><td>10,550</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Daily</td><td>-0.20%</td><td>2.96%</td><td>10,555</td><td>8</td></tr>
+<tr><td>near_0_9</td><td>Equal</td><td>-6.87%</td><td>6.88%</td><td>11,232</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Entry</td><td>19.07%</td><td>2.89%</td><td>12,559</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Daily</td><td>19.16%</td><td>2.89%</td><td>12,565</td><td>2</td></tr>
+<tr><td>near_1_1</td><td>Equal</td><td>9.07%</td><td>0.65%</td><td>13,174</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Entry</td><td>-15.25%</td><td>15.29%</td><td>8,541</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Daily</td><td>-15.32%</td><td>15.35%</td><td>8,547</td><td>10</td></tr>
+<tr><td>combined_flat</td><td>Equal</td><td>-23.57%</td><td>23.57%</td><td>8,846</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Entry</td><td>-4.53%</td><td>7.96%</td><td>12,604</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Daily</td><td>-4.53%</td><td>7.96%</td><td>12,604</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Equal</td><td>-10.97%</td><td>10.97%</td><td>13,878</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 21. SIMULATED end grouping sensitivity / OOS</p>
+<table><thead><tr><th>Case</th><th>Mode</th><th>Return</th><th>Max drop</th><th>Fees INR</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>primary</td><td>Entry</td><td>4.05%</td><td>2.11%</td><td>5,689</td><td>0</td></tr>
+<tr><td>primary</td><td>Daily</td><td>3.96%</td><td>2.11%</td><td>5,694</td><td>7</td></tr>
+<tr><td>primary</td><td>Equal</td><td>1.28%</td><td>0.71%</td><td>5,924</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Entry</td><td>4.39%</td><td>2.07%</td><td>3,805</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Daily</td><td>4.32%</td><td>2.07%</td><td>3,811</td><td>7</td></tr>
+<tr><td>fee_2</td><td>Equal</td><td>1.69%</td><td>0.65%</td><td>3,957</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Entry</td><td>0.57%</td><td>3.31%</td><td>5,595</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Daily</td><td>0.48%</td><td>3.31%</td><td>5,601</td><td>6</td></tr>
+<tr><td>slip_10</td><td>Equal</td><td>-2.62%</td><td>3.07%</td><td>5,800</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Entry</td><td>-4.62%</td><td>5.87%</td><td>5,444</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Daily</td><td>-4.69%</td><td>5.88%</td><td>5,449</td><td>6</td></tr>
+<tr><td>slip_25</td><td>Equal</td><td>-8.21%</td><td>8.25%</td><td>5,637</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Entry</td><td>4.26%</td><td>2.25%</td><td>5,045</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Daily</td><td>4.22%</td><td>2.25%</td><td>5,051</td><td>7</td></tr>
+<tr><td>vol_1_0</td><td>Equal</td><td>-0.15%</td><td>1.31%</td><td>5,102</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Entry</td><td>4.67%</td><td>1.79%</td><td>6,631</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Daily</td><td>4.75%</td><td>1.79%</td><td>6,635</td><td>3</td></tr>
+<tr><td>vol_1_5</td><td>Equal</td><td>3.26%</td><td>0.63%</td><td>7,052</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Entry</td><td>-0.28%</td><td>2.37%</td><td>5,268</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Daily</td><td>-0.25%</td><td>2.37%</td><td>5,270</td><td>5</td></tr>
+<tr><td>near_0_9</td><td>Equal</td><td>-2.30%</td><td>3.00%</td><td>5,580</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Entry</td><td>8.20%</td><td>2.29%</td><td>6,097</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Daily</td><td>8.22%</td><td>2.29%</td><td>6,101</td><td>4</td></tr>
+<tr><td>near_1_1</td><td>Equal</td><td>4.82%</td><td>0.40%</td><td>6,267</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Entry</td><td>-7.50%</td><td>7.73%</td><td>4,362</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Daily</td><td>-7.45%</td><td>7.67%</td><td>4,365</td><td>9</td></tr>
+<tr><td>combined_flat</td><td>Equal</td><td>-11.17%</td><td>11.20%</td><td>4,615</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Entry</td><td>-1.62%</td><td>5.58%</td><td>6,517</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Daily</td><td>-1.60%</td><td>5.58%</td><td>6,519</td><td>2</td></tr>
+<tr><td>combined_steep</td><td>Equal</td><td>-5.14%</td><td>5.26%</td><td>7,029</td><td>0</td></tr>
+</tbody></table>
+<p class="caption">Table 22. SIMULATED end grouping sensitivity / FULL</p>
+<table><thead><tr><th>Case</th><th>Mode</th><th>Return</th><th>Max drop</th><th>Fees INR</th><th>Adjustments</th></tr></thead><tbody>
+<tr><td>primary</td><td>Entry</td><td>14.00%</td><td>2.54%</td><td>17,864</td><td>0</td></tr>
+<tr><td>primary</td><td>Daily</td><td>13.89%</td><td>2.52%</td><td>17,879</td><td>13</td></tr>
+<tr><td>primary</td><td>Equal</td><td>2.37%</td><td>2.02%</td><td>18,219</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Entry</td><td>15.20%</td><td>2.44%</td><td>11,952</td><td>0</td></tr>
+<tr><td>fee_2</td><td>Daily</td><td>15.13%</td><td>2.41%</td><td>11,961</td><td>12</td></tr>
+<tr><td>fee_2</td><td>Equal</td><td>3.61%</td><td>1.90%</td><td>12,227</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Entry</td><td>1.53%</td><td>3.62%</td><td>16,735</td><td>0</td></tr>
+<tr><td>slip_10</td><td>Daily</td><td>1.57%</td><td>3.61%</td><td>16,750</td><td>11</td></tr>
+<tr><td>slip_10</td><td>Equal</td><td>-9.23%</td><td>9.59%</td><td>17,151</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Entry</td><td>-13.17%</td><td>14.16%</td><td>15,449</td><td>0</td></tr>
+<tr><td>slip_25</td><td>Daily</td><td>-13.15%</td><td>14.10%</td><td>15,458</td><td>11</td></tr>
+<tr><td>slip_25</td><td>Equal</td><td>-24.19%</td><td>24.20%</td><td>15,692</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Entry</td><td>14.10%</td><td>2.55%</td><td>15,717</td><td>0</td></tr>
+<tr><td>vol_1_0</td><td>Daily</td><td>14.15%</td><td>2.55%</td><td>15,726</td><td>13</td></tr>
+<tr><td>vol_1_0</td><td>Equal</td><td>-2.26%</td><td>3.29%</td><td>15,503</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Entry</td><td>13.90%</td><td>2.55%</td><td>20,314</td><td>0</td></tr>
+<tr><td>vol_1_5</td><td>Daily</td><td>14.19%</td><td>2.55%</td><td>20,348</td><td>7</td></tr>
+<tr><td>vol_1_5</td><td>Equal</td><td>8.53%</td><td>1.68%</td><td>21,996</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Entry</td><td>-0.36%</td><td>2.97%</td><td>15,818</td><td>0</td></tr>
+<tr><td>near_0_9</td><td>Daily</td><td>-0.39%</td><td>2.96%</td><td>15,815</td><td>13</td></tr>
+<tr><td>near_0_9</td><td>Equal</td><td>-9.01%</td><td>9.56%</td><td>16,428</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Entry</td><td>29.94%</td><td>2.89%</td><td>19,915</td><td>0</td></tr>
+<tr><td>near_1_1</td><td>Daily</td><td>29.97%</td><td>2.89%</td><td>19,929</td><td>4</td></tr>
+<tr><td>near_1_1</td><td>Equal</td><td>14.34%</td><td>0.65%</td><td>20,024</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Entry</td><td>-22.14%</td><td>22.18%</td><td>12,302</td><td>0</td></tr>
+<tr><td>combined_flat</td><td>Daily</td><td>-22.15%</td><td>22.19%</td><td>12,309</td><td>14</td></tr>
+<tr><td>combined_flat</td><td>Equal</td><td>-32.05%</td><td>32.07%</td><td>12,352</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Entry</td><td>-6.29%</td><td>9.35%</td><td>18,833</td><td>0</td></tr>
+<tr><td>combined_steep</td><td>Daily</td><td>-6.28%</td><td>9.35%</td><td>18,834</td><td>1</td></tr>
+<tr><td>combined_steep</td><td>Equal</td><td>-15.57%</td><td>15.59%</td><td>20,113</td><td>0</td></tr>
+</tbody></table>
+<p class="pagebreak">&nbsp;</p>
+<h1>Appendix C. Formulas, reconciliation and implementation details</h1>
+<p class="">Simple return and growth: total return = E_end / E_initial - 1; CAGR = (E_end/E_initial)^(1/elapsed_calendar_years) - 1. Daily returns use the final included account mark each session, with initial capital for the first denominator. Drawdown = E_t / max(E_initial, max_prior E) - 1. CAGR uses 365.25 days/year; option maturity uses 365 days/year.</p>
+<p class="">Sharpe = sqrt(252) x mean(daily return - annual RF/252) / sample std of those excess returns. The implemented Sortino substitutes sample std of the negative excess observations. Calmar = CAGR / abs(maximum drawdown). Profit factor = total positive completed net P&amp;L / absolute total negative completed net P&amp;L. Expectancy = mean completed net P&amp;L.</p>
+<p class="">Individual call delta = exp(-q tau) N(d1); gamma = exp(-q tau) phi(d1)/(S sigma sqrt(tau)); vega per percentage point = S exp(-q tau) phi(d1) sqrt(tau)/100. Passage-of-time theta per calendar day is [-S exp(-q tau) phi(d1) sigma/(2 sqrt(tau)) - r K exp(-r tau) N(d2) + q S exp(-q tau) N(d1)]/365. Expired calls use max(S-K,0), delta 1/0/0.5 for in/out/at-the-money and other expired Greeks zero. Expired contracts are not opened as new calendars.</p>
+<p class="">Proxy final equity = initial capital + closed net P&amp;L + open gross P&amp;L - open entry fee. Calendar final equity = initial capital + completed signal net P&amp;L + open signal net P&amp;L. Closed net P&amp;L already includes its fees, so total fees must not be subtracted again. Separate fill reconstructions verify cumulative cash, fixed quantities, fee arithmetic and market values. Calendar reserved collateral is not another asset added to equity.</p>
+<p class="">Input validation rejects nonfinite/negative costs and nonpositive capital/prices/quantities. Proxy entry sizing requires fee rate below one for positive quantity; option adverse sell slippage requires slippage rate below one for positive premium fills. These are mathematical conditions, not arbitrary fee caps. Nonfinite or nonpositive equity triggers explicit insolvency.</p>
+<h1>Appendix D. Reproducibility and evidence inventory</h1>
+<p class="note">CSV SHA-256: e7e1e8c8e0c02b03103eef80bca71dd56ee3de128bf2f79435936a66d84eb6ae</p>
+<p class="">Run from the repository root after installing the saved environment’s dependencies. The data path is local and must be replaced on another machine. Research commands require NEW output directories. The current assembly only reads saved results; it does not execute these research commands.</p>
+<p class="note">python -m src.futures_proxy --data &quot;PATH/NIFTY_50_minute.csv&quot; --output results/stage2_repeat</p>
+<p class="note">python -m src.simulated_calendars --data &quot;PATH/NIFTY_50_minute.csv&quot; --output results/stage3_repeat</p>
+<p class="note">python -m tests.verify_futures_proxy_outputs results/stage2_futures_proxy_20261007_completed</p>
+<p class="note">python -m tests.verify_simulated_calendar_outputs results/stage3_SIMULATED_calendars_20261007_completed</p>
+<p class="note">python -m pytest -q; python -m ruff check .; python -m black --check .</p>
+<p class="caption">Table 23. Evidence and accompanying material</p>
+<table><thead><tr><th>Material</th><th>Location / meaning</th></tr></thead><tbody>
+<tr><td>Stage 1 audit</td><td>DISCREPANCY_RESOLUTION.md; verification/discrepancy_fix/</td></tr>
+<tr><td>Stage 2 completed research</td><td>results/stage2_futures_proxy_20261007_completed/</td></tr>
+<tr><td>Stage 3 completed SIMULATED research</td><td>results/stage3_SIMULATED_calendars_20261007_completed/</td></tr>
+<tr><td>Full saved metric summaries</td><td>supplements/futures_all_runs.csv and options_all_runs.csv</td></tr>
+<tr><td>Annual outcomes and common-rate comparisons</td><td>supplements/annual_* and stage2_comparison.csv</td></tr>
+<tr><td>Pricing/causality/accounting evidence</td><td>supplements/*verification*.json and completed-stage checks/</td></tr>
+<tr><td>Plot sources / figure exports</td><td>supplements/*session_equity.csv; figures/*.png and *.svg</td></tr>
+<tr><td>Immutable source identification</td><td>source_manifest.json; assembly_verification.json</td></tr>
+</tbody></table>
+<p class="">The full leg, fill, signal and Greek histories are retained in the completed research directories rather than printed as thousands of rows in the paper. Appendix tables summarize every run. Known incomplete attempts and pre-correction backups are not used as final results. Author-review items accompany the draft separately. No submission, commit or push is performed.</p></body></html>

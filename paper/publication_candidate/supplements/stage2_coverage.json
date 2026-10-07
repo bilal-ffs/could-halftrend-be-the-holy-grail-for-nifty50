@@ -1,0 +1,50 @@
+{
+  "loading": {
+    "data_audit": {
+      "source": "C:\\Users\\beqmd\\Documents\\QuantResearch\\data\\NIFTY_50_minute.csv",
+      "duplicate_policy": "exclude",
+      "source_rows": 975321,
+      "duplicate_rows": 8,
+      "conflicting_groups": 4,
+      "conflicting_rows": 8,
+      "excluded_rows": 8,
+      "volume_available": false,
+      "timezone": "Asia/Kolkata",
+      "timestamp_format": "%d-%m-%Y %H:%M"
+    }
+  },
+  "interpretations": {
+    "start": {
+      "minute_label": "start",
+      "include_evening": false,
+      "partial_bar_policy": "exclude",
+      "timezone": "Asia/Kolkata",
+      "regular_minutes": 974701,
+      "evening_minutes": 612,
+      "outside_minutes": 0,
+      "partial_bars": 41,
+      "excluded_bars": 81,
+      "included_bars": 64951,
+      "volume_available": false,
+      "retained_bars": 64951,
+      "first": "2015-01-09 09:15:00+05:30",
+      "last": "2025-07-25 15:15:00+05:30"
+    },
+    "end": {
+      "minute_label": "end",
+      "include_evening": false,
+      "partial_bar_policy": "exclude",
+      "timezone": "Asia/Kolkata",
+      "regular_minutes": 972101,
+      "evening_minutes": 612,
+      "outside_minutes": 2600,
+      "partial_bars": 5265,
+      "excluded_bars": 5295,
+      "included_bars": 62349,
+      "volume_available": false,
+      "retained_bars": 62349,
+      "first": "2015-01-09 09:15:00+05:30",
+      "last": "2025-07-25 15:00:00+05:30"
+    }
+  }
+}

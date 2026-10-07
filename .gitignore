@@ -3,3 +3,13 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ruff_cache/
+
+# Intermediate publication exports; keep only paper/publication_candidate/.
+/paper/HalfTrend_NIFTY50_Publication_Candidate/
+/paper/HalfTrend_NIFTY50_Publication_Candidate_Final/
+/paper/HalfTrend_NIFTY50_Publication_Candidate_Ready/
+/paper/Publication_Candidate_Editorial_Final/
+/paper/Publication_Candidate_Final/
+/paper/publication_candidate/layout_inspection/
+/paper/HalfTrend_NIFTY50_Review_Draft/layout_preview*/
+/paper/HalfTrend_NIFTY50_Review_Draft/layout_verified_*/

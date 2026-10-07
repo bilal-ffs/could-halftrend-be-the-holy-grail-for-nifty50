@@ -1,0 +1,18 @@
+AUTHOR REVIEW BEFORE SSRN SUBMISSION
+
+1. Supply correspondence email and confirm full institution name / CU '28 wording.
+2. Recover exact Kaggle dataset URL, uploader, version/download date and usage terms;
+   or explicitly resolve the provenance limitation before external submission.
+3. Record TradingView verification dates, matched timestamps, symbol/feed and evidence.
+4. Confirm funding, competing interests and the AI-use disclosure.
+5. Add exact original HalfTrend Pine publication/version and attribution terms.
+6. Review every claim/table, especially simulated pricing, unequal exposure,
+   previously examined OOS and untested leveraged-futures capital illustration.
+7. This draft has no confidence intervals or statistical significance claims.
+   Add dependence-aware inference before making inferential superiority claims.
+8. Review exported PDF formatting and replace every bracketed author placeholder.
+9. Ensure repository revision and dependencies are available to readers; clarify
+   code/data reuse rights. Nothing has been submitted, committed or pushed here.
+
+The Word document is an editable author-review draft, not a submission-ready certification.
+Large ledgers remain in prior completed result folders; all run summaries are included.

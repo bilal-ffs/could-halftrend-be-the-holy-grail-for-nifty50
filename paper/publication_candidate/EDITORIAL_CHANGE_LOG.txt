@@ -1,0 +1,9 @@
+Editorial changes
+
+- Applied the neutral requested title and removed promotional framing, reader-facing instructions and author placeholders.
+- Defined the reference configuration (amplitude = 3, channel deviation = 2); amplitude is a completed 15-minute-bar lookback. Separated it from the author-reported primary start-labeled data convention.
+- Disclosed conflicting archived claims about amplitude selection timing and used the requested conservative statement.
+- Clarified that the previously examined holdout is not independent validation; distinguished separate slippage/delay tests and index-point from premium-bps stress results.
+- Rewrote the discussion around the supplied return/drawdown findings and limits, retaining the distinction between proxy, SIMULATED prices, observed market data, and alpha evidence.
+- Redesigned charts, tables, headings, references and page furniture; moved complete run summaries and implementation/audit history to the supplement.
+- Preserved supplied metrics and results; no strategy code or data changed.
