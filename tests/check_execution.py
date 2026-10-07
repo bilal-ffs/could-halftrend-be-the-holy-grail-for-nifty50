@@ -1,18 +1,14 @@
 from src.data import load_minute_data, resample_to_15m
 from src.halftrend import calculate_halftrend
-from src.trading import generate_long_only_trades
 from src.portfolio import build_equity_curve
+from src.trading import generate_long_only_trades
 
-
-DATA_PATH = (
-    r"C:\Users\beqmd\Documents\QuantResearch"
-    r"\data\NIFTY_50_minute.csv"
-)
+DATA_PATH = r"C:\Users\beqmd\Documents\QuantResearch" r"\data\NIFTY_50_minute.csv"
 
 INITIAL_CAPITAL = 100_000.0
 
 df = load_minute_data(DATA_PATH)
-df15 = resample_to_15m(df).iloc[:1000]
+df15 = resample_to_15m(df, minute_label="start").iloc[:1000]
 
 ht = calculate_halftrend(df15)
 

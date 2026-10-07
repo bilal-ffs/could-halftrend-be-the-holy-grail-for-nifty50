@@ -6,6 +6,7 @@ def main():
     trades = [
         {
             "trade": 1,
+            "quantity": 1.0,
             "entry_price": 20_000.0,
             "exit_price": 20_500.0,
             "gross_pnl": 500.0,

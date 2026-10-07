@@ -3,6 +3,8 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
+from src.validation import finite_scalar, numeric_columns, validate_index
+
 
 def calculate_halftrend(
     df: pd.DataFrame,
@@ -40,6 +42,17 @@ def calculate_halftrend(
 
     and reproduces its stateful trend logic.
     """
+    if isinstance(amplitude, bool) or not isinstance(amplitude, (int, np.integer)):
+        raise TypeError("amplitude must be a positive integer.")
+    finite_scalar(channel_deviation, "channel_deviation", nonnegative=True)
+    validate_index(df.index)
+    numeric_columns(df, ["open", "high", "low", "close"], positive=True)
+    if (df.high < df[["open", "low", "close"]].max(axis=1)).any() or (
+        df.low > df[["open", "high", "close"]].min(axis=1)
+    ).any():
+        raise ValueError("Inconsistent OHLC bounds.")
+    if df.empty:
+        raise ValueError("Indicator input cannot be empty.")
     if amplitude < 1:
         raise ValueError("amplitude must be >= 1")
 
@@ -50,9 +63,7 @@ def calculate_halftrend(
     missing = required - set(df.columns)
 
     if missing:
-        raise ValueError(
-            f"Missing required columns: {sorted(missing)}"
-        )
+        raise ValueError(f"Missing required columns: {sorted(missing)}")
 
     data = df.copy()
 
@@ -95,10 +106,7 @@ def calculate_halftrend(
         alpha = 1.0 / 100.0
 
         for i in range(100, n):
-            atr[i] = (
-                (1.0 - alpha) * atr[i - 1]
-                + alpha * true_range[i]
-            )
+            atr[i] = (1.0 - alpha) * atr[i - 1] + alpha * true_range[i]
 
     atr2 = atr / 2.0
     dev = channel_deviation * atr2
@@ -128,19 +136,9 @@ def calculate_halftrend(
     # lowma  = ta.sma(low, amplitude)
     # ------------------------------------------------------------------
 
-    high_ma = (
-        data["high"]
-        .rolling(amplitude)
-        .mean()
-        .to_numpy(dtype=float)
-    )
+    high_ma = data["high"].rolling(amplitude).mean().to_numpy(dtype=float)
 
-    low_ma = (
-        data["low"]
-        .rolling(amplitude)
-        .mean()
-        .to_numpy(dtype=float)
-    )
+    low_ma = data["low"].rolling(amplitude).mean().to_numpy(dtype=float)
 
     # ------------------------------------------------------------------
     # Stateful HalfTrend variables.
@@ -313,11 +311,7 @@ def calculate_halftrend(
 
         # Pine:
         # ht = trend == 0 ? up : down
-        halftrend[i] = (
-            up[i]
-            if trend[i] == 0
-            else down[i]
-        )
+        halftrend[i] = up[i] if trend[i] == 0 else down[i]
 
         # Pine:
         # buySignal =
@@ -332,15 +326,11 @@ def calculate_halftrend(
 
         if i > 0:
             buy_signal[i] = (
-                not np.isnan(arrow_up[i])
-                and trend[i] == 0
-                and trend[i - 1] == 1
+                not np.isnan(arrow_up[i]) and trend[i] == 0 and trend[i - 1] == 1
             )
 
             sell_signal[i] = (
-                not np.isnan(arrow_down[i])
-                and trend[i] == 1
-                and trend[i - 1] == 0
+                not np.isnan(arrow_down[i]) and trend[i] == 1 and trend[i - 1] == 0
             )
 
     result = data.copy()

@@ -1,0 +1,67 @@
+{
+  "verdict": "INCONCLUSIVE: timestamp interpretation changes a directional conclusion.",
+  "timestamp_direction_changed": true,
+  "all_oos_stress_expectancies_positive": false,
+  "directional_checks": [
+    {
+      "period": "FULL",
+      "scenario": "delay_2",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "FULL",
+      "scenario": "net",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "FULL",
+      "scenario": "slip_1",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "FULL",
+      "scenario": "slip_2",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "IS",
+      "scenario": "delay_2",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "IS",
+      "scenario": "net",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "IS",
+      "scenario": "slip_1",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "IS",
+      "scenario": "slip_2",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "OOS",
+      "scenario": "delay_2",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "OOS",
+      "scenario": "net",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "OOS",
+      "scenario": "slip_1",
+      "timestamp_direction_changed": false
+    },
+    {
+      "period": "OOS",
+      "scenario": "slip_2",
+      "timestamp_direction_changed": true
+    }
+  ]
+}

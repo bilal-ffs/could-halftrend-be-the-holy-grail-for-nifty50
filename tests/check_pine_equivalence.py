@@ -6,11 +6,7 @@ import pandas as pd
 from src.data import load_minute_data, resample_to_15m
 from src.halftrend import calculate_halftrend
 
-
-DATA_PATH = (
-    r"C:\Users\beqmd\Documents\QuantResearch"
-    r"\data\NIFTY_50_minute.csv"
-)
+DATA_PATH = r"C:\Users\beqmd\Documents\QuantResearch" r"\data\NIFTY_50_minute.csv"
 
 AMPLITUDE = 3
 CHANNEL_DEVIATION = 2
@@ -79,18 +75,12 @@ def pine_reference(df: pd.DataFrame) -> pd.DataFrame:
     length = 100
 
     if n >= length:
-        atr[length - 1] = (
-            true_range[:length].mean()
-        )
+        atr[length - 1] = true_range[:length].mean()
 
         for i in range(length, n):
-            atr[i] = (
-                atr[i - 1] * (length - 1)
-                + true_range[i]
-            ) / length
+            atr[i] = (atr[i - 1] * (length - 1) + true_range[i]) / length
 
     atr2 = atr / 2.0
-    dev = CHANNEL_DEVIATION * atr2
 
     # --------------------------------------------------------------
     # Stateful HalfTrend logic.
@@ -127,13 +117,9 @@ def pine_reference(df: pd.DataFrame) -> pd.DataFrame:
         lowest_value = np.min(low_window)
 
         # Most recent occurrence, matching Pine's offset behavior.
-        high_positions = np.where(
-            high_window == highest_value
-        )[0]
+        high_positions = np.where(high_window == highest_value)[0]
 
-        low_positions = np.where(
-            low_window == lowest_value
-        )[0]
+        low_positions = np.where(low_window == lowest_value)[0]
 
         high_index = start + high_positions[-1]
         low_index = start + low_positions[-1]
@@ -146,28 +132,16 @@ def pine_reference(df: pd.DataFrame) -> pd.DataFrame:
         # ----------------------------------------------------------
 
         if i + 1 >= AMPLITUDE:
-            highma = high[
-                i - AMPLITUDE + 1 : i + 1
-            ].mean()
+            highma = high[i - AMPLITUDE + 1 : i + 1].mean()
 
-            lowma = low[
-                i - AMPLITUDE + 1 : i + 1
-            ].mean()
+            lowma = low[i - AMPLITUDE + 1 : i + 1].mean()
         else:
             highma = np.nan
             lowma = np.nan
 
-        previous_low = (
-            low[i - 1]
-            if i > 0
-            else low[i]
-        )
+        previous_low = low[i - 1] if i > 0 else low[i]
 
-        previous_high = (
-            high[i - 1]
-            if i > 0
-            else high[i]
-        )
+        previous_high = high[i - 1] if i > 0 else high[i]
 
         # ----------------------------------------------------------
         # TREND LOGIC
@@ -214,15 +188,8 @@ def pine_reference(df: pd.DataFrame) -> pd.DataFrame:
 
         if current_trend == 0:
 
-            if (
-                not np.isnan(previous_trend)
-                and previous_trend != 0
-            ):
-                current_up = (
-                    current_down
-                    if np.isnan(previous_down)
-                    else previous_down
-                )
+            if not np.isnan(previous_trend) and previous_trend != 0:
+                current_up = current_down if np.isnan(previous_down) else previous_down
 
                 if not np.isnan(atr2[i]):
                     arrow_up = True
@@ -239,15 +206,8 @@ def pine_reference(df: pd.DataFrame) -> pd.DataFrame:
 
         else:
 
-            if (
-                not np.isnan(previous_trend)
-                and previous_trend != 1
-            ):
-                current_down = (
-                    current_up
-                    if np.isnan(previous_up)
-                    else previous_up
-                )
+            if not np.isnan(previous_trend) and previous_trend != 1:
+                current_down = current_up if np.isnan(previous_up) else previous_up
 
                 if not np.isnan(atr2[i]):
                     arrow_down = True
@@ -271,23 +231,11 @@ def pine_reference(df: pd.DataFrame) -> pd.DataFrame:
         # Signals
         # ----------------------------------------------------------
 
-        previous_trend_value = (
-            previous_trend
-            if not np.isnan(previous_trend)
-            else None
-        )
+        previous_trend_value = previous_trend if not np.isnan(previous_trend) else None
 
-        buy_signal[i] = (
-            arrow_up
-            and current_trend == 0
-            and previous_trend_value == 1
-        )
+        buy_signal[i] = arrow_up and current_trend == 0 and previous_trend_value == 1
 
-        sell_signal[i] = (
-            arrow_down
-            and current_trend == 1
-            and previous_trend_value == 0
-        )
+        sell_signal[i] = arrow_down and current_trend == 1 and previous_trend_value == 0
 
         # ----------------------------------------------------------
         # Store state for next bar.
@@ -330,56 +278,42 @@ def compare_series(
     Compare two series and print diagnostic information.
     """
 
+    if not reference.index.equals(implementation.index):
+        raise ValueError("Reference and implementation indices differ.")
+    masks_match = reference.isna().equals(implementation.isna())
     if reference.dtype == bool:
         matches = reference.equals(implementation)
     else:
-        valid = (
-            reference.notna()
-            & implementation.notna()
-        )
+        valid = reference.notna() & implementation.notna()
 
-        matches = np.allclose(
+        matches = masks_match and np.allclose(
             reference[valid].to_numpy(),
             implementation[valid].to_numpy(),
             atol=tolerance,
             rtol=0,
         )
 
-    print(
-        f"{name:<15} : "
-        f"{'PASS' if matches else 'FAIL'}"
-    )
+    print(f"{name:<15} : " f"{'PASS' if matches else 'FAIL'}")
 
     if not matches:
 
         if reference.dtype == bool:
 
-            differences = (
-                reference != implementation
-            )
+            differences = reference != implementation
 
         else:
 
-            differences = (
-                (reference - implementation).abs()
-                > tolerance
+            differences = ((reference - implementation).abs() > tolerance) | (
+                reference.isna() != implementation.isna()
             )
 
-        diff_count = int(
-            differences.sum()
-        )
+        diff_count = int(differences.sum())
 
-        print(
-            f"  Differences: {diff_count:,}"
-        )
+        print(f"  Differences: {diff_count:,}")
 
-        first = differences[
-            differences
-        ].index[0]
+        first = differences[differences].index[0]
 
-        print(
-            f"  First difference: {first}"
-        )
+        print(f"  First difference: {first}")
 
         print(
             "  Reference:",
@@ -404,28 +338,18 @@ def main():
     # Load the same 15-minute dataset used by the research.
     # --------------------------------------------------------------
 
-    minute_data = load_minute_data(
-        DATA_PATH
-    )
+    minute_data = load_minute_data(DATA_PATH)
 
-    data_15m = resample_to_15m(
-        minute_data
-    )
+    data_15m = resample_to_15m(minute_data, minute_label="start")
 
     # Use the full dataset.
     # --------------------------------------------------------------
 
-    reference = pine_reference(
-        data_15m
-    )
+    reference = pine_reference(data_15m)
 
-    implementation = calculate_halftrend(
-        data_15m
-    )
+    implementation = calculate_halftrend(data_15m)
 
-    print(
-        f"Bars tested: {len(data_15m):,}"
-    )
+    print(f"Bars tested: {len(data_15m):,}")
 
     print()
 

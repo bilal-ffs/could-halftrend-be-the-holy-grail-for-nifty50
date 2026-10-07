@@ -1,0 +1,11 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "tests.verify_futures_proxy_outputs",
+    "results\\stage2_futures_proxy_20261007_completed"
+  ],
+  "exit_code": 0,
+  "runs": 60,
+  "original_31_results_unchanged": true
+}

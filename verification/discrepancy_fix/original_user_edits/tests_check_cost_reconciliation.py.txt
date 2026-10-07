@@ -1,0 +1,147 @@
+from __future__ import annotations
+
+import pandas as pd
+
+from src.costs import (
+    apply_transaction_costs,
+    build_cost_adjusted_equity_curve,
+)
+from src.data import load_minute_data, resample_to_15m
+from src.halftrend import calculate_halftrend
+from src.research import split_is_oos
+from src.trading import generate_trade_ledger
+
+
+DATA_PATH = (
+    r"C:\Users\beqmd\Documents\QuantResearch"
+    r"\data\NIFTY_50_minute.csv"
+)
+
+INITIAL_CAPITAL = 100_000.0
+
+
+def compound_trade_returns(
+    trades: pd.DataFrame,
+    cost_bps: float,
+) -> float:
+    """
+    Compound the capital return of each completed trade.
+
+    The portfolio deploys 100% of available capital per trade.
+    """
+
+    rate = cost_bps / 10_000.0
+
+    capital = INITIAL_CAPITAL
+
+    for _, trade in trades.iterrows():
+
+        entry_price = float(
+            trade["entry_price"]
+        )
+
+        exit_price = float(
+            trade["exit_price"]
+        )
+
+        trade_factor = (
+            (1.0 - rate)
+            * (exit_price / entry_price)
+            * (1.0 - rate)
+        )
+
+        capital *= trade_factor
+
+    return capital
+
+
+def main():
+
+    minute_data = load_minute_data(
+        DATA_PATH
+    )
+
+    data_15m = resample_to_15m(
+        minute_data
+    )
+
+    is_data, _ = split_is_oos(
+        data_15m
+    )
+
+    halftrend = calculate_halftrend(
+        is_data
+    )
+
+    ledger = generate_trade_ledger(
+        halftrend
+    )
+
+    print("Cost reconciliation")
+    print("=" * 60)
+
+    for bps in [0.0, 5.0, 8.0, 10.0]:
+
+        # ----------------------------------------------------------
+        # Costed trade ledger.
+        # ----------------------------------------------------------
+        costed = apply_transaction_costs(
+            ledger,
+            cost_bps=bps,
+        )
+
+        # ----------------------------------------------------------
+        # Bar-by-bar portfolio equity.
+        # ----------------------------------------------------------
+        equity = build_cost_adjusted_equity_curve(
+            halftrend,
+            initial_capital=INITIAL_CAPITAL,
+            cost_bps=bps,
+        )
+
+        # ----------------------------------------------------------
+        # Independent trade-level compounding.
+        # ----------------------------------------------------------
+        compounded = compound_trade_returns(
+            ledger,
+            cost_bps=bps,
+        )
+
+        equity_final = float(
+            equity.iloc[-1]
+        )
+
+        difference = (
+            equity_final - compounded
+        )
+
+        print()
+        print(f"{bps:.0f} bps/side")
+        print("-" * 60)
+
+        print(
+            f"Equity curve:      "
+            f"{equity_final:.10f}"
+        )
+
+        print(
+            f"Trade compounding: "
+            f"{compounded:.10f}"
+        )
+
+        print(
+            f"Difference:        "
+            f"{difference:.10f}"
+        )
+
+        if abs(difference) > 1e-6:
+            raise AssertionError(
+                f"Reconciliation failed at {bps} bps."
+            )
+
+    print()
+    print("RESULT: PASS")
+
+
+if __name__ == "__main__":
+    main()

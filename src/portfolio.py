@@ -1,115 +1,38 @@
-from __future__ import annotations
+"""Gross equity wrapper and validated return conversion."""
 
+import numpy as np
 import pandas as pd
 
+from src.accounting import simulate_portfolio
+from src.validation import finite_scalar, numeric_columns, validate_index
 
-def build_equity_curve(
-    df: pd.DataFrame,
-    initial_capital: float = 100_000.0,
-) -> pd.Series:
+
+def build_equity_curve(df, initial_capital=100_000.0):
+    return simulate_portfolio(df, initial_capital=initial_capital, cost_bps=0.0).equity
+
+
+def equity_to_returns(equity, *, initial_capital=None):
+    """Periodic returns; explicit capital includes a possible first-period loss.
+
+    If omitted, first equity is the starting baseline (legacy wrapper behavior).
+    No forward filling missing marks and no replacement of invalid ratios.
     """
-    Build the long-only equity curve from HalfTrend signals.
-
-    Signals generated at the close of bar N are executed at the
-    open of bar N+1.
-
-    Parameters
-    ----------
-    df:
-        DataFrame containing:
-        open, close, buy_signal, sell_signal.
-
-    initial_capital:
-        Starting portfolio value.
-
-    Returns
-    -------
-    pandas.Series
-        Portfolio equity indexed by bar timestamp.
-    """
-    required = {
-        "open",
-        "close",
-        "buy_signal",
-        "sell_signal",
-    }
-
-    missing = required - set(df.columns)
-
-    if missing:
-        raise ValueError(
-            f"Missing required columns: {sorted(missing)}"
-        )
-
-    equity = pd.Series(
-        initial_capital,
-        index=df.index,
-        name="equity",
-        dtype=float,
-    )
-
-    capital = initial_capital
-    in_position = False
-    entry_price: float | None = None
-
-    for i in range(1, len(df)):
-        previous_close = float(df["close"].iloc[i - 1])
-        current_open = float(df["open"].iloc[i])
-        current_close = float(df["close"].iloc[i])
-
-        previous_buy = bool(df["buy_signal"].iloc[i - 1])
-        previous_sell = bool(df["sell_signal"].iloc[i - 1])
-
-        # --------------------------------------------------------------
-        # Execute previous-bar signal at current-bar open.
-        # --------------------------------------------------------------
-        if previous_buy and not in_position:
-            entry_price = current_open
-            in_position = True
-
-            # Enter at the current bar's open, then mark the position
-            # to the current bar's close.
-            capital *= current_close / current_open
-            equity.iloc[i] = capital
-
-        elif previous_sell and in_position:
-            if entry_price is None:
-                raise RuntimeError(
-                    "Exit occurred without an entry price."
-                )
-
-            capital *= current_open / previous_close
-            equity.iloc[i] = capital
-
-            in_position = False
-            entry_price = None
-
-        # --------------------------------------------------------------
-        # While long, mark the portfolio to the current close.
-        # --------------------------------------------------------------
-        elif in_position:
-            capital *= current_close / previous_close
-            equity.iloc[i] = capital
-
-        else:
-            equity.iloc[i] = capital
-
-    return equity
-
-
-def equity_to_returns(
-    equity: pd.Series,
-) -> pd.Series:
-    """
-    Convert an equity curve into periodic returns.
-    """
+    validate_index(equity.index)
     if equity.empty:
-        return equity.rename("strategy_return")
-
-    returns = equity.pct_change()
-
-    returns = returns.fillna(0.0)
-
-    returns.name = "strategy_return"
-
-    return returns
+        raise ValueError("Equity cannot be empty.")
+    numeric_columns(pd.DataFrame({"equity": equity}), ["equity"], positive=True)
+    values = equity.to_numpy(dtype=float)
+    if not np.isfinite(values).all() or (values <= 0).any():
+        raise ValueError(
+            "Equity must be finite and positive; insolvency is not masked."
+        )
+    baseline = (
+        values[0]
+        if initial_capital is None
+        else finite_scalar(initial_capital, "initial_capital", positive=True)
+    )
+    returns = equity.pct_change(fill_method=None)
+    returns.iloc[0] = values[0] / baseline - 1
+    if not np.isfinite(returns.to_numpy()).all():
+        raise ValueError("Equity returns are nonfinite.")
+    return returns.rename("strategy_return")

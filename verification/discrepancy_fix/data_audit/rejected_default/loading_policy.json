@@ -1,0 +1,12 @@
+{
+  "source": "C:\\Users\\beqmd\\Documents\\QuantResearch\\data\\NIFTY_50_minute.csv",
+  "duplicate_policy": "reject",
+  "source_rows": 975321,
+  "duplicate_rows": 8,
+  "conflicting_groups": 4,
+  "conflicting_rows": 8,
+  "excluded_rows": 0,
+  "volume_available": false,
+  "timezone": "Asia/Kolkata",
+  "timestamp_format": "%d-%m-%Y %H:%M"
+}

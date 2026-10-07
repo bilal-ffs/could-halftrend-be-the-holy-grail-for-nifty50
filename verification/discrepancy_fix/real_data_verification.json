@@ -1,0 +1,60 @@
+{
+  "scope": "first 1000 retained bars only; no full research results regenerated",
+  "default_conflicting_duplicate_rejection": "4 conflicting duplicate timestamp groups; see verification\\discrepancy_fix\\data_audit\\rejected_default\\conflicting_duplicates.csv.",
+  "data_policy": {
+    "source": "C:\\Users\\beqmd\\Documents\\QuantResearch\\data\\NIFTY_50_minute.csv",
+    "duplicate_policy": "exclude",
+    "source_rows": 975321,
+    "duplicate_rows": 8,
+    "conflicting_groups": 4,
+    "conflicting_rows": 8,
+    "excluded_rows": 8,
+    "volume_available": false,
+    "timezone": "Asia/Kolkata",
+    "timestamp_format": "%d-%m-%Y %H:%M"
+  },
+  "session_policy": {
+    "minute_label": "start",
+    "include_evening": false,
+    "partial_bar_policy": "exclude",
+    "timezone": "Asia/Kolkata",
+    "regular_minutes": 974701,
+    "evening_minutes": 612,
+    "outside_minutes": 0,
+    "partial_bars": 41,
+    "excluded_bars": 81,
+    "included_bars": 64951,
+    "volume_available": false
+  },
+  "timestamp_evidence": {
+    "source": "Kaggle (user supplied); dataset URL not supplied",
+    "normal_session_observation_count": 375,
+    "normal_observed_range": "09:15 through 15:29",
+    "sessions_with_375_retained_minutes": 2568,
+    "selected_minute_label": "start",
+    "status": "coverage supports start labels; producer semantics unverified",
+    "raw_sha256": "e7e1e8c8e0c02b03103eef80bca71dd56ee3de128bf2f79435936a66d84eb6ae"
+  },
+  "baseline_cost_bps_per_side": 5.0,
+  "cost_basis": "underlying notional",
+  "slippage": "none simulated",
+  "sample_start_capital_time": "2015-01-09 09:15:00+05:30",
+  "sample_end_equity_time": "2015-03-11 09:30:00+05:30",
+  "baseline_reconciliation": {
+    "initial_capital": 100000.0,
+    "closed_net_pnl": -1508.0377867095444,
+    "closed_fees_included_in_net": 1597.5188029109408,
+    "open_gross_pnl": 0.0,
+    "open_entry_fee": 0.0,
+    "expected_final_equity": 98491.96221329046,
+    "actual_final_equity": 98491.96221329046,
+    "difference": 0.0
+  },
+  "causality": {
+    "cutoff": 500,
+    "historical_fills": 14,
+    "causal": true
+  },
+  "undefined_metrics": {},
+  "existing_results_unchanged": 31
+}

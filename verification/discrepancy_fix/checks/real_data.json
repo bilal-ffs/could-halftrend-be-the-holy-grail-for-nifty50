@@ -1,0 +1,8 @@
+{
+  "command": [
+    "C:\\Users\\beqmd\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-m",
+    "tests.verify_discrepancies"
+  ],
+  "exit_code": 0
+}

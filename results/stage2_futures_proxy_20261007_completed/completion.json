@@ -1,0 +1,66 @@
+{
+  "label": "index-based futures proxy",
+  "completed": true,
+  "runs": 60,
+  "pytest_passed": 103,
+  "checks": {
+    "pytest": {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0
+    },
+    "ruff": {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0
+    },
+    "black": {
+      "command": [
+        "python",
+        "-m",
+        "black",
+        "--check",
+        "."
+      ],
+      "exit_code": 0
+    },
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    "independent_export": {
+      "command": [
+        "python",
+        "-m",
+        "tests.verify_futures_proxy_outputs",
+        "results\\stage2_futures_proxy_20261007_completed"
+      ],
+      "exit_code": 0,
+      "runs": 60,
+      "original_31_results_unchanged": true
+    }
+  },
+  "independent_all_mark_reconstruction": true,
+  "zero_cost_baseline_equivalence": true,
+  "causal_checks": true,
+  "original_result_files_preserved": 31,
+  "raw_csv_preserved": true,
+  "commit": false,
+  "push": false,
+  "options_implemented": false,
+  "verdict": "INCONCLUSIVE",
+  "incomplete_attempt": "../stage2_futures_proxy_20261007"
+}

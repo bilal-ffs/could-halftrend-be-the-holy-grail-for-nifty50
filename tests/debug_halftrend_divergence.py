@@ -1,16 +1,10 @@
 from src.data import load_minute_data, resample_to_15m
 from src.halftrend import calculate_halftrend
 
-
-DATA_PATH = (
-    r"C:\Users\beqmd\Documents\QuantResearch"
-    r"\data\NIFTY_50_minute.csv"
-)
+DATA_PATH = r"C:\Users\beqmd\Documents\QuantResearch" r"\data\NIFTY_50_minute.csv"
 
 
-df = resample_to_15m(
-    load_minute_data(DATA_PATH)
-)
+df = resample_to_15m(load_minute_data(DATA_PATH), minute_label="start")
 
 ht = calculate_halftrend(df)
 
@@ -39,6 +33,4 @@ cols = [
 ]
 
 
-print(
-    ht.loc[start:end, cols].to_string()
-)
+print(ht.loc[start:end, cols].to_string())

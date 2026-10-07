@@ -1,0 +1,21 @@
+{
+  "changed_or_missing_bars": 64937,
+  "changed_or_missing_signal_bars": 4202,
+  "fills_by_signal": {
+    "IS": {
+      "both": 1038,
+      "left_only": 564,
+      "right_only": 522
+    },
+    "OOS": {
+      "both": 505,
+      "left_only": 295,
+      "right_only": 295
+    },
+    "FULL": {
+      "both": 1543,
+      "left_only": 859,
+      "right_only": 817
+    }
+  }
+}

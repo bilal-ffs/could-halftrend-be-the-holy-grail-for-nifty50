@@ -1,0 +1,374 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import pandas as pd
+
+from src.backtest import run_backtest
+from src.costs import (
+    apply_transaction_costs,
+    build_cost_adjusted_equity_curve,
+)
+from src.data import load_minute_data, resample_to_15m
+from src.halftrend import calculate_halftrend
+from src.portfolio import equity_to_returns
+from src.research import split_is_oos
+from src.trading import generate_trade_ledger
+
+
+DATA_PATH = (
+    r"C:\Users\beqmd\Documents\QuantResearch"
+    r"\data\NIFTY_50_minute.csv"
+)
+
+INITIAL_CAPITAL = 100_000.0
+
+COST_SCENARIOS = {
+    "gross_0bps": 0.0,
+    "base_5bps": 5.0,
+    "stress_8bps": 8.0,
+    "severe_10bps": 10.0,
+}
+
+RESULTS_DIR = Path("results")
+
+
+def run_scenario(
+    df: pd.DataFrame,
+    cost_bps: float,
+) -> tuple:
+
+    # --------------------------------------------------------------
+    # Calculate HalfTrend.
+    # --------------------------------------------------------------
+    halftrend = calculate_halftrend(df)
+
+    # --------------------------------------------------------------
+    # Generate the unchanged execution ledger.
+    # --------------------------------------------------------------
+    ledger = generate_trade_ledger(
+        halftrend
+    )
+
+    # --------------------------------------------------------------
+    # Apply proportional transaction costs to trade statistics.
+    # --------------------------------------------------------------
+    costed_ledger = apply_transaction_costs(
+        ledger,
+        cost_bps=cost_bps,
+    )
+
+    # --------------------------------------------------------------
+    # Build the actual cost-adjusted portfolio equity curve.
+    # --------------------------------------------------------------
+    equity = build_cost_adjusted_equity_curve(
+        halftrend,
+        initial_capital=INITIAL_CAPITAL,
+        cost_bps=cost_bps,
+    )
+
+    returns = equity_to_returns(
+        equity
+    )
+
+    # --------------------------------------------------------------
+    # QuantTools-backed analytics.
+    # --------------------------------------------------------------
+    trade_results = pd.Series(
+        costed_ledger["net_pnl"].to_numpy(),
+        name="trade_results",
+        dtype=float,
+    )
+
+    backtest = run_backtest(
+        df=halftrend,
+        equity=equity,
+        returns=returns,
+        trade_results=trade_results,
+    )
+
+    return (
+        backtest,
+        equity,
+        ledger,
+        costed_ledger,
+    )
+
+
+def save_scenario_results(
+    period_name: str,
+    scenario_name: str,
+    cost_bps: float,
+    backtest,
+    equity: pd.Series,
+    costed_ledger: pd.DataFrame,
+) -> None:
+
+    RESULTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    prefix = (
+        f"halftrend_"
+        f"{period_name.lower()}_"
+        f"{scenario_name}"
+    )
+
+    # --------------------------------------------------------------
+    # Summary
+    # --------------------------------------------------------------
+    summary = backtest.summary()
+
+    summary["cost_bps_per_side"] = cost_bps
+    summary["initial_equity"] = INITIAL_CAPITAL
+    summary["final_equity"] = float(
+        equity.iloc[-1]
+    )
+
+    summary_path = (
+        RESULTS_DIR /
+        f"{prefix}_summary.json"
+    )
+
+    with summary_path.open(
+        "w",
+        encoding="utf-8",
+    ) as f:
+        json.dump(
+            summary,
+            f,
+            indent=2,
+        )
+
+    # --------------------------------------------------------------
+    # Equity curve
+    # --------------------------------------------------------------
+    equity_path = (
+        RESULTS_DIR /
+        f"{prefix}_equity.csv"
+    )
+
+    equity.rename("equity").to_csv(
+        equity_path,
+        index=True,
+    )
+
+    # --------------------------------------------------------------
+    # Trade ledger
+    # --------------------------------------------------------------
+    trades_path = (
+        RESULTS_DIR /
+        f"{prefix}_trades.csv"
+    )
+
+    costed_ledger.to_csv(
+        trades_path,
+        index=False,
+    )
+
+
+def print_scenario(
+    scenario_name: str,
+    cost_bps: float,
+    backtest,
+    equity: pd.Series,
+    costed_ledger: pd.DataFrame,
+) -> None:
+
+    summary = backtest.summary()
+
+    total_cost = float(
+        costed_ledger["total_cost"].sum()
+    )
+
+    gross_pnl = float(
+        costed_ledger["gross_pnl"].sum()
+    )
+
+    net_pnl = float(
+        costed_ledger["net_pnl"].sum()
+    )
+
+    print()
+    print(
+        f"{scenario_name.upper()} "
+        f"({cost_bps:.0f} bps/side)"
+    )
+    print("-" * 60)
+
+    print(
+        f"Completed trades: "
+        f"{len(costed_ledger):,}"
+    )
+
+    print(
+        f"Gross trade P&L:  "
+        f"{gross_pnl:,.2f}"
+    )
+
+    print(
+        f"Transaction costs: "
+        f"{total_cost:,.2f}"
+    )
+
+    print(
+        f"Net trade P&L:    "
+        f"{net_pnl:,.2f}"
+    )
+
+    print()
+
+    print(
+        f"CAGR:             "
+        f"{summary['cagr']:.4%}"
+    )
+
+    print(
+        f"Sharpe:            "
+        f"{summary['sharpe_ratio']:.4f}"
+    )
+
+    print(
+        f"Sortino:           "
+        f"{summary['sortino_ratio']:.4f}"
+    )
+
+    print(
+        f"Calmar:            "
+        f"{summary['calmar_ratio']:.4f}"
+    )
+
+    print(
+        f"Max drawdown:      "
+        f"{summary['max_drawdown']:.4%}"
+    )
+
+    print(
+        f"Profit factor:     "
+        f"{summary['profit_factor']:.4f}"
+    )
+
+    print(
+        f"Expectancy:        "
+        f"{summary['expectancy']:.4f}"
+    )
+
+    print(
+        f"Win rate:          "
+        f"{summary['win_rate']:.4%}"
+    )
+
+    print(
+        f"Payoff ratio:      "
+        f"{summary['payoff_ratio']:.4f}"
+    )
+
+    print()
+
+    print(
+        f"Final equity:      "
+        f"₹{equity.iloc[-1]:,.2f}"
+    )
+
+
+def run_period(
+    period_name: str,
+    df: pd.DataFrame,
+) -> None:
+
+    print()
+    print("=" * 70)
+    print(
+        f"HALFTREND — "
+        f"{period_name.upper()} COST STRESS TEST"
+    )
+    print("=" * 70)
+
+    print(
+        f"Period: "
+        f"{df.index.min()} → {df.index.max()}"
+    )
+
+    print(
+        f"Bars: {len(df):,}"
+    )
+
+    for scenario_name, cost_bps in COST_SCENARIOS.items():
+
+        (
+            backtest,
+            equity,
+            ledger,
+            costed_ledger,
+        ) = run_scenario(
+            df,
+            cost_bps,
+        )
+
+        print_scenario(
+            scenario_name,
+            cost_bps,
+            backtest,
+            equity,
+            costed_ledger,
+        )
+
+        save_scenario_results(
+            period_name,
+            scenario_name,
+            cost_bps,
+            backtest,
+            equity,
+            costed_ledger,
+        )
+
+
+def main():
+
+    print()
+    print(
+        "=" * 70
+    )
+    print(
+        "HALFTREND — TRANSACTION COST ROBUSTNESS"
+    )
+    print(
+        "=" * 70
+    )
+
+    minute_data = load_minute_data(
+        DATA_PATH
+    )
+
+    data_15m = resample_to_15m(
+        minute_data
+    )
+
+    is_data, oos_data = split_is_oos(
+        data_15m
+    )
+
+    run_period(
+        "IS",
+        is_data,
+    )
+
+    run_period(
+        "OOS",
+        oos_data,
+    )
+
+    print()
+    print("=" * 70)
+    print("COST STRESS TEST COMPLETE")
+    print("=" * 70)
+
+    print()
+    print("Saved results under:")
+    print("  results/")
+
+
+if __name__ == "__main__":
+    main()

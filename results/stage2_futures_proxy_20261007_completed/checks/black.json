@@ -1,0 +1,10 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "black",
+    "--check",
+    "."
+  ],
+  "exit_code": 0
+}

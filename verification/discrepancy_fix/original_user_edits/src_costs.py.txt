@@ -1,0 +1,210 @@
+from __future__ import annotations
+
+import pandas as pd
+
+
+def apply_transaction_costs(
+    trades: pd.DataFrame,
+    cost_bps: float,
+) -> pd.DataFrame:
+    """
+    Apply proportional transaction costs to a completed trade ledger.
+
+    Costs are applied independently to entry and exit notional.
+
+    Parameters
+    ----------
+    trades:
+        Trade ledger containing entry_price, exit_price, and gross_pnl.
+
+    cost_bps:
+        Transaction cost in basis points per side.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Trade ledger with entry_cost, exit_cost,
+        total_cost, and net_pnl.
+    """
+
+    if cost_bps < 0:
+        raise ValueError(
+            "cost_bps must be greater than or equal to zero."
+        )
+
+    required = {
+        "entry_price",
+        "exit_price",
+        "gross_pnl",
+    }
+
+    missing = required - set(trades.columns)
+
+    if missing:
+        raise ValueError(
+            f"Missing required columns: {sorted(missing)}"
+        )
+
+    result = trades.copy()
+
+    rate = cost_bps / 10_000.0
+
+    result["entry_cost"] = (
+        result["entry_price"] * rate
+    )
+
+    result["exit_cost"] = (
+        result["exit_price"] * rate
+    )
+
+    result["total_cost"] = (
+        result["entry_cost"]
+        + result["exit_cost"]
+    )
+
+    result["net_pnl"] = (
+        result["gross_pnl"]
+        - result["total_cost"]
+    )
+
+    return result
+
+
+def build_cost_adjusted_equity_curve(
+    df: pd.DataFrame,
+    initial_capital: float,
+    cost_bps: float,
+) -> pd.Series:
+    """
+    Build an equity curve with proportional transaction costs.
+
+    Signals generated at the close of bar N are executed at
+    the open of bar N+1.
+
+    Transaction costs are charged at both entry and exit.
+
+    The position is assumed to use 100% of available capital.
+
+    Parameters
+    ----------
+    df:
+        DataFrame containing open, close, buy_signal, sell_signal.
+
+    initial_capital:
+        Starting portfolio value.
+
+    cost_bps:
+        Transaction cost in basis points per side.
+
+    Returns
+    -------
+    pandas.Series
+        Cost-adjusted portfolio equity.
+    """
+
+    required = {
+        "open",
+        "close",
+        "buy_signal",
+        "sell_signal",
+    }
+
+    missing = required - set(df.columns)
+
+    if missing:
+        raise ValueError(
+            f"Missing required columns: {sorted(missing)}"
+        )
+
+    if cost_bps < 0:
+        raise ValueError(
+            "cost_bps must be greater than or equal to zero."
+        )
+
+    rate = cost_bps / 10_000.0
+
+    equity = pd.Series(
+        initial_capital,
+        index=df.index,
+        name="equity",
+        dtype=float,
+    )
+
+    capital = initial_capital
+    in_position = False
+
+    for i in range(1, len(df)):
+
+        previous_close = float(
+            df["close"].iloc[i - 1]
+        )
+
+        current_open = float(
+            df["open"].iloc[i]
+        )
+
+        current_close = float(
+            df["close"].iloc[i]
+        )
+
+        previous_buy = bool(
+            df["buy_signal"].iloc[i - 1]
+        )
+
+        previous_sell = bool(
+            df["sell_signal"].iloc[i - 1]
+        )
+
+        # ----------------------------------------------------------
+        # Entry
+        # ----------------------------------------------------------
+        if previous_buy and not in_position:
+
+            # Entry transaction cost.
+            capital *= 1.0 - rate
+
+            # Entry at current open, marked to current close.
+            capital *= (
+                current_close / current_open
+            )
+
+            in_position = True
+
+            equity.iloc[i] = capital
+
+        # ----------------------------------------------------------
+        # Exit
+        # ----------------------------------------------------------
+        elif previous_sell and in_position:
+
+            # Move from previous close to current open.
+            capital *= (
+                current_open / previous_close
+            )
+
+            # Exit transaction cost.
+            capital *= 1.0 - rate
+
+            in_position = False
+
+            equity.iloc[i] = capital
+
+        # ----------------------------------------------------------
+        # Existing long position.
+        # ----------------------------------------------------------
+        elif in_position:
+
+            capital *= (
+                current_close / previous_close
+            )
+
+            equity.iloc[i] = capital
+
+        # ----------------------------------------------------------
+        # Flat.
+        # ----------------------------------------------------------
+        else:
+
+            equity.iloc[i] = capital
+
+    return equity

@@ -1,0 +1,367 @@
+{
+  "runs": [
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a2\\FULL\\net",
+      "bars": 64951,
+      "fills": 3116,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a2\\IS\\net",
+      "bars": 43070,
+      "fills": 2054,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a2\\OOS\\net",
+      "bars": 21881,
+      "fills": 1062,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\buy_hold_gross",
+      "bars": 64951,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\buy_hold_net",
+      "bars": 64951,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\delay_2",
+      "bars": 64951,
+      "fills": 2402,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\gross",
+      "bars": 64951,
+      "fills": 2402,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\net",
+      "bars": 64951,
+      "fills": 2402,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\slip_1",
+      "bars": 64951,
+      "fills": 2402,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\FULL\\slip_2",
+      "bars": 64951,
+      "fills": 2402,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\IS\\buy_hold_gross",
+      "bars": 43070,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\IS\\buy_hold_net",
+      "bars": 43070,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\IS\\delay_2",
+      "bars": 43070,
+      "fills": 1602,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\IS\\gross",
+      "bars": 43070,
+      "fills": 1602,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\IS\\net",
+      "bars": 43070,
+      "fills": 1602,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\IS\\slip_1",
+      "bars": 43070,
+      "fills": 1602,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\IS\\slip_2",
+      "bars": 43070,
+      "fills": 1602,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\buy_hold_gross",
+      "bars": 21881,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\buy_hold_net",
+      "bars": 21881,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\delay_2",
+      "bars": 21881,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\gross",
+      "bars": 21881,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\net",
+      "bars": 21881,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\slip_1",
+      "bars": 21881,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a3\\OOS\\slip_2",
+      "bars": 21881,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a4\\FULL\\net",
+      "bars": 64951,
+      "fills": 2058,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a4\\IS\\net",
+      "bars": 43070,
+      "fills": 1376,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a4\\OOS\\net",
+      "bars": 21881,
+      "fills": 682,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a5\\FULL\\net",
+      "bars": 64951,
+      "fills": 1826,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a5\\IS\\net",
+      "bars": 43070,
+      "fills": 1212,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\start\\a5\\OOS\\net",
+      "bars": 21881,
+      "fills": 614,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a2\\FULL\\net",
+      "bars": 62349,
+      "fills": 3078,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a2\\IS\\net",
+      "bars": 41346,
+      "fills": 2018,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a2\\OOS\\net",
+      "bars": 21003,
+      "fills": 1058,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\FULL\\buy_hold_gross",
+      "bars": 62349,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\FULL\\buy_hold_net",
+      "bars": 62349,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\FULL\\delay_2",
+      "bars": 62349,
+      "fills": 2360,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\FULL\\gross",
+      "bars": 62349,
+      "fills": 2360,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\FULL\\net",
+      "bars": 62349,
+      "fills": 2360,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\FULL\\slip_1",
+      "bars": 62349,
+      "fills": 2360,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\FULL\\slip_2",
+      "bars": 62349,
+      "fills": 2360,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\IS\\buy_hold_gross",
+      "bars": 41346,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\IS\\buy_hold_net",
+      "bars": 41346,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\IS\\delay_2",
+      "bars": 41346,
+      "fills": 1560,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\IS\\gross",
+      "bars": 41346,
+      "fills": 1560,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\IS\\net",
+      "bars": 41346,
+      "fills": 1560,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\IS\\slip_1",
+      "bars": 41346,
+      "fills": 1560,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\IS\\slip_2",
+      "bars": 41346,
+      "fills": 1560,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\buy_hold_gross",
+      "bars": 21003,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\buy_hold_net",
+      "bars": 21003,
+      "fills": 1,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\delay_2",
+      "bars": 21003,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\gross",
+      "bars": 21003,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\net",
+      "bars": 21003,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\slip_1",
+      "bars": 21003,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a3\\OOS\\slip_2",
+      "bars": 21003,
+      "fills": 800,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a4\\FULL\\net",
+      "bars": 62349,
+      "fills": 2038,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a4\\IS\\net",
+      "bars": 41346,
+      "fills": 1356,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a4\\OOS\\net",
+      "bars": 21003,
+      "fills": 682,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a5\\FULL\\net",
+      "bars": 62349,
+      "fills": 1786,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a5\\IS\\net",
+      "bars": 41346,
+      "fills": 1188,
+      "passed": true
+    },
+    {
+      "path": "results\\stage2_futures_proxy_20261007_completed\\end\\a5\\OOS\\net",
+      "bars": 21003,
+      "fills": 598,
+      "passed": true
+    }
+  ],
+  "all_marks_reconstructed": true,
+  "raw_data_unchanged": true,
+  "original_results_unchanged": true
+}

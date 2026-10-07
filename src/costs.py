@@ -1,80 +1,47 @@
-from __future__ import annotations
+"""Actual-quantity fees on underlying notional, separately from zero slippage."""
 
-import pandas as pd
+import numpy as np
+
+from src.accounting import simulate_portfolio
+from src.validation import finite_scalar, numeric_columns
 
 
-def apply_transaction_costs(
-    trades: pd.DataFrame,
-    cost_bps: float,
-) -> pd.DataFrame:
+def apply_transaction_costs(trades, cost_bps):
+    """Apply fees to an explicit-quantity ledger, never assuming one unit.
+
+    Does not resize historical trades. Cost-dependent sizing must be generated
+    by simulate_portfolio; editing a fee rate on an existing ledger alone cannot
+    reconstruct a different capital allocation history.
     """
-    Apply proportional transaction costs to a completed trade ledger.
-
-    Costs are applied independently to entry and exit notional.
-
-    Parameters
-    ----------
-    trades:
-        Trade ledger containing entry_price and exit_price.
-
-    cost_bps:
-        Transaction cost in basis points per side.
-
-        Examples
-        --------
-        5 bps = 0.05% per side
-        8 bps = 0.08% per side
-        10 bps = 0.10% per side
-
-    Returns
-    -------
-    pandas.DataFrame
-        Copy of the trade ledger with:
-
-        - entry_cost
-        - exit_cost
-        - total_cost
-        - net_pnl
-    """
-
-    if cost_bps < 0:
-        raise ValueError(
-            "cost_bps must be greater than or equal to zero."
-        )
-
-    required = {
-        "entry_price",
-        "exit_price",
-        "gross_pnl",
-    }
-
-    missing = required - set(trades.columns)
-
-    if missing:
-        raise ValueError(
-            f"Missing required columns: {sorted(missing)}"
-        )
-
+    rate = finite_scalar(cost_bps, "cost_bps", nonnegative=True) / 10000
+    numeric_columns(trades, ["quantity", "entry_price", "exit_price"], positive=True)
+    numeric_columns(trades, ["gross_pnl"])
+    expected = trades.quantity * (trades.exit_price - trades.entry_price)
+    if not np.allclose(trades.gross_pnl, expected, rtol=1e-10, atol=1e-8):
+        raise ValueError("gross_pnl must match actual quantity and fill prices.")
     result = trades.copy()
-
-    rate = cost_bps / 10_000.0
-
-    result["entry_cost"] = (
-        result["entry_price"] * rate
+    result["entry_notional"] = result.quantity * result.entry_price
+    result["exit_notional"] = result.quantity * result.exit_price
+    result["entry_cost"] = result.entry_notional * rate
+    result["exit_cost"] = result.exit_notional * rate
+    result["total_cost"] = result.entry_cost + result.exit_cost
+    result["net_pnl"] = result.gross_pnl - result.total_cost
+    numeric_columns(
+        result,
+        [
+            "entry_notional",
+            "exit_notional",
+            "entry_cost",
+            "exit_cost",
+            "total_cost",
+            "net_pnl",
+        ],
     )
-
-    result["exit_cost"] = (
-        result["exit_price"] * rate
-    )
-
-    result["total_cost"] = (
-        result["entry_cost"]
-        + result["exit_cost"]
-    )
-
-    result["net_pnl"] = (
-        result["gross_pnl"]
-        - result["total_cost"]
-    )
-
     return result
+
+
+def build_cost_adjusted_equity_curve(df, initial_capital, cost_bps):
+    """Compatibility wrapper around the shared cash/position/fee calculation."""
+    return simulate_portfolio(
+        df, initial_capital=initial_capital, cost_bps=cost_bps
+    ).equity

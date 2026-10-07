@@ -1,0 +1,9 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "exit_code": 0
+}

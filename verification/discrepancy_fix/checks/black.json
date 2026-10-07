@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\beqmd\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-m",
+    "black",
+    "--check",
+    "."
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,10 @@
+{
+  "initial_capital": 500000.0,
+  "closed_net_pnl": -1953.6343771886313,
+  "closed_fees_included_in_net": 188518.7361202407,
+  "open_gross_pnl": 0.0,
+  "open_entry_fee": 0.0,
+  "expected_final_equity": 498046.36562281137,
+  "actual_final_equity": 498046.3656228109,
+  "difference": -4.656612873077393e-10
+}

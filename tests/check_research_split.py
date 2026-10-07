@@ -1,21 +1,17 @@
 from src.data import load_minute_data, resample_to_15m
 from src.research import (
-    IS_START,
     IS_END,
-    OOS_START,
+    IS_START,
     OOS_END,
+    OOS_START,
     split_is_oos,
 )
 
-
-DATA_PATH = (
-    r"C:\Users\beqmd\Documents\QuantResearch"
-    r"\data\NIFTY_50_minute.csv"
-)
+DATA_PATH = r"C:\Users\beqmd\Documents\QuantResearch" r"\data\NIFTY_50_minute.csv"
 
 
 df = load_minute_data(DATA_PATH)
-df15 = resample_to_15m(df)
+df15 = resample_to_15m(df, minute_label="start")
 
 is_data, oos_data = split_is_oos(df15)
 

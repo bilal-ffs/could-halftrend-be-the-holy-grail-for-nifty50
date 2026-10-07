@@ -1,0 +1,9 @@
+{
+  "command": [
+    "C:\\Users\\beqmd\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "exit_code": 0
+}
