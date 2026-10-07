@@ -1,0 +1,9 @@
+{
+  "command": [
+    "-m",
+    "ruff",
+    "check",
+    "."
+  ],
+  "exit_code": 0
+}

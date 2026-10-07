@@ -1,0 +1,1 @@
+SIMULATED incomplete attempt: timezone representation mismatch while aligning saved Stage 2 CSV indexes. No scenario results completed. Complete results will be saved separately in stage3_SIMULATED_calendars_20261007_completed.

@@ -1,0 +1,13 @@
+{
+  "label": "SIMULATED",
+  "interpretation": "end",
+  "period": "FULL",
+  "mode": "daily",
+  "case": "vol_1_0",
+  "fee_bps": 3,
+  "slippage_bps": 0,
+  "vol_multiplier": 1.0,
+  "near_multiplier": 1.0,
+  "management": "daily",
+  "matching": "theta"
+}

@@ -168,3 +168,38 @@ all ledgers/equity/annual metrics, concentration tables, independent accounting
 reconciliations and causal verification. The first incomplete export attempt is
 marked separately and is not a completed evaluation. Earlier research artifacts
 remain unchanged. No options, parameter selection, commit or push is included.
+
+## Stage 3: SIMULATED bullish call calendar spreads
+
+Stage 3 uses the same actual index history and causal HalfTrend signals, modeling
+both option legs with dividend-yield Black–Scholes. These are **SIMULATED**
+premiums and Greeks, not observed IV or executable option results. Both timestamp
+interpretations remain unconfirmed and are evaluated without choosing a winner.
+
+```powershell
+python -m src.simulated_calendars --data "C:/Users/beqmd/Documents/QuantResearch/data/NIFTY_50_minute.csv" --output results/stage3_simulated_calendars_repeat
+python -m tests.verify_simulated_calendar_outputs results/stage3_simulated_calendars_repeat
+```
+
+Output must be a new directory. The predeclared primary configuration uses
+amplitude 3/channel deviation 2, INR 500,000, modeled volatility 1.2 times causal
+21-session realized volatility, 6% pricing risk-free rate, 1% dividend yield,
+3 bps fees per side on each leg's premium and zero slippage. Synthetic 60/30-day
+same-strike calls execute at the next included bar open. Integer normalized
+units target zero entry theta subject to positive delta, long units >= short
+units, long premium plus **both** entry fees <=5% of equity, and cash collateral
+equal to short units times strike. These units are not exchange lots or broker
+margin. Both legs remain present; there is no standalone long-call strategy.
+
+Entry-only matching is compared with once-per-session threshold adjustments and
+an equal-unit calendar control. Positive delta is enforced at construction and
+adjustment; subsequent drift is reported. Daily checks use the preceding session's
+marks. Rolls, gaps, costs, open liabilities and terminal marks are explicit.
+Sensitivity tests cover 2/3 bps fees, 0/10/25 bps adverse premium slippage,
+volatility multipliers 1.0/1.2/1.5, and near-leg volatility factors 0.9/1.0/1.1.
+
+See [the SIMULATED Stage 3 report](results/stage3_SIMULATED_calendars_20261007_completed/REPORT.md)
+for results, allocation differences from Stage 2, assumptions and limitations.
+The new output contains configurations, data/exclusion audits, leg and signal
+ledgers, equity/Greek histories, sensitivities, and independent accounting and
+pricing verification. Prior results and the raw CSV are preserved.

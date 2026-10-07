@@ -1,0 +1,13 @@
+{
+  "label": "SIMULATED",
+  "interpretation": "end",
+  "period": "IS",
+  "mode": "equal_control",
+  "case": "fee_2",
+  "fee_bps": 2,
+  "slippage_bps": 0,
+  "vol_multiplier": 1.2,
+  "near_multiplier": 1.0,
+  "management": "entry",
+  "matching": "equal"
+}

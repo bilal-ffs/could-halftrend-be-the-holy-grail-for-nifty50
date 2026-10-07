@@ -1,0 +1,13 @@
+{
+  "label": "SIMULATED",
+  "interpretation": "start",
+  "period": "OOS",
+  "mode": "equal_control",
+  "case": "primary",
+  "fee_bps": 3,
+  "slippage_bps": 0,
+  "vol_multiplier": 1.2,
+  "near_multiplier": 1.0,
+  "management": "entry",
+  "matching": "equal"
+}

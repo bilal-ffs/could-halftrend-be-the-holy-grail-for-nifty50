@@ -1,0 +1,13 @@
+{
+  "label": "SIMULATED",
+  "interpretation": "end",
+  "period": "OOS",
+  "mode": "entry",
+  "case": "vol_1_5",
+  "fee_bps": 3,
+  "slippage_bps": 0,
+  "vol_multiplier": 1.5,
+  "near_multiplier": 1.0,
+  "management": "entry",
+  "matching": "theta"
+}

@@ -1,0 +1,9 @@
+{
+  "command": [
+    "-m",
+    "black",
+    "--check",
+    "."
+  ],
+  "exit_code": 0
+}

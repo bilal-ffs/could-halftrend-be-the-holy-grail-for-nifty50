@@ -1,0 +1,17 @@
+{
+  "cagr": -0.037793493034681824,
+  "sharpe_ratio": -0.2665162981972488,
+  "sortino_ratio": -0.22206935472375786,
+  "calmar_ratio": -0.0032395408115425415,
+  "max_drawdown": -0.4570645120016634,
+  "drawdown_duration": 42843,
+  "profit_factor": 0.9293593495014068,
+  "expectancy": -2.980433021223469,
+  "win_rate": 0.3757802746566791,
+  "average_win": 104.34565498338877,
+  "average_loss": 67.59073800000003,
+  "payoff_ratio": 1.5437862948528351,
+  "cost_bps_per_side": 10.0,
+  "initial_equity": 100000.0,
+  "final_equity": 77599.19815824613
+}

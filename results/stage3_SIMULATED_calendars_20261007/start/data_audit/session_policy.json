@@ -1,0 +1,13 @@
+{
+  "minute_label": "start",
+  "include_evening": false,
+  "partial_bar_policy": "exclude",
+  "timezone": "Asia/Kolkata",
+  "regular_minutes": 974701,
+  "evening_minutes": 612,
+  "outside_minutes": 0,
+  "partial_bars": 41,
+  "excluded_bars": 81,
+  "included_bars": 64951,
+  "volume_available": false
+}

@@ -1,0 +1,26 @@
+{
+  "label": "SIMULATED",
+  "runs": 180,
+  "completed": true,
+  "report_sha256": "abc0d7a28314c4a698d2dc81993927d53c0971ae7b501ed07760ccc70296c1a1",
+  "final_verification": {
+    "pytest": {
+      "exit_code": 0,
+      "passed": 129
+    },
+    "ruff": {
+      "exit_code": 0
+    },
+    "black": {
+      "exit_code": 0,
+      "files": 36
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    }
+  },
+  "raw_data_preserved": true,
+  "prior_results_preserved": 650,
+  "commit": false,
+  "push": false
+}

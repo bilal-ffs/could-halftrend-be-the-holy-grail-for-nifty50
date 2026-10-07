@@ -1,0 +1,50 @@
+{
+  "start": {
+    "cutoff": 32475,
+    "indicator_and_volatility_causal": true,
+    "checks": [
+      {
+        "management": "entry",
+        "matching": "theta",
+        "past_fills": 2358,
+        "passed": true
+      },
+      {
+        "management": "daily",
+        "matching": "theta",
+        "past_fills": 2361,
+        "passed": true
+      },
+      {
+        "management": "entry",
+        "matching": "equal",
+        "past_fills": 2358,
+        "passed": true
+      }
+    ]
+  },
+  "end": {
+    "cutoff": 31174,
+    "indicator_and_volatility_causal": true,
+    "checks": [
+      {
+        "management": "entry",
+        "matching": "theta",
+        "past_fills": 2328,
+        "passed": true
+      },
+      {
+        "management": "daily",
+        "matching": "theta",
+        "past_fills": 2332,
+        "passed": true
+      },
+      {
+        "management": "entry",
+        "matching": "equal",
+        "past_fills": 2328,
+        "passed": true
+      }
+    ]
+  }
+}
